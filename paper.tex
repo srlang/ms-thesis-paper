@@ -1,0 +1,89 @@
+\documentclass[english]{tktltiki}
+%\documentclass[a4paper]{article}
+\usepackage[pdftex]{graphicx}
+\usepackage{subfigure}
+\usepackage{alltt}
+\usepackage{gensymb} % for \textdegree
+% break on long hyphens to prevent overstepping bounds
+%\usepackage[hyphenbreaks]{breakurl} 
+%\usepackage[hyphens]{url}
+% to force 1-in margins
+%\usepackage[margin=1in]{geometry}
+
+
+%%% Source for figures for my safety
+\newcommand*{\captionsource}[2]{%
+	\caption[{#1}]{%
+		#1%
+%		\\\hspace{\linewidth}%
+%		\textbf{Source:} #2%
+	}%
+}
+%%%
+
+
+\begin{document}
+%\doublespacing
+%\singlespacing
+%\onehalfspacing
+
+\title{Machine Learning Strategies in Cribbage}
+\author{Sean R. Lang}
+\date{\today}
+
+\maketitle
+
+\numberofpagesinformation{\numberofpages\ pages + \numberofappendixpages\ appendices}
+\classification{\protect{\ \\
+		%A.1 [Introductory and Survey],\\
+		%H.5.1 [Artificial, augmented, and virtual realities],\\
+		%I.3.7 [Virtual Reality]
+	}
+}
+
+\keywords{machine learning, cribbage}
+
+\begin{abstract}
+\input{sections/abstract.sec.tex}
+\end{abstract}
+
+%\mytableofcontents
+
+\section{Introduction}
+\input{sections/intro.sec.tex}
+
+
+\section{Literature Review}
+\input{sections/literature.sec.tex}
+
+
+\section{Data and Methods}
+\input{sections/data_methods.sec.tex}
+
+
+\section{Findings}
+\input{sections/findings.sec.tex}
+
+
+\section{Discussion}
+\input{sections/discussion.sec.tex}
+
+
+\section{Conclusion}
+\input{sections/conclusion.sec.tex}
+
+%\newpage
+
+\nocite{*}
+\bibliographystyle{tktl}
+\bibliography{references}
+
+%\lastpage
+
+%\appendices
+
+%\pagestyle{empty}
+
+\end{document}
+
+

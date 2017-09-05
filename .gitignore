@@ -1,0 +1,12 @@
+*.swp
+*.aux
+*.bbl
+*.blg
+*.bst
+*.cls
+*.sty
+*.log
+*.pdf
+
+englbst.tex
+babelbst.tex
