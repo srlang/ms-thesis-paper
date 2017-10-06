@@ -26,9 +26,14 @@ A quick run-down of the major points or things that can't easily be determined:
 This was compiled using pdflatex from TexLive 2016 (v.3.14159265-2.6-1.40.17)
 on a MacBook Air (2016 model).
 
-You will need to retrieve the tktl.sty files from the University of Helsinki
-CS department. I was unsure of the copying restrictions, but they can be found
-at: [GitHub here](https://github.com/UniversityHelsinkiTKTL/tktltiki2).
+You will need to retrieve the following files from the University of Helsinki
+CS department.
+- babelbst.tex
+- englbst.tex
+- tktl.bst
+- tktltiki.cls
+Since I was unsure of the copying restrictions, they can be found
+at: [GitHub here](https://github.com/UniversityHelsinkiTKTL/tktltiki2)
 
 It is important to note that, if there are any Unicode characters remaining in
 the final paper's contents (ÄÖÅ), the input encoding must be changed in the
