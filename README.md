@@ -29,3 +29,7 @@ on a MacBook Air (2016 model).
 You will need to retrieve the tktl.sty files from the University of Helsinki
 CS department. I was unsure of the copying restrictions, but they can be found
 at: [GitHub here](https://github.com/UniversityHelsinkiTKTL/tktltiki2).
+
+It is important to note that, if there are any Unicode characters remaining in
+the final paper's contents (ÄÖÅ), the input encoding must be changed in the
+class file from `latin9` to `utf8`.
