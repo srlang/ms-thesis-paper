@@ -14,7 +14,7 @@ If you are for whatever editing these files, please observe my formatting
 standards as much as possible.
 
 A quick run-down of the major points or things that can't easily be determined:
-1. This was written in vim with `tabstop=4`, but NOT `expandtab`.
+1. This was written in Vim with `tabstop=4`, but NOT `expandtab`.
 2. Paragraphs are started and ended with a single line of `%%%`.
 3. Each separate sentence within a paragraph is separated by a single line of
    `%`.
@@ -27,11 +27,12 @@ This was compiled using pdflatex from TexLive 2016 (v.3.14159265-2.6-1.40.17)
 on a MacBook Air (2016 model).
 
 You will need to retrieve the following files from the University of Helsinki
-CS department.
+CS department:
 - babelbst.tex
 - englbst.tex
 - tktl.bst
 - tktltiki.cls
+
 Since I was unsure of the copying restrictions, they can be found
 at: [GitHub here](https://github.com/UniversityHelsinkiTKTL/tktltiki2)
 
