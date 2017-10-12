@@ -6,6 +6,7 @@
 *.cls
 *.sty
 *.log
+*.toc
 *.pdf
 
 englbst.tex
