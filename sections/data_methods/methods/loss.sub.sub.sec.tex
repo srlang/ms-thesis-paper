@@ -1,0 +1,94 @@
+
+\subsubsection{Loss Function}
+
+%%%
+% Loss function description and walkthrough
+%	I'm almost definitely going to rewrite this, but I just wanted to put
+%	something down on paper to work through the thinking in a viewable way by
+%	someone else.
+%%%
+
+%%%
+A good loss function is critical to the proper training of a machine learning
+classifier.
+%
+In classroom examples in which data can be mapped into a multidimensional
+space,
+this is typically accomplished by either a euclidean distance, or some other
+measure of how ``wrong'' the prediction is based on how much it varies from what
+is classified as ``correct.''
+%
+In learning to predict using expert witnesses' testimony,
+this is measured in terms of \textit{regret}.
+%
+However, even though it is inevitable for the human player to think back on what
+could have been if he or she had chosen a different arrangement of cards to keep
+and throw, this is not a practically applicable loss function measure for the
+following reasons:
+%
+\begin{enumerate}
+\item To evaluate how each hand ``would'' have done in any specific point in the
+	game, a new ``branching'' game would have to be run through at that specific
+	point. Basically, this means that a giant search tree would need to be made
+	where the branches are randomly created using draws from the deck.
+	Therefore the notion of ``regret'' is not easily practically computable.
+
+\item It is difficult to determine what a better hand would have been in any
+	case.
+	For example, a hand that scored higher would not always be better.
+	Furthermore, a hand that uses a higher score may not peg as well, etc.
+	Therefore, it is difficult to be able to determine what is ``correct'' to
+	calculate a distance from that.
+\end{enumerate}
+%
+%%%
+
+%%%
+Therefore, it may be useful instead to create a different system of punishment
+and reward rather than pure Loss.
+%
+There are two possible routes I can think of at this junction.
+%
+\begin{enumerate}
+\item Use the point spread between yourself and the opponent for the round.
+
+	%%%
+	The problem with this strategy is that it depends on the opponent's
+	performance as well as your own.
+	%
+	In the case of our simulation, this is further problematic because the
+	opponent's playing strategy and style is not known,
+	which means this can't be rightfully evaluated.
+	%%%
+
+\item In what position was the player left after playing with this hand.
+	\begin{enumerate}
+	\item Using intrinsic values for each playing state.
+
+		%%%
+		This method relies upon previous knowledge of the game in order to set
+		up position in which the player is at an advantage or disadvantage.
+		%
+		While this may be acceptable for this small application, it should not
+		be used in the general case.
+		%%%
+
+	\item Using a form of back-propagation.
+
+		%%%
+		Each positions value will be computed based on the amount of times a
+		player at that position ended up winning the game, and by how much.
+		%
+		This would require the agent to be trained in reverse, so to speak.
+		%
+		Early games could start at scores like 119 to 115 and compute which are
+		likely to win, then make their way backwards to lower scores.
+		%
+		Another option would be for each agent to keep track of its own path
+		of scores and reward/punish all at the end, perhaps with different
+		weights.
+		%%%
+
+	\end{enumerate}
+\end{enumerate}
+%%%

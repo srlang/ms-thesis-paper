@@ -13,8 +13,8 @@ paper: paper.pdf
 	
 paper.pdf: paper.tex *.bib\
 			sections/*.sec.tex\
-			sections/subsections/*.sub.sec.tex\
-			sections/subsections/subsubsections/*.sub.sub.sec.tex
+			sections/*/*.sub.sec.tex\
+			sections/*/*/*.sub.sub.sec.tex
 	pdflatex paper.tex
 	bibtex paper.aux
 	pdflatex paper.tex
