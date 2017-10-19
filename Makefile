@@ -1,6 +1,6 @@
 # Sean R. Lang
 
-.PHONY: all cleanup submission sections secs TODO todo used_cites
+.PHONY: all cleanup submission sections secs TODO todo used_cites force
 
 all: paper submission
 
@@ -9,12 +9,17 @@ submission: SeanLang_MS_thesis.pdf
 SeanLang_MS_thesis.pdf: paper.pdf
 	@cp -v $^ $@
 
+force:
+	touch paper.tex
+	@make paper
+
 paper: paper.pdf
 	
 paper.pdf: paper.tex *.bib\
 			sections/*.sec.tex\
 			sections/*/*.sub.sec.tex\
-			sections/*/*/*.sub.sub.sec.tex
+			sections/*/*/*.sub.sub.sec.tex\
+			appendices/*.tex
 	pdflatex paper.tex
 	bibtex paper.aux
 	pdflatex paper.tex
