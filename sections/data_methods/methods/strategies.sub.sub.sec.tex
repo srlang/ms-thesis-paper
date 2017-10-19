@@ -1,0 +1,237 @@
+
+\subsubsection{Strategies}
+
+%%%
+% Information which strategies were created and how they basically operated
+%	side note about the need to create a different script
+%%%
+
+%%%
+%During the simulation of games,
+A few basic behavioral strategies were coded for the agent to learn
+over the course of multiple simulated games.
+%
+These represented most of the basic factors which a player will consider when
+making their decision as to which cards to keep.
+%
+These included:
+\begin{itemize}
+\item \texttt{hand\_max\_min}:
+	%
+	The hand(s) which has the maximum minimum possible score for the kept cards
+	will be more highly desired.
+	%
+	This is equivalent to choosing the hand with the largest guaranteed points.
+	%
+\item \texttt{hand\_max\_avg}:
+	%
+	The hand(s) with the maximum average points over all possible cut cards will
+	be the most highly desired.
+	%
+	This strategy is useful for trying to maximize the expected score of one's
+	own hand.
+	%
+\item \texttt{hand\_max\_med}:
+	%
+	The hand(s) with the maximum median points possible to score will be the most
+	highly desired.
+	%
+	Similar to \texttt{hand\_max\_avg}, this strategy is useful when trying to
+	maximize one's hand's expected score.
+	%
+\item \texttt{hand\_max\_poss}:
+	%
+	The hand(s) with the maximum possible score will be the most highly desired.
+	%
+	This strategy can be thought of as Hail Mary choice for the player trying to
+	score as many points as possible, not taking into account its unlikelihood.
+	%
+\item \texttt{hand\_min\_avg\_crib}:
+	%
+	The hand(s) with the minimum average amount of points scored in the crib is
+	the most highly desired.
+	%
+	This strategy would be a very defensive strategy typically used by the pone
+	to avoid giving points to the dealer.
+	%
+\item \texttt{hand\_max\_avg\_both}:
+	%
+	TODO: is this necessary, or will the weighting mechanism take care of this
+	%
+\item \texttt{pegging\_max\_avg\_gained}:
+	%
+	The hand(s) with the maximum average points gained through pegging is the most
+	highly desired.
+	%
+	This strategy would be useful for end-game play in a tight game.
+	%
+	% TODO: make sure to explain pegging out
+	For instance, if both players are close to win, the dealer may
+	choose to forego placing points into their hand and instead try to peg out
+	since it is unlikely that they will get a chance to count their hand at all.
+	%
+\item \texttt{pegging\_max\_med\_gained}:
+	%
+	The hand(s) with the maximum median points scored during play will be the most
+	highly desired.
+	%
+	This strategy is similar to \texttt{pegging\_max\_avg\_gained} in its use,
+	but uses a slightly different internal measure for ranking.
+	% TODO: ^ better explanation
+	%
+\item \texttt{pegging\_min\_avg\_given}:
+	%
+	The hand(s) with the minimum average points scored by the opposing player
+	will be the most highly desired.
+	%
+	This is a very defensive strategy also useful at the end of the game to
+	prevent the opposing player from pegging out.
+	%
+\end{itemize}
+%
+The above definitions refer to a hand's desirability.
+%
+This can be thought of as an internal ranking of how likely a given strategy
+would be willing to choose a particular combination of cards.
+%
+Because there are likely to be multiple possible combinations of cards which
+have the same desirability according to any given strategy,
+the implementation of the each strategy will point out all such possibilities.
+%%%
+
+
+%%%
+The choosing mechanism will then apply a different weight to each strategy's
+picks based on that strategy's weighting for the given score time.
+% TODO: ^ word above better                             ^^^^^^^^^
+%
+In this way, a hand that was highly recommended by strategies which are highly
+trusted will be more likely to be picked.
+%
+Multiple recommendations from multiple strategies will also be combined together
+to further boost popular suggestions.
+%
+After all recommendations have been accumulated,
+the option with the highest weight will be chosen by the agent for play in that
+round.
+%
+In the event of a tie between two or more combinations of cards,
+the combination which was recommended by the
+% TODO: ^ tie-breaking mechanism
+%%%
+
+
+%\subsubsubsection{Database Population}
+%%%
+Because of the massive amount of possible combinations%
+% TODO: many || all?
+\textemdash many of which were unique due to the cards' position affecting the
+scoring outcome\textemdash%
+the evaluation of some of these possibilities in which the crib was involved
+in real-time took a handful of seconds to evaluate during development.
+%
+This was deemed much too slow as over the course of hundreds or thousands of
+simulated games,
+this delay would very quickly accumulate to performance-affecting delays.
+%
+As a result, an alternative strategy of pre-computing the required knowledge and
+storing the values of interest into a database was implemented instead.
+%%%
+
+%%%
+There are ${52 \choose 6}$ possible combinations of card which can be dealt to
+either player.
+%
+Of these possibly dealt hands, there are then ${6 \choose 4} = 24$ possible
+combinations of cards that can be kept and ``tossed'' to the crib.
+%
+For each of these $24$ possible there are a further $(52-6)=46$ possible cards
+that must be considered as possible cut cards for the kept hand.
+%
+Additionally, for the thrown set of cards,
+there are ${46 \choose 2} = 1035$ possible combinations of cards which can be
+thrown by the opposing player into the crib as well as the
+$(46-2)=44$ remaining possible cut cards.
+%
+These cut cards must be considered separately in such a manner of
+evaluating ${46 \choose 2} \times 44 = 45540$ possibilities rather than
+simply looking at each of ${46 \choose 3} = 15180$ possibilities because
+whether or not the card is in the crib or not can affect the score.%
+\footnote{TODO: example of right jack or something and point to rulebook}
+%
+Just as crucially, there are small differences in scoring the crib as opposed to
+scoring the player's own hand that mean that previous evaluations results are
+not reusable.
+% TODO: further expound on how crib is also scored, provide example
+%
+This means that, altogether, there are 
+\[
+	{52 \choose 6}
+	{6 \choose 4}
+	\left(
+		\left(46\right) +
+		\left(
+			{46 \choose 2} \times 44
+		\right)
+	\right)
+	\approx
+	1.3921 \times {10}^{13}
+	% Google answer: 1.3920952e13
+\]
+possible combinations of cards that need to be evaluated in total to fully 
+%be able to know the
+understand the statistics
+of a cribbage game for each hand.
+% TODO: wording of above needs to be better
+%%%
+
+%%%
+% TODO: majority or rest? depends on status at end
+Although the majority of this project was coded in Python for its ease of use
+and speed of development,
+due to the performance-crucial, basic mathematical operations involved,
+the overheads of using a higher-level language was deemed too critical and
+this particular tool was developed in C instead.
+%
+To put the performance gains into perspective,
+at its fastest, most parallelly processed state,
+the Python database populator was estimated to take approximately 4 months to
+simply list and evaluate all possible scores on a development machine,
+disregarding the file I/O operations required to write the results to the
+database.
+%
+The same functionality, with the addition of file I/O,
+in the C program would take a relatively mere 14 days
+on that same machine.
+%
+Thankfully, most of the framework for this rewrite had actually been developed
+previously as part of a mental exercise, so the loss in time for the rewrite was
+minimal.
+%%%
+
+
+%%%
+% TODO: probably could use a different header here for this vvv
+%%%
+
+
+%%%
+% TODO: need to write something about how the pegging was recorded
+While the combinations of chosen and tossed scores could be evaluated before any
+games had actually been played,
+the hands' usefulness during the pegging portion of the round needed to be
+evaluated in semi real-time.
+%
+A single pegging agent was programmed with heuristics gained from %reading
+a cribbage strategy book.%
+\cite{cribbage_strategy_guide}
+%
+This agent was then played against a copy of itself with randomly allocated
+cards and the results of that round were recorded for each agent to provide an
+initial knowledge base.
+%
+These results would then be queried by the agent during the choose phase of the
+game and contributed to at the end of the pegging phase.
+% TODO: define pegging and choosing phases
+%%%
+
