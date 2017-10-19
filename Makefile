@@ -48,6 +48,7 @@ todo: TODO
 
 TODO: paper.tex\
 		sections/*.sec.tex\
-		sections/subsections/*.sub.sec.tex\
-		sections/subsections/subsubsections/*.sub.sub.sec.tex
+		sections/*/*.sub.sec.tex\
+		sections/*/*/*.sub.sub.sec.tex\
+		appendices/*.tex
 	@grep TODO $^
