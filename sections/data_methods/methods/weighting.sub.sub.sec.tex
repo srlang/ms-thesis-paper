@@ -1,0 +1,47 @@
+
+%%%
+% How the different strategies were weighted
+%%%
+
+\subsubsection{Weighting}
+
+%%%
+% Introductory stuff
+%%%
+
+%%%
+% More mathematically expressed
+%%%
+
+%%%
+For the purposes of this project,
+how well certain combinations of cards are played with different strategies
+is not explored.
+%
+Instead, only the player's position in score-space affects the decision as to
+which strategies to play by.
+%
+Each possible score-space coordinate can be thought of as a coordinate defined
+by (\textit{MyScore:$[0,120]$, OpponentScore:$[0,120]$, Dealer?:$\{0,1\}$}).
+%
+At each score-space location is a vector $w_{M,O,D} = [f_1, f_2,\ldots,f_m]$
+where $m$ is the number of all possible strategies to be considered.
+%
+At the beginning of each round, each of $m$ strategies is evaluated for all
+$n = {6 \choose 4}$ possible combinations of cards kept to produce an
+$m \times n$ matrix $S$
+where $S_{i,j}$ is the SOMETHING TODO
+and $\sum_{i=1}^{m} S_{i,j} = 1\ \forall j$
+and $\sum_{j=1}^{n} S_{i,j} = 1\ \forall i$.
+%
+A value vector $P$ of length $n$ representing the total perceived value of a
+possible keep combination
+can then be computed by
+$P = w S$.
+%
+%where $n$ is the number of possible combinations of cards that are kept and
+%thrown into the crib,
+%i.e. ${6 \choose 4} = 24$.
+%%%
+
+
