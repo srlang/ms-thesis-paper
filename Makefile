@@ -32,6 +32,7 @@ wc: sections/*.sec.tex\
 
 clean:
 	@rm -v paper.{aux,bbl,blg,pdf,toc}
+	@rm -v sections/*.aux
 
 secs: sections
 
