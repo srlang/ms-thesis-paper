@@ -46,17 +46,13 @@ These included:
 	This strategy can be thought of as Hail Mary choice for the player trying to
 	score as many points as possible, not taking into account its unlikelihood.
 	%
-\item \texttt{hand\_min\_avg\_crib}:
+\item \texttt{crib\_min\_avg}:
 	%
 	The hand(s) with the minimum average amount of points scored in the crib is
 	the most highly desired.
 	%
 	This strategy would be a very defensive strategy typically used by the pone
 	to avoid giving points to the dealer.
-	%
-\item \texttt{hand\_max\_avg\_both}:
-	%
-	TODO: is this necessary, or will the weighting mechanism take care of this
 	%
 \item \texttt{pegging\_max\_avg\_gained}:
 	%
@@ -94,37 +90,42 @@ The above definitions refer to a hand's desirability.
 This can be thought of as an internal ranking of how likely a given strategy
 would be willing to choose a particular combination of cards.
 %
-Because there are likely to be multiple possible combinations of cards which
-have the same desirability according to any given strategy,
-the implementation of the each strategy will point out all such possibilities.
+This desirability score is then scaled to to lie in the range $[0, 1]$ with
+$1$ representing the best possibilities.
+%
+This scaling allows for possibilities which are ``almost as good'' to not be
+ignored in later weighting stages.
+%Because there are likely to be multiple possible combinations of cards which
+%have the same desirability according to any given strategy,
+%the implementation of the each strategy will point out all such possibilities.
 %%%
 
 
-%%%
-The choosing mechanism will then apply a different weight to each strategy's
-picks based on that strategy's weighting for the given score time.
-% TODO: ^ word above better                             ^^^^^^^^^
-%
-In this way, a hand that was highly recommended by strategies which are highly
-trusted will be more likely to be picked.
-%
-Multiple recommendations from multiple strategies will also be combined together
-to further boost popular suggestions.
-%
-After all recommendations have been accumulated,
-the option with the highest weight will be chosen by the agent for play in that
-round.
-%
-In the event of a tie between two or more combinations of cards,
-the combination which was recommended by the
-% TODO: ^ tie-breaking mechanism
-%%%
+%%%%
+%The choosing mechanism will then apply a different weight to each strategy's
+%picks based on that strategy's weighting for the given score time.
+%% TODO: ^ word above better                             ^^^^^^^^^
+%%
+%In this way, a hand that was highly recommended by strategies which are highly
+%trusted will be more likely to be picked.
+%%
+%Multiple recommendations from multiple strategies will also be combined together
+%to further boost popular suggestions.
+%%
+%After all recommendations have been accumulated,
+%the option with the highest weight will be chosen by the agent for play in that
+%round.
+%%
+%In the event of a tie between two or more combinations of cards,
+%the combination which was recommended by the
+%% TODO: ^ tie-breaking mechanism
+%%%%
 
 
 %\subsubsubsection{Database Population}
 %%%
 Because of the massive amount of possible combinations%
-% TODO: many || all?
+% TODO: vvv many || all?
 \textemdash many of which were unique due to the cards' position affecting the
 scoring outcome\textemdash%
 the evaluation of some of these possibilities in which the crib was involved
@@ -142,10 +143,10 @@ storing the values of interest into a database was implemented instead.
 There are ${52 \choose 6}$ possible combinations of card which can be dealt to
 either player.
 %
-Of these possibly dealt hands, there are then ${6 \choose 4} = 24$ possible
+Of these possibly dealt hands, there are then ${6 \choose 4} = 15$ possible
 combinations of cards that can be kept and ``tossed'' to the crib.
 %
-For each of these $24$ possible there are a further $(52-6)=46$ possible cards
+For each of these $15$ possible there are a further $(52-6)=46$ possible cards
 that must be considered as possible cut cards for the kept hand.
 %
 Additionally, for the thrown set of cards,
