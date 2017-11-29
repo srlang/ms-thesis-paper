@@ -23,6 +23,78 @@
 % Reinforcement Learning
 %%%
 
+%%%
+After a complete game had been played, the winning and losing agents need to
+modify their weights in order to decide a ``correct'' strategy at that time
+coordinate.
+%
+The goal of this operation in the case of good choice was to increase the
+distance between the winning strategy and the rest, and opposite for losses.
+%
+This distancing operation was easily accomplished by scaling each element of the
+weights vector proportional to its square before normalizing the vector again.
+%
+In other words:
+\[
+w_{i,new} = c w_{i,old} ^2
+\]
+where $c$ is some constant.
+%
+Similarly, the adjustment to re-level the playing field was accomplished by
+scaling in proportion with the inverse square, i.e.:
+\[
+w_{i,new} = \frac{c}{w_{i,old}^2}
+\]
+%
+One noticeable issue with this method, however, is the handling of uniform
+weights.
+%
+If a weight vector $w$ exists such that $w_i = w_j \ \forall i,j$,
+then the scaling operation will equally scale and normalize each strategy,
+meaning that no adjustment will be made,
+effectively leaving uniformly weighted points dead.
+%
+This was obviously undesired since a blank-slate learning path and end state was
+a highly desired result of this project.
+%
+The uniform weights adjustment problem was combated by ... TODO ....
+%%%
+
+%%%
+% TODO
+% How exploration steps worked
+%%%
+
+%%%
+The reinforcement training framework operated very simply.
+%
+Given an initialization weights file for each agent, a new agent would be
+created with those stored weights.
+%
+These agents would then be placed into a game and played against each other.
+%
+After the game had been completed, the weights for each agent would be adjusted
+accordingly along the path which the agent took.
+%
+After a set number of epochs, the agent would save its weight-state to a
+checkpoint file.
+%
+This allowed not only for tracking of weight adjustments over time, but also
+allowed for the ability to more easily recover potential issues and for more
+promising states to be explored further by using a checkpoint as an
+initialization state on a subsequent training run.
+%
+This checkpointing system allowed agents to be mixed and matched together to
+allow different combinations to learn from one another.
+%%%
+
+%%%
+% TODO: certain amount: fill in with more specific value
+After a certain amount of training,
+the agent would be manually checked by inspection of the weights file and by
+playing against a human.
+%%%
+
 %%%%
 %% Back Propagation
 %After the round has been played,
