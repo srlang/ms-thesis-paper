@@ -1,6 +1,6 @@
 # Sean R. Lang
 
-.PHONY: all cleanup submission sections secs TODO todo used_cites force
+.PHONY: all cleanup submission sections secs TODO todo used_cites force push
 
 all: paper submission
 
@@ -53,3 +53,6 @@ TODO: paper.tex\
 		sections/*/*/*.sub.sub.sec.tex\
 		appendices/*.tex
 	@grep TODO $^
+
+push:
+	./push.sh
