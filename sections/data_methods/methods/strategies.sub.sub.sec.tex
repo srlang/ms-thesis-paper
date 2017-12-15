@@ -208,6 +208,49 @@ on that same machine.
 Thankfully, most of the framework for this rewrite had actually been developed
 previously as part of a mental exercise, so the loss in time for the rewrite was
 minimal and well worth the time saved in execution.
+%
+Furthermore, access to a high-performance server allowed for futher
+paralellization which cut the final run time down to approximately 5 and a half
+days.
+%%%
+
+%%%
+Careful consideration and preparation needed to be taken
+for the retrieval of this information, however.
+%
+The trillions of combinations could not be quickly searched by card value as
+doing so would search the entirety of the database on each lookup,
+decreasing the performance so much as to be worse than simply
+enumerating the combinations on-demand.
+%
+A rather simple solution to this problem was to search by index
+instead of by card comparison.
+%
+These indices could not simply be stored in the memory of the running program
+because the sheer size required to store all of the indices at all times
+would rival that of the database,
+and its population would take considerable enough time.
+%
+Thus, a quick and reliable method for creating and recreating these keys
+needed to be used.
+%
+As the cards were represented internally as an integer between $0$ and $51$
+(inclusive)
+and there were only 6 cards for indexing,
+the concatenation of the cards' digits in (keep,toss) order
+would create a number with at most twelve digits,
+with an absolute maximum value of 484950514647 \footnotemark,
+\footnotetext{
+	Thanks to implementation,
+	the order of cards was guaranteed to be sorted within each tuple.
+	% TODO: better phrasing of this
+	% TODO: need to change to not numbers
+}
+well within the range of numbers addressable by an integer.
+%
+This index could be created by a very simple process of 6 multiplications and
+5 additions
+while still being guaranteeably unique.
 %%%
 
 
@@ -223,9 +266,14 @@ games had actually been played,
 the hands' usefulness during the pegging portion of the round needed to be
 evaluated in semi real-time.
 %
-A single pegging agent was programmed with heuristics gained from %reading
-a cribbage strategy book.%
-\cite{cribbage_strategy_guide}
+%A single pegging agent was programmed with heuristics gained from %reading
+%a cribbage strategy book.%
+%\cite{cribbage_strategy_guide}
+A single pegging agent was programmed with a simple one-ahead greedy heuristic:
+the card that gained the most points when played next was selected with ties
+broken by choosing the lower-valued card that reached that score.
+% TODO: implementation change: choose the higher-valued card to potentially
+%	avoid giving a go
 %
 This agent was then played against a copy of itself with randomly allocated
 cards and the results of that round were recorded for each agent to provide an
