@@ -28,36 +28,65 @@ After a complete game had been played, the winning and losing agents need to
 modify their weights in order to decide a ``correct'' strategy at that time
 coordinate.
 %
-The goal of this operation in the case of good choice was to increase the
-distance between the winning strategy and the rest, and opposite for losses.
+In contrast with textbook forms of reinforcement learning,
+the agent is not directly learning which cards to take and throw.
 %
-This distancing operation was easily accomplished by scaling each element of the
-weights vector proportional to its square before normalizing the vector again.
+To do so would require a search space of ${6 \choose 4}{52 \choose 6}$
+at each state.
 %
-In other words:
+Instead, the agent is learning which subset of strategies make the best
+decision in combination at a given point.
+%
+Therefore, there is no deterministic single action taken at any given
+time.
+%
+Instead, the strategies which advocated most for the chosen hand would be held
+responsible for the success or failure of the given hand and thought of as
+the action at the given step.
+%
+The strategies which most advocated for the hand were determined by those whose
+values in $S$ were the highest in its column.
+% TODO: ^^^ check column/row, put in indices
+%
+This subset of strategies,
+carefully chosen to only include the outliers or top percentage of contributors
+to avoid resulting uniform weights,
+would then be adjusted by a percentage of itself according to the formula:
 \[
-w_{i,new} = c w_{i,old} ^2
+	w_{i,new} = w_{i,}
 \]
-where $c$ is some constant.
 %
-Similarly, the adjustment to re-level the playing field was accomplished by
-scaling in proportion with the inverse square, i.e.:
+All other weights would be left alone before re-normalizing the weights vector.
+%
+Since locations earlier in the game have a higher number of potential resulting
+states and are less likely to affect the final outcome of the game,
+they are modified less than their later counterparts.
+%
+This is accomplished by decaying the adjustment amount for each step taken
+backward along the visited path of states:
 \[
-w_{i,new} = \frac{c}{w_{i,old}^2}
+	c_i = 1 + (C * d^{})
 \]
+where $C$ is a starting value of ... TODO ...
+%%%
+
+%%%
+The resulting effect is to slightly reward or punish the weights
+corresponding to only the strategies which were most in favor of choosing
+the chosen cards.
 %
-One noticeable issue with this method, however, is the handling of uniform
-weights.
+Note that this is not necessarily the same set of weights which were the highest
+contributors to the final choice.
 %
-If a weight vector $w$ exists such that $w_i = w_j \ \forall i,j$,
-then the scaling operation will equally scale and normalize each strategy,
-meaning that no adjustment will be made,
-effectively leaving uniformly weighted points dead.
+It may be the case that weights $x$,and $y$ are the highest at a given point,
+but that strategies $u$ and $v$ with slightly lower weight values had higher
+advocacy for a given hand which summed up to a larger value.
 %
-This was obviously undesired since a blank-slate learning path and end state was
-a highly desired result of this project.
-%
-The uniform weights adjustment problem was combated by ... TODO ....
+Were this not the case and instead the highest weights were to be directly
+punished or rewarded instead,
+without looking at their position on the current hand,
+it is more likely that a single group of weights would simply cycle
+back and forth in value, never yielding control to other strategies.
 %%%
 
 %%%
@@ -89,10 +118,45 @@ allow different combinations to learn from one another.
 %%%
 
 %%%
-% TODO: certain amount: fill in with more specific value
-After a certain amount of training,
-the agent would be manually checked by inspection of the weights file and by
-playing against a human.
+% TODO: mention randomized initializations
+%
+To facilitate an adequate rate of exploration of the search space,
+randomized initializations were used for each of the training games.
+%
+A random score was chosen for each of the agents,
+keeping the spread of scores to within 60 points
+in order to limit the search space to only imaginably likely reachable
+situations.
+%
+This value was chosen since,
+with a maximum point total of 121,
+it is highly unlikely to get into a situation where one player is half the board
+behind the other.
+%
+While there have been anecdotes of losses by more than that amount,
+it is a very rare occurrence and can be thought of as a failure of luck
+rather than of skill.
+%
+As this is a matter of training skill and proficiency in the game of cribbage,
+situations of exceptional bad luck can be treated as an outlier situation.
+%%%
+
+%%%
+After a set number of training games,
+in the case of this project 1 million,
+the two agents were played against each other in a tournament match fashion.
+%
+The winner was determined as the agent with the most points at the end
+of a series of games, %\textemdash
+in this case 101, %\textemdash
+wherein two points would be awarded to the winner of a game and three if that
+win was by a margin of at least 31 points
+and ties broken by total point spread.
+%
+After the match had completed,
+the winner would advance to the next round,
+training against another winner from the previous round as the process is
+repeated until one agent is declared the ultimate winner.
 %%%
 
 %%%%
