@@ -61,9 +61,9 @@ These included:
 	%
 	This strategy would be useful for end-game play in a tight game.
 	%
-	% TODO: make sure to explain pegging out
 	For instance, if both players are close to winning, the dealer may
-	choose to forego placing points into their hand and instead try to peg out
+	choose to forego placing points into their hand and instead try to
+		``peg out''
 	since it is unlikely that they will get a chance to count their hand at all.
 	%
 \item \texttt{pegging\_max\_med\_gained}:
@@ -158,12 +158,24 @@ These cut cards must be considered separately in such a manner of
 evaluating ${46 \choose 2} \times 44 = 45540$ possibilities rather than
 simply looking at each of ${46 \choose 3} = 15180$ possibilities because
 whether or not the card is in the crib or not can affect the score.%
-\footnote{TODO: example of right jack or something and point to rulebook}
+\footnote{
+	For example, as per the right-jack rule,
+	a hand of 5C 5H 5S JD with a cut card of 5D is a perfect hand
+	with a score of 29,
+	but moving those cards around so that the jack is no longer in the hand
+	and is instead the cut (i.e. hand of 5C 5H 5S 5D with a cut of JD)
+	yields a score of 28.
+}
 %
 Just as crucially, there are small differences in scoring the crib as opposed to
 scoring the player's own hand that mean that previous evaluations results are
 not reusable.
-% TODO: further expound on how crib is also scored, provide example
+%
+For instance, the rule for gaining points from a flush are more lenient for
+one's own hand than for the crib:
+the crib's flush must be a five-card flush containing the cut card
+whereas the player's own hand needs only be a four-card flush of their own
+hand with bonus points gained from the crib also matching.
 %
 This means that, altogether, there are 
 \[
@@ -180,7 +192,6 @@ This means that, altogether, there are
 	% Google answer: 1.3920952e13
 \]
 possible combinations of cards that need to be evaluated in total to fully 
-%be able to know the
 understand the statistics
 of a cribbage game for each hand.
 % TODO: wording of above needs to be better
@@ -239,14 +250,14 @@ As the cards were represented internally as an integer between $0$ and $51$
 and there were only 6 cards for indexing,
 the concatenation of the cards' digits in (keep,toss) order
 would create a number with at most twelve digits,
-with an absolute maximum value of 484950514647 \footnotemark,
-\footnotetext{
+with an absolute maximum value of 484950514647,
+well within the range of numbers addressable by an integer.\footnote{
 	Thanks to implementation,
-	the order of cards was guaranteed to be sorted within each tuple.
+	the order of cards was guaranteed to be sorted within each tuple,
+	so each combination of cards was tracked and not permutation.
 	% TODO: better phrasing of this
 	% TODO: need to change to not numbers
 }
-well within the range of numbers addressable by an integer.
 %
 This index could be created by a very simple process of 6 multiplications and
 5 additions
