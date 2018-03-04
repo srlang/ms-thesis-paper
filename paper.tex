@@ -12,8 +12,15 @@
 % to force 1-in margins
 %\usepackage[margin=1in]{geometry}
 
+% argmin and argmax for typesetting
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
+
+% allow \paragraph as if it were \subsubsubsection
+% also extend to \subparagraph by using 5
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
 
 %%% Source for figures for my safety
 \newcommand*{\captionsource}[2]{%
