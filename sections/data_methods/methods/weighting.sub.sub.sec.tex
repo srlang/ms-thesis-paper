@@ -41,17 +41,19 @@ $m \times n$ matrix $S$
 where $S_{i,j}$ is the desirability of the $i^{\textit{th}}$ keep/toss
 combination according to the $j^{\textit{th}}$ strategy
 further constrained by
-$\sum_{i=1}^{m} S_{i,j} = 1\ \forall j$
-and $\sum_{j=1}^{n} S_{i,j} = 1\ \forall i$.
+$0 \le S_{i,j} \le 1\ \forall i,j$.
+%$\sum_{i=1}^{m} S_{i,j} = 1\ \forall j$
+%and $\sum_{j=1}^{n} S_{i,j} = 1\ \forall i$.
 %
 A value vector $P$ of length $n$ representing the total perceived value of a
 possible keep combination
 can then be computed by
-$P = w S$.
+$P = w S$
+wherein $\argmax_{x}{P_x}$ can be thought of to be the most desired combination
+of cards and $\argmin_{x}{P_x}$ as the least.
 %
-%where $n$ is the number of possible combinations of cards that are kept and
-%thrown into the crib,
-%i.e. ${6 \choose 4} = 24$.
+These collective desirability metrics can be later used to determine which
+combination of cards to choose and which to toss.
 %%%
 
 
