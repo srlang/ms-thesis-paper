@@ -23,31 +23,85 @@ much like a mouse navigating a maze to retrieve the cheese at the end.
 In reinforcement learning scenarios,
 the agent interacts with and navigates what is known as the environment.
 %
-What exactly constitutes the environment is problem-specific and not often
-clearly defined.
+The environment is a set of states in which an agent can find itself.
 %
-% TODO: vvv check if "However, ..." is allowed in English grammar
-However, it can be expressed as a set of states in which one or more actions
-can be taken.
+What exactly constitutes the environment is problem-specific
+and the line between agent and environment is not often clearly defined.
 %
-A state can be any situation in which the agent finds itself.
+An individual state can be any situation in which the agent finds itself
+and can be in either discrete or continuous space.
 %
-In chess this can be a specific board arrangement.
+For instance, in chess a discrete state would be a specific board arrangement.
 %
-In golf, this would be a location somewhere along the course of play and how
-much wind is blowing in which direction.
+In golf, an example of a state in continuous state would be 
+the location of the ball along the course of play
+and the current wind velocity.
 %
 An action is an interaction the agent can make with the environment to alter
-its current position.
+its current state.
 %
 In the example of chess,
 an action is discrete and would be to move a piece X to position Y,
 e.g. moving the bishop to G4.
 %
-In golf, the action is much more continuous and may be
+In golf, the action is again continuous and may be
 which club to use in which direction and with how much power.
 %%%
 
-\paragraph{Rewards and Goals}
+\paragraph{Goals and Rewards}
+
+%%%
+Merely being able to move around in an environment does not satisfy the
+requirement for learning unless a given task is being completed.
+%
+This desired task can be called the goal of the agent.
+%
+For games scenarios
+this is simply the notion of winning.
+%%%
+
+%%%
+Rewards can be thought of as a way of enticing the agent to accomplish the goal.
+%
+A reward is a positive feedback event that encourages and affirms progress
+towards the goal.
+%
+As with a dog learning to jump through a hoop,
+a treat is given after the dog has successfully jumped through the hoop,
+or perhaps a partial treat for first walking through a stationary hoop
+or other similar subtask.
+%%%
+
+%%%
+Expressed mathematically, a reward $R_t$ is the reward at a given time $t$.
+%
+A goal $G_t$ is the expected return over time:
+\[
+	G_t = \sum_{k=t+1}^{T} R_k
+\]
+where $T$ is the final time step.
+%
+This goal formula can also incorporate a discounting factor $\gamma$ to
+encourage actions conducive to reaching the terminal state in a speedy fashion:
+\begin{align*}
+	G_t &= \sum_{k=t+1}^{T} \gamma^{k-t-1} R_k \\
+		&= R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} ... \\
+		&= R_{t+1} + \gamma G_{t+1}
+\end{align*}
+%%%
 
 \paragraph{Policies}
+
+%%%
+A policy is a mapping of actions to states.
+%
+A policy $\policy$ describes a set probabilities $P(a|s)$ where
+$a \in \Actions$ is an action in the set of actions
+and $s \in \States$ is a state somewhere in the environment.
+%
+An optimal policy $\policy_*$,
+of which there may be several,
+is any policy which achieves a maximum expected reward over the course of
+taking its actions.
+%%%
+

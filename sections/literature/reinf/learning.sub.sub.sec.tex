@@ -3,3 +3,125 @@
 %%%
 % A walk-through of policy evaluation, policy improvement, and value iteration
 %%%
+
+%%%
+%For the sake of discussing how an optimal policy can be learned,
+%it is useful from hereon to limit the scope of discussion to the case
+%of a discrete set of states and actions.
+%
+Although applicable to both discrete and continuous state representations,
+it is useful for the sake of illustration to limit the scope of discussion to
+discrete representations.
+%
+Heretofore, unless otherwise stated, all discussion will assume a discrete
+representation.
+%%%
+
+% TODO: need a value function explanation (background knowledge, maybe?)
+
+\paragraph{Metrics}
+
+%%%
+% Discuss what it means to be optimal/ pi_i > pi_j
+% Explanation of value of a state: v_{pi}(s)
+% Quality of an action q_{pi}(s,a)
+%%%
+
+%%%
+A state can have a \textit{value} associated with it given a policy $\policy$.
+%
+The value of a state $s \in \States$ under policy $\policy$ is denoted
+$v_\policy(s)$
+which can signal the ``worth'' of the given state
+and is defined as the expected total reward by following policy $\policy$ from
+state $s$:
+\begin{align*}
+	v_\policy(s) &= \Expectation_\policy\left[G_t | S_t = s\right] \\
+		&= \Expectation_\policy \left[
+				\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s
+			\right]
+\end{align*}
+%
+The optimum value of a state $v_*(s)$ is defined as:
+\[ v_*(s) = \max_\policy v_\policy(s)\ \forall s \in \States \]
+%%%
+
+%%%
+Similarly,
+an action can have its own ``worth'' or \textit{quality} assigned to it under a
+specific policy.
+%
+The quality of an action $a\in\Actions$ at state $s\in\States$ under policy
+$\policy$ is defined as:
+\begin{align*}
+	q_\policy(s,a)
+		&= \Expectation_\policy\left[ G_t | S_t = s, A_t = a \right]
+		\\
+		&= \Expectation_\policy\left[
+				\sum_{k=0}^{\infty}\gamma^k R_{t+k+1} | S_t = s, A_t = a
+			\right]
+\end{align*}
+and its optimum $q_*(s,a)$ is accordingly defined as:
+\[
+	q_*(s,a) = \max_{\policy}q_\policy(s,a)\ 
+		\forall a\in\Actions\ \forall s\in\States
+\]
+%%%
+
+%%%
+As previously discussed,
+an optimal policy $\policy_*$ is any policy which maximizes the expected reward
+received.
+%
+Furthermore, policies can be compared.
+%
+A policy $\policy$ is greater than another policy $\policy'$
+if and only if the value of all states under policy $\policy$
+are greater than or equal to the value of all states under $\policy'$
+\[
+\policy \ge \policy'\ 
+	\iff\ v_\policy(s) \ge v_{\policy'}(s)\ \forall s\in\States
+\]
+%%%
+
+
+\paragraph{Policy Evaluation}
+
+%%%
+% What does it mean to evaluate a policy
+%%%
+
+%%%
+Policy evaluation is the iterative process of approximating the state-value
+function $v_\policy$ for some policy $\policy$.
+%
+By repeatedly ... TODO ...
+%%%
+
+\input{algs/poleval.alg.tex}
+
+\paragraph{Policy Improvement and Iteration}
+
+%%%
+% 
+%%%
+
+	\subparagraph{Generalized Policy Iteration}
+
+	%%%
+	% A couple small notes about policy iteration in general
+	%%%
+
+\paragraph{Value Improvement}
+
+%%%
+% Overview of algorithm and how it's just sweeps of both on occasion
+%%%
+
+\paragraph{Monte Carlo Methods}
+
+%%%
+% Meaty crux of the thesis.
+% An explanation of how policy improvement can be approximated using simulated
+% results.
+%%%

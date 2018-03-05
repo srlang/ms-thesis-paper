@@ -6,6 +6,10 @@
 \usepackage{alltt}
 \usepackage{gensymb} % for \textdegree
 \usepackage{amsmath}
+\usepackage{amssymb}
+% for algorithmic typesetting
+\usepackage{algpseudocode}
+\usepackage{algorithm}
 % break on long hyphens to prevent overstepping bounds
 %\usepackage[hyphenbreaks]{breakurl} 
 %\usepackage[hyphens]{url}
@@ -16,10 +20,19 @@
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
 
+% expectation standardization
+\newcommand{\Expectation}{\mathbb{E}}
+
 % allow \paragraph as if it were \subsubsubsection
 % also extend to \subparagraph by using 5
 \setcounter{tocdepth}{5}
 \setcounter{secnumdepth}{5}
+
+% define \States, \Actions, \Policies for later
+\newcommand{\States}{\mathcal{S}}
+\newcommand{\Actions}{\mathcal{A}}
+\newcommand{\Policies}{\mathcal{P}}
+\newcommand{\policy}{\pi}
 
 
 %%% Source for figures for my safety

@@ -1,0 +1,38 @@
+% Policy Evaluation algorithm
+
+\begin{algorithm}
+\caption{Policy Evaluation}
+\label{alg:poleval}
+
+\begin{algorithmic}[1]
+
+	\Require $\policy$
+	\Require $\theta =$ some small number
+
+	\State Let $V[1...n]$ be an array of values for all states
+	% where $n$ is the number of states
+	$(n = |\States|)$
+
+	\Repeat
+
+		\State $\Delta \gets 0$
+
+		\ForAll{$s \in \States$}
+
+			\State $v \gets V[s]$
+
+			\State $V[s] \gets
+				\sum_a {\policy(a|s)}
+				\sum_{s',r} {p(s',r|s,a)\left[r + \gamma V(s')\right]}$
+
+			\State $\Delta \gets \max(\Delta,|v-V[s]|)$
+
+		\EndFor
+
+	\Until{$\Delta < \theta$}
+
+	\State \Return $V \approx v_\policy$
+
+\end{algorithmic}
+
+\end{algorithm}
