@@ -1,0 +1,41 @@
+
+%%%
+% Things that happened after the experiments
+%%%
+
+\subsection{Round 1}
+
+%%%
+% Discussion of Round 1:
+%	1. graphs to show how strategies were learned
+%		4-5 frames to get a flip-book/transition to see things go on 1 strategy
+%		2-3 different final strategy pngs
+%	2. Performance:
+%		worse than random agent in tournament play
+%%%
+
+%%%
+Round 1 consisted of 32 agents with randomly allocated starting weights
+paired off against each other.
+%
+These two agents played one million games against each other,
+each starting with a random score,
+learning and reinforcing their weight vectors after each game.
+%%%
+
+%%%
+The results of the first round's training on a sample agent can be seen
+in Figure~\ref{fig:r1_flip}.
+%
+Each individual square within the image represents the strength of a single
+strategy,
+in this case \texttt{hand\_max\_avg},
+where white means completely absent and black means completely dominant.
+%
+Each image was taken at an intermediate stage to capture and show transitions.
+%%%
+
+%%%
+%%%
+
+\input{sections/findings/round1/flipbook.fig.tex}
