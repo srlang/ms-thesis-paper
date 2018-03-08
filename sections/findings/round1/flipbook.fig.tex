@@ -1,4 +1,4 @@
-% Figure for the
+% Figure for the flipbook of strategies over time
 
 \begin{figure}
 \center
@@ -34,10 +34,20 @@
 	\end{subfigure}
 
 \caption{%
-	Training weights representation for Agent 0's \texttt{hand\_max\_avg}
+	Training weights representation for Agent 0's \handmaxavg\
 	strategy when the agent is the dealer
-	over the course of the one million games of Round 1.%
+	over the course of the one million games of Round 1.
+	In these images, the y-axis represents the player's own score,
+	the x-axis the opponent's score,
+	with the origin starting at the top-left of the image.
+	% N.B. This is correct of generated images from the python code
+	%	as of 2018-03-08 19:12.
+	% no later modifications will be made from the python code directly to
+	% save myself the headache. maybe this will be converted later to be
+	% more easily human understood
+	% Rotate 90 deg counter-clockwise will make x=my_score, y=opp_score
 }
 % TODO: figure out axes
+% TODO: change these images to hand_max_min: much starker contrast
 \label{fig:r1-flip}
 \end{figure}

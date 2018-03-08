@@ -23,19 +23,157 @@ each starting with a random score,
 learning and reinforcing their weight vectors after each game.
 %%%
 
+\subsubsection{Learning Process}
+
+%%%
+% Discuss flipbook figure
+%%%
+
 %%%
 The results of the first round's training on a sample agent can be seen
 in Figure~\ref{fig:r1_flip}.
 %
 Each individual square within the image represents the strength of a single
 strategy,
-in this case \texttt{hand\_max\_avg},
+in this case \handmaxavg,
 where white means completely absent and black means completely dominant.
 %
 Each image was taken at an intermediate stage to capture and show transitions.
 %%%
 
 %%%
+There are two things to note from these results.
+%
+The first is the stark contrast in colors in the majority of the image.
+%
+The other is the area in which these stark contrasts are present.
+%%%
+
+%%%
+In the starting phase,
+all weights are randomly assigned and relatively uniform with only slight
+variances,
+hence the blurry dull gray appearance.
+%
+As time progresses,
+the image becomes crisper and filled with more contrast.
+%
+This indicates not only stronger preference for the strategy at the given
+point,
+but an almost all-or-nothing attitude towards adhering to a single strategy.
+%
+This means there is little to no nuance to which cards are chosen
+and there is little to no chance for other strategies to collectively overrule 
+or veto the major strategy.
+%%%
+
+%%%
+Also of note is where the previously mentioned stark contrast is present and
+where it is absent.
+%
+Since only those states which have been visited can have their weights
+influenced,
+the remainder will continue to stay untouched.
+%
+As can be seen in the top-right and bottom-left corners,
+representing extremely unlikely scores to reach in which one player has
+achieved a rather large lead while only allowing a few points,
+contain only the dull gray of the initial weights.
+%
+This is because even with a potential spread of 60 points when initialized,
+these outlandish scores are outside the realm of potential visitation.
+%
+Therefore, they have not been a part of any game,
+so they cannot have their weights adjusted.
 %%%
 
 \input{sections/findings/round1/flipbook.fig.tex}
+\input{sections/findings/round1/strategies.fig.tex}
+
+\subsubsection{Learning Results}
+
+%%%
+% Discuss Strategies Figure
+%%%
+
+%%%
+Despite the all-or-nothing nature of how a single strategy is potentially
+learned,
+it is still worth noting that the agent did in fact learn to play different
+strategies at different times.
+%
+As can be seen in Figure~\ref{fig:r1-strats},
+the strengths of each strategy's weight do vary across score-locations.
+%
+For instance, when in the lead by
+roughly two to twenty five points,
+the agent will prefer to choose the hand with the most guaranteed
+points in its own hand
+by following \handmaxmin.
+%
+However, when the game is either extremely close
+or when the agent is well in the lead,
+the agent will take a slight gamble and play for expected points.
+%
+Occasionally, the agent will also attempt to pay attention to the points
+gained through the play phase of a round by playing a combination that pegs
+well.
+%
+Ironically,
+the agent may play against its own best wishes by minimizing the average return
+of the crib.
+%
+This is speculated to be a result of alignment of the results between
+\cribminavg\ and more reasonable \handmaxmin\
+or \handmaxavg.
+%%%
+
+%%%
+Of further interest is how little the agent knows how to handle a losing
+position.
+%
+As can be seen by looking in the upper-right half of each strategy's
+individual graph,
+of the explored losing states,
+there is little consensus or pattern as to which strategy should dominate.
+%
+It is possible that agents which end up in these positions lose more often than
+they win.
+%
+If this is the case,
+the resulting punishment will decrease the top two or three strategies that were
+most responsible for the hand choice at that state,
+effectively increasing all others.
+%
+This in turn would likely later lead to a cycle in which different strategies
+are cyclically placed in a role of strongest weight,
+generating the fuzz seen now.
+%%%
+
+
+\subsubsection{Performance}
+
+%%%
+% TODO: discuss how it performed worse than random (got stonked)
+While it is
+aggravating that the agent learns to over-trust a single strategy,
+it is simultaneously reassuring that general trends in play are detected.
+%
+However, the next metric
+% TODO: test other agents against random
+%%%
+
+
+\subsubsection{Applications for Round 2}
+
+%%%
+% "Lessons Learned" / changes made
+%	Learning rate lowered
+%	exploration rate constant
+%%%
+
+%%%
+% TODO: discuss how the meta-parameters were tweaked for round 2
+%		and how the tournament structure got wonked
+%%%
+
