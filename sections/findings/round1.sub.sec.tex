@@ -159,9 +159,71 @@ While it is
 aggravating that the agent learns to over-trust a single strategy,
 it is simultaneously reassuring that general trends in play are detected.
 %
-However, the next metric
+However, perhaps the only metric which matters from a learning perspective is
+the agent's performance.
+%
+In this area, the learned agents failed miserably.
+%
+The winning agent between the two learners was pitted against
+an agent using randomly allocated starting weights
+where both agents would only strictly follow the policy generated
+without exploration.
+%
+As can be seen in Table~\ref{tab:r1-randtourny},
+the learned agent lost easily to the randomly-weighted agent:
+with the exception of a spectacular loss in Game 3,
+all other games were close losses if not wins.
+%
+This is speculated to be a result of the previously mentioned over-aggressive
+learning pattern and its all-or-nothing end result.
+%
+Since the agent aligns so intensely to a single strategy,
+it is not able to overcome a local optimum
+and has essentially been overfit to the scenario.
+%
+Another potential reason for the losses could be the lack of knowledge of how to
+handle losing situations.
+%
+As previously discussed,
+in the event of a loss,
+most strategies will effectively be increased except those most responsible,
+contributing to a system of cycling weights.
+%
+Furthermore, it is also likely that an agent which finds itself in a losing
+position does not end up recovering and winning the game,
+meaning that
+the agent effectively learns that it is mostly by chance that it will recover.
+%these states will likely remain in this cycle.
 % TODO: test other agents against random
 %%%
+
+\input{sections/findings/round1/tourny.tab.tex}
+
+%%%
+% TODO: play an agent against a previous version of itself
+%%%
+
+%%%
+In order to more accurately diagnose if an overfitting situation was occurring,
+a winning agent was played against its own previous checkpoints.
+%
+As seen in Table~\ref{tab:r1-selftourny},
+the final agent fairly consistently outplays its previous iterations.
+%
+There exist a few exceptions, however.
+%
+The first few checkpoints will consistently outplay the more learned agent
+and occasionally a later checkpoint may gain an edge.
+%
+This indicates that the agent is learning how to outplay its opponent,
+but not learning how to best play the game, per se.
+%
+Figure~\ref{fig:r1-spreads} show ...
+%%%
+
+\input{sections/findings/round1/self_tourny.tab.tex}
+
+\input{sections/findings/round1/spreads.fig.tex}
 
 
 \subsubsection{Applications for Round 2}
@@ -170,10 +232,45 @@ However, the next metric
 % "Lessons Learned" / changes made
 %	Learning rate lowered
 %	exploration rate constant
+%	trained random v learning in order to learn the game
 %%%
 
 %%%
 % TODO: discuss how the meta-parameters were tweaked for round 2
 %		and how the tournament structure got wonked
+%%%
+
+%%%
+As a result of the over-aggressive learning of single strategies,
+some learning parameters were altered for Round 2.
+%
+Since it was estimated to be the primary reason for the learning behavior,
+the first parameter tweak made was to decrease the learning rate drastically.
+%
+The learning rate was decreased to one fifth of what was used in Round 1.
+%
+The other major parameter alteration was to make the exploration rate a constant
+and not dependent upon the variance of the weights.
+%
+Because of the stipulation on the variance previously explained in the Methods
+section,
+the most strongly biased weight locations would no longer allow for exploration.
+%
+This would result in a smaller likelihood of exploring in the current state,
+potentially further cementing of the dominant strategy in its position.
+%%%
+
+%%%
+% TODO: tournament structure
+%%%
+
+%%%
+% TODO: random v learning
+%	two agents paired with two random agents
+%	one learns, other stays the same. learns game, not how to outmatch opponent
+%%%
+
+%%%
+Since the agent using random weights could consistently 
 %%%
 
