@@ -68,14 +68,16 @@
 
 \numberofpagesinformation{\numberofpages\ pages + \numberofappendixpages\ appendices}
 \classification{\protect{\ \\
-		temporary stuff
+		I.2 [ARTIFICIAL INTELLIGENCE],\\
+		I.2.1 [Applications and Expert Systems],\\
+		I.2.6 [Learning]\\
 		%A.1 [Introductory and Survey],\\
 		%H.5.1 [Artificial, augmented, and virtual realities],\\
 		%I.3.7 [Virtual Reality]
 	}
 }
 
-\keywords{machine learning, cribbage}
+\keywords{machine learning, reinforcement learning, cribbage}
 
 \begin{abstract}
 \input{sections/abstract.sec.tex}
@@ -87,19 +89,19 @@
 
 \mytableofcontents
 
-\include{sections/intro.sec}
+\input{sections/intro.sec}
+\newpage
+\input{sections/literature.sec}
+\newpage
+\input{sections/data_methods.sec}
+\newpage
+\input{sections/findings.sec}
+\newpage
+\input{sections/discussion.sec}
+\newpage
+\input{sections/conclusion.sec}
 
-\include{sections/literature.sec}
-
-\include{sections/data_methods.sec}
-
-\include{sections/findings.sec}
-
-\include{sections/discussion.sec}
-
-\include{sections/conclusion.sec}
-
-%\newpage
+\newpage
 
 \nocite{*}
 \bibliographystyle{tktl}
