@@ -16,9 +16,9 @@ force:
 paper: paper.pdf
 	
 paper.pdf: paper.tex *.bib\
-			sections/*.sec.tex\
-			sections/*/*.sub.sec.tex\
-			sections/*/*/*.sub.sub.sec.tex\
+			sections/*.tex\
+			sections/*/*.tex\
+			sections/*/*/*.tex\
 			appendices/*.tex\
 			algs/*.tex
 	pdflatex paper.tex
