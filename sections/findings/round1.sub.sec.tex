@@ -208,9 +208,9 @@ In order to more accurately diagnose if an overfitting situation was occurring,
 a winning agent was played against its own previous checkpoints.
 %
 As seen in Table~\ref{tab_r1-selftourny},
-the final agent fairly consistently outplays its previous iterations.
+the final agent mostly outplays its previous iterations.
 %
-There exist a few exceptions, however.
+There exist a few notable exceptions, however.
 %
 The first few checkpoints will consistently outplay the more learned agent
 and occasionally a later checkpoint may gain an edge.
@@ -218,7 +218,25 @@ and occasionally a later checkpoint may gain an edge.
 This indicates that the agent is learning how to outplay its opponent,
 but not learning how to best play the game, per se.
 %
-Figure~\ref{fig_r1-spreads} show ...
+Figure~\ref{fig_r1-spreads} shows the point spreads across multiple
+self-tournaments,
+where Figure~\ref{fig_r1-spreads_a} is from the same set of games as
+Table~\ref{tab_r1-selftourny}.
+%
+As can be seen,
+the early iterations' checkpoints actually outperform the
+final agent consistently for the first hundred thousand epochs.
+%
+After those few training rounds,
+the final agent then consistently wins against its previous iterations for
+another three or four hundred thousand checkpoints.
+%
+After about five hundred thousand epochs,
+matches become a much closer set of games,
+and it seems almost as if the winner is chosen at random.
+%
+This demonstrates that the agents are, indeed, learning to outperform each
+other.
 %%%
 
 \input{sections/findings/round1/self_tourny.tab.tex}
@@ -261,11 +279,28 @@ potentially further cementing of the dominant strategy in its position.
 %%%
 
 %%%
-% TODO: tournament structure
+% tournament structure
 %%%
 
 %%%
-In order to see how
+In order to see if the heavily biased weights could be tempered down to more
+reasonable mixes which could outplay a random agent,
+the structure of the tournament was updated.
+%
+In addition to having the winners of the previous pair of agents square
+off against one another,
+there was a ``loser's bracket'' created
+in which the losers would start over from ground zero.
+%
+These two ways of playing were intended as a two-pronged approach
+in order to see if multiple agents could be trained at the same time
+which could outperform random.
+%
+The ``winners bracket'' would determine if a highly-biased set of agents could
+learn nuance
+while the ``losers bracket'' would test if it were possible for two constantly
+competing agents could ever actually increase performance when both are each
+updating their parameters to combat each other.
 %%%
 
 %%%
