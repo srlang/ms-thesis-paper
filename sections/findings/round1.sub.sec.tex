@@ -31,7 +31,7 @@ learning and reinforcing their weight vectors after each game.
 
 %%%
 The results of the first round's training on a sample agent can be seen
-in Figure~\ref{fig:r1_flip}.
+in Figure~\ref{fig_r1-flip}.
 %
 Each individual square within the image represents the strength of a single
 strategy,
@@ -102,7 +102,7 @@ learned,
 it is still worth noting that the agent did in fact learn to play different
 strategies at different times.
 %
-As can be seen in Figure~\ref{fig:r1-strats},
+As can be seen in Figure~\ref{fig_r1-strats},
 the strengths of each strategy's weight do vary across score-locations.
 %
 For instance, when in the lead by
@@ -169,7 +169,7 @@ an agent using randomly allocated starting weights
 where both agents would only strictly follow the policy generated
 without exploration.
 %
-As can be seen in Table~\ref{tab:r1-randtourny},
+As can be seen in Table~\ref{tab_r1-randtourny},
 the learned agent lost easily to the randomly-weighted agent:
 with the exception of a spectacular loss in Game 3,
 all other games were close losses if not wins.
@@ -207,7 +207,7 @@ the agent effectively learns that it is mostly by chance that it will recover.
 In order to more accurately diagnose if an overfitting situation was occurring,
 a winning agent was played against its own previous checkpoints.
 %
-As seen in Table~\ref{tab:r1-selftourny},
+As seen in Table~\ref{tab_r1-selftourny},
 the final agent fairly consistently outplays its previous iterations.
 %
 There exist a few exceptions, however.
@@ -218,7 +218,7 @@ and occasionally a later checkpoint may gain an edge.
 This indicates that the agent is learning how to outplay its opponent,
 but not learning how to best play the game, per se.
 %
-Figure~\ref{fig:r1-spreads} show ...
+Figure~\ref{fig_r1-spreads} show ...
 %%%
 
 \input{sections/findings/round1/self_tourny.tab.tex}
@@ -265,12 +265,31 @@ potentially further cementing of the dominant strategy in its position.
 %%%
 
 %%%
-% TODO: random v learning
+In order to see how
+%%%
+
+%%%
+% random v learning
 %	two agents paired with two random agents
 %	one learns, other stays the same. learns game, not how to outmatch opponent
 %%%
 
 %%%
-Since the agent using random weights could consistently 
+Since the agents were diagnosed with learning how to outplay each other
+but not the game,
+the next phase would attempt to determine the extent of this tailored learning.
+%
+In addition to the previously mentioned alterations to the tournament structure,
+a couple of agents would be trained against a static, entirely random agent.
+%
+Rather than both agents learning and altering their weights after each game,
+only one agent would train its weights.
+%
+The prevailing logic behind this decision was that if each agent was indirectly
+affecting the other,
+the environment could be said to be slightly altered.
+%
+This would in turn mean that the agents are no longer learning the original
+problem.
 %%%
 
