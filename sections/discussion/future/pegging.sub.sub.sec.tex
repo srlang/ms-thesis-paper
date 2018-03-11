@@ -1,0 +1,110 @@
+% Pegging future work
+
+\subsubsection{Pegging}
+
+%%%
+% Discussion of what can be done for learning pegging better
+% Shortcomings:
+%	1. only a basic heuristic
+%		- can train a player for this alone
+%	2. estimate performance on incomplete/small amount of data
+%		- pre-populated a bit, but ~50-100k, not millions
+%			(definitely missing some combos when first round started)
+%%%
+
+%%%
+% TODO: Basic intro paragraph
+%%%
+
+\paragraph{Playing Strategy}
+
+%%%
+% Discussion of Failures of basic heuristic
+%	- very basic strategy only looks one immediate step ahead
+%	- no context awareness as to whether to play offensively/defensively
+%		(ironic)
+%%%
+
+%%%
+The first shortcoming of the pegging portion of the agent was the simplicity
+of its playing strategy.
+%
+In order to focus on the overall playing strategy and to have a consistent
+knowledge of how a set of cards have performed in the past,
+the agent was only capable of following a very simple immediately greedy 
+heuristic:
+of the cards left which are legal to play,
+play the one with the highest immediate return.
+%
+From the cribbage player's perspective this has the potential issue of
+opening oneself up to the possibility of allowing the opponent an opportunity
+to score more than the agent itself just gained,
+resulting in a net loss.
+%
+As has been demonstrated by the rest of this thesis,
+the idea that one strategy can be applied at all times in the game of cribbage
+is laughable.
+%so the single heuristic used is 
+%%%
+
+%%%
+In the future,
+a partial agent could be trained in just the pegging phase alone
+using reinforcement learning.
+%
+In a similar way to this thesis,
+multiple basic strategies such as offensive or defensive play
+could be trained by rewarding each behavior and their combinations
+could in turn be learned through gameplay simulations.
+%
+Alternatively,
+a more ground-up approach can be taken to train an unbiased agent by simply
+having each player learn from trial and error with certain card combinations.
+%
+This has the disadvantage of taking more time to train to effectiveness.
+%
+In either case,
+a more optimized pegging system can be made that would play better.
+%%%
+
+\paragraph{Performance Evaluation}
+
+%%%
+Even though a better pegging system can be made,
+key to this thesis project was the idea that performance can be predicted
+or at least anticipated with some amount of certainty.
+%
+In this project,
+the performance of the pegging agent was tracked by card combination,
+recording the points scored and yielded during each occurrence.
+%
+These records were used to anticipate how each combination of cards would
+play against an opponent.
+%%%
+
+%%%
+Before the first round of training,
+however,
+there was relatively little pre-population of these records done:
+roughly one hundred thousand randomly dealt cards were played against each
+other.
+%
+As a result of the small sample size,
+performance estimates were likely to be inaccurate.
+%
+Furthermore,
+the small sample size did not demonstrably cover all of the possible hand
+combinations.
+%
+Because of this,
+data would be missing for multiple combinations of cards
+for the decision process
+throughout the first round.
+%
+This would mean that the card combinations' true desirability would be
+misrepresented during the calculation,
+allowing for the possibility of a philosophically unfair
+punishment or reward for what would amount to a guess by the
+pegging-based strategies.
+%%%
+
