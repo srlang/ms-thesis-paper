@@ -1,0 +1,107 @@
+
+\subsubsection{Implementation Decisions}
+
+%%%
+Because of the author's previous experience in only small-scale uses for
+cribbage software,
+experience with optimizing software for large-scale computation tasks was
+lacking.
+%
+This inexperience,
+in combination with the desire to develop a prototype quickly
+in a familiar environment,
+led to the decision to write the majority of this thesis in Python.
+%
+This,
+to put it bluntly,
+was a mistake because of the unforeseen complications and side effects
+that that decision led to.
+%%%
+
+
+\paragraph{Database Dependency}
+
+%%%
+Because Python was the language of choice,
+the performance of making a decision for a single hand was abysmal:
+on a development machine,
+the decision for a single hand would take approximately ten seconds,
+%
+As previously mentioned in the Methods section,
+the decision made from that point was to create a database such that all
+calculations were done ahead of time
+and the statistics desired would be available upon request.
+%
+This succeeded in its desired goal,
+bringing the time required for a single decision to approximately
+one twentieth of a second.
+%
+At this point the project was able to play two games in about a second's time
+on the same development machine.
+%%%
+
+%%%
+Despite the speed improvements in a development environment,
+now the entire training process had become I/O-bound rather
+than CPU bound.
+%
+In and of itself,
+this was not a problem until an attempt was made to train multiple
+agents simultaneously.
+%
+Because of concurrency issues which would have,
+if even possible,
+taken too long to fix,
+no more than one process could successfully access the database with any
+consistency.
+%
+This would mean that only two agents could be trained on each database at any
+given time.
+%
+Furthermore,
+since this database file was around twenty gigabytes in size and
+there was only limited local storage space available
+on each of the compute nodes in the Computer Science Department's high
+performance compute cluster,
+jobs had to be constructed carefully and spread across nodes to avoid
+accidentally disrupting other users' calculations.
+%%%
+
+%%%
+Were this project to be repeated,
+it would be recommended to use the Python code from this attempt as an outline
+for a rewrite in a slightly lower-level language.
+%
+Using a language such as C++,
+which could be optimized more for run-time efficiency and memory management,
+would likely increase speed of computation enough to remove the necessity
+of a statistics database entirely.
+%
+While the data gathered from previously played pegging rounds would still need
+to be stored and retrieved between training rounds,
+the size of this data would likely not exceed a few gigabytes and would fit
+easily in the program's RAM space.
+%
+This is especially true since the strategies utilizing the median were not
+learned to be a useful metric for choosing cards,
+meaning that a list of scores gained and given are not needed,
+only the cumulative amount and times seen.
+% TODO: ^^^ ensure accuracy
+%
+Also,
+like weight checkpoints are in the current system,
+these stored results could be exported in a text or otherwise simple format
+for transfer between rounds.
+%%%
+
+%%%
+With these changes made,
+the training program would be CPU-bound,
+which thankfully can be countered by adding or improving hardware.
+%
+In contrast,
+the I/O-bound training program used in this thesis used only half the total
+processing power of a single CPU core
+as the limitation was the database file on a solid state drive.
+%%%
+
