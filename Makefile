@@ -50,8 +50,8 @@ todo: TODO
 
 TODO: paper.tex\
 		sections/*.sec.tex\
-		sections/*/*.sub.sec.tex\
-		sections/*/*/*.sub.sub.sec.tex\
+		sections/*/*.tex\
+		sections/*/*/*.tex\
 		appendices/*.tex
 	@grep TODO $^
 
