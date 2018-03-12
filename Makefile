@@ -56,4 +56,4 @@ TODO: paper.tex\
 	@grep TODO $^
 
 push:
-	./push.sh
+	@./push.sh
