@@ -1,0 +1,26 @@
+
+%%%
+% Regularization to prevent too strong of weights
+%%%
+
+\subsubsection{Regularization}
+
+%%%
+As an attempt to prevent a single strategy's weight from being so strongly 
+preferred that a second strategy could not hope to possibly gain ground,
+a hard limit was placed on the pre-normalized update value.
+%
+Expressed mathematically,
+\[
+    w'_{m,o,d}[i] = \max\{K,cw_{m,o,d}[i]\}
+\]
+where $K$ is some constant value throughout the training.
+%
+While the value of $w_{m,o,d}[i]$ could exceed $K$ after re-normalization
+for a particularly strongly weighted strategy,
+the value could be seen converging to $K$ within a handful of iterations.
+%
+The desired intention of this regularization was to allow other strategies
+the opportunity to overcome the bias of earlier strengthening of the strongest
+strategy.
+%%%

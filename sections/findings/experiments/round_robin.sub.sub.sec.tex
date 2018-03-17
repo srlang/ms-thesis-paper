@@ -1,0 +1,28 @@
+
+%%%
+% Explanation of round-robin structure and why it was done
+%%%
+
+\subsubsection{Round-Robin Play}
+
+%%%
+Since the agents were deemed to be learning to outplay each other,
+but not necessarily how to optimally play the game,
+training against a single opponent for a million games was determined to be
+an issue.
+%
+To determine how tailoring play to a single opponent affected the final outcome
+weights,
+a round-robin structure was implemented in which multiple agents would swap out
+opponents occasionally.
+%
+Given a pool of potential agents,
+every $N$ games,
+a random pair of agents are selected from the pool and played against one
+another.
+%
+By varying opponents every so often,
+the intention of the round-robin structure should eliminate an agent's
+dependence on another's strategy for performance.
+%%%
+

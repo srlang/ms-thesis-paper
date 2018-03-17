@@ -1,0 +1,37 @@
+
+%%%
+% Discuss how neighboring weights were applied and what the results were
+% TODO: results
+%%%
+
+\subsubsection{Neighboring Weights}
+
+%%%
+% Process
+%%%
+
+%%%
+In order to smooth out the strategy graphs
+and prevent isolated states of separate weights,
+a blending of neighboring weights was developed.
+%
+Rather than simply take the set of weights allocated to a single score location,
+the agent instead takes a weighted average of all surrounding weight vectors
+with its own location.
+%
+In other words,
+\[
+    w'_{m,o,d} = %\mathrm{l1norm}\left(
+    \left|
+    Xw_{m,o,d} +
+    Y \sum_{i\in\{-1,0,1\}} \sum_{j\in\{-1,0,1\}} w_{m+i,o+j,d}
+    \right|_1
+    %\right)
+\]
+where $X$, $Y$ are ratios of each vector's effect, $X+Y = 1$,
+and $m+i$, $o+j$ exist.
+%
+The desired effect was to allow a score location to learn from its neighbors
+so that a neighborhood effect was present in the decision.
+%%%
+
