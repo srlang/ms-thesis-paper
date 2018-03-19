@@ -1,0 +1,2 @@
+spreads-*.png:
+	these are from the round 2 winner's bracket
