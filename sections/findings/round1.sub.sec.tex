@@ -89,6 +89,7 @@ so they cannot have their weights adjusted.
 
 \input{sections/findings/round1/flipbook.fig.tex}
 \input{sections/findings/round1/strategies.fig.tex}
+\input{sections/findings/round1/strategies_pone.fig.tex}
 
 \subsubsection{Learning Results}
 
@@ -151,10 +152,83 @@ generating the fuzz seen now.
 %%%
 
 
+%%%
+% TODO: Similarity/differences between dealer and pone
+%%%
+
+%%%
+By comparing the pone's strategy graphs to those of the dealer's,
+a few patterns emerge.
+%
+At first glance,
+the graphs look highly similar and as if splitting up the search space into two
+merely increased the complexity of finding a solution without payoff.
+%
+For instance,
+the majority of the winning positions favor the \handmaxmin\ strategy with
+a ``border'' of \handmaxavg\ being used in positions where riskier decisions
+are needed or can be afforded.
+%
+Additionally, the losing positions offer no definitive answers and seem to be a
+jumbled mess of suggestions,
+the only major suggestion being to play more riskily to regain the lead.
+%%%
+
+%%%
+However, upon closer inspection,
+with a side-by-side\textemdash or perhaps even overlaying\textemdash comparison,
+there are subtle differences that can be found.
+%
+The most major of these differences is that all patterns are shifted lower and
+more to the left when the agent is the dealer,
+correlating with scores which are more advantageous to the player
+%
+This means that the agent is more ``comfortable'' when it has a slightly larger
+lead as the dealer than it necessarily needs as the pone.
+%
+It also means that the unexplored state area as the pone is larger in the area
+where it is further ahead.
+%
+% TODO: continue this thought
+%%%
+
+
+%%%
+% Bump/sinusoidal wave in final game stages
+%		+ how they differ b/w dealer and pone
+%%%
+
+%%%
+Perhaps the most interesting difference is the traceable shape of the weights
+during the final scores of a close game.
+%
+Although difficult to discern in all but the \handmaxmin\ and \handmaxavg\ 
+strategies,
+the final weights trace a sinusoidal curve shape for approximately the last 
+twenty points of the game.
+%
+Additionally,
+these waves are opposing in nature.
+%
+This presents the fascinating conclusion that the agent is learning
+that different states or checkpoints are preferred as the player when
+the dealer and when the pone.
+%
+Not only is this fascinating since the agent is learning a state-value function
+indirectly,
+but in the game of cribbage,
+there exist different \textit{checkpoints} in which the player aims to get
+himself by the end of a round to be in favorable position for the next.
+%
+Here we see evidence that the agent is learning these checkpoints throughout its
+play.
+%%%
+
+
 \subsubsection{Performance}
 
 %%%
-% TODO: discuss how it performed worse than random (got stonked)
+% discuss how it performed worse than random (got stonked)
 While it is
 aggravating that the agent learns to over-trust a single strategy,
 it is simultaneously reassuring that general trends in play are detected.
@@ -193,51 +267,43 @@ Furthermore, it is also likely that an agent which finds itself in a losing
 position does not end up recovering and winning the game,
 meaning that
 the agent effectively learns that it is mostly by chance that it will recover.
-%these states will likely remain in this cycle.
-% TODO: test other agents against random
 %%%
 
 \input{sections/findings/round1/tourny.tab.tex}
 
 %%%
-% TODO: play an agent against a previous version of itself
+% discussion of playing an agent against a previous version of itself
 %%%
 
 %%%
 In order to more accurately diagnose if an overfitting situation was occurring,
 a winning agent was played against its own previous checkpoints.
 %
-As seen in Table~\ref{tab_r1-selftourny},
-the final agent mostly outplays its previous iterations.
+A sample set of scores can be found in Table~\ref{tab_r1-selftourny}.
 %
-There exist a few notable exceptions, however.
+The point spreads from twenty separate 100-game tournaments
+are depicted in Figure~\ref{fig_r1-spreads_a}.
 %
-The first few checkpoints will consistently outplay the more learned agent
-and occasionally a later checkpoint may gain an edge.
+While point spreads are from total points pegged to the board
+not gained from wins
+and therefore not a direct indicator of performance in tournament play,
+it is useful for determining general performance.
 %
-This indicates that the agent is learning how to outplay its opponent,
-but not learning how to best play the game, per se.
+As can be seen, there is no discernible correlation or pattern between
+epoch checkpoint and performance.
 %
-Figure~\ref{fig_r1-spreads} shows the point spreads across multiple
-self-tournaments,
-where Figure~\ref{fig_r1-spreads_a} is from the same set of games as
-Table~\ref{tab_r1-selftourny}.
+This indicates that,
+despite a policy being learned,
+quite a lot is still left to chance of the cards dealt.
 %
-As can be seen,
-the early iterations' checkpoints actually outperform the
-final agent consistently for the first hundred thousand epochs.
+This has the potential to be exacerbated even further when policies are nearly
+deterministic and non-adaptive in their weight assignments.
 %
-After those few training rounds,
-the final agent then consistently wins against its previous iterations for
-another three or four hundred thousand checkpoints.
-%
-After about five hundred thousand epochs,
-matches become a much closer set of games,
-and it seems almost as if the winner is chosen at random.
-%
-This demonstrates that the agents are, indeed, learning to outperform each
-other.
+Additionally,
+a random agent was played against its future iterations in the same fashion,
+with the similar results depicted in Table~\ref{tab_r1-spreads_b}.
 %%%
+
 
 \input{sections/findings/round1/self_tourny.tab.tex}
 
@@ -254,7 +320,7 @@ other.
 %%%
 
 %%%
-% TODO: discuss how the meta-parameters were tweaked for round 2
+% discuss how the meta-parameters were tweaked for round 2
 %		and how the tournament structure got wonked
 %%%
 
