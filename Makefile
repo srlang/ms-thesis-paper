@@ -27,9 +27,19 @@ paper.pdf: paper.tex *.bib\
 	pdflatex paper.tex
 
 wc: sections/*.sec.tex\
-		sections/subsections/*.sub.sec.tex\
-		sections/subsections/subsubsections/*.sub.sub.sec.tex
+		sections/*/*.tex\
+		sections/*/*/*.tex
 	@cat $^ | sed -e 's/^%.*//' | sed -e 's/^\\.*//' | wc -w
+
+lc: sections/*.sec.tex\
+		sections/*/*.tex\
+		sections/*/*/*.tex
+	@cat $^ | sed -e 's/^%.*//' | sed -e 's/^\\.*//' | wc -l
+
+lca: sections/*.sec.tex\
+		sections/*/*.tex\
+		sections/*/*/*.tex
+	@cat $^ | wc -l
 
 clean:
 	@rm -v paper.{aux,bbl,blg,pdf,toc}
