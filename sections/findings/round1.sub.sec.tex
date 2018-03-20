@@ -204,8 +204,8 @@ during the final scores of a close game.
 %
 Although difficult to discern in all but the \handmaxmin\ and \handmaxavg\ 
 strategies,
-the final weights trace a sinusoidal curve shape for approximately the last 
-twenty points of the game.
+the final weights trace a sinusoidal curve shape along the diagonal
+for approximately the last twenty points of the game.
 %
 Additionally,
 these waves are opposing in nature.
@@ -338,10 +338,18 @@ and not dependent upon the variance of the weights.
 %
 Because of the stipulation on the variance previously explained in the Methods
 section,
-the most strongly biased weight locations would no longer allow for exploration.
+the most strongly biased weight locations would only allow for exploration
+even more rarely than before.
 %
-This would result in a smaller likelihood of exploring in the current state,
+Although only producing a decrease from about a 30\% chance to 18\%,
+this would still result in a smaller likelihood of exploring in the current 
+state,
 potentially further cementing of the dominant strategy in its position.
+%
+Additionally,
+it was a complication which upon further thought would not result in much
+difference over the course of time
+and thus deemed non-beneficial and ultimately unnecessary.
 %%%
 
 %%%
