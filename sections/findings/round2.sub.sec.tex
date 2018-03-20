@@ -2,6 +2,58 @@
 
 \subsection{Round 2}
 
+\subsubsection{Performance}
+
+%%%
+% Discussion of performance
+%%%
+
+\input{sections/findings/round2/spreads_winner.fig.tex}
+
+\input{sections/findings/round2/spreads_loser.fig.tex}
+
+
+
+\subsubsection{Learning Process and Results}
+
+%%%
+% Discussion of what it learns and why that's interesting from a cribbage
+% perspective
+%%%
+
+%%%
+Despite the lack of performance increase after another million games played by
+both the winning and losing brackets,
+there are still interesting trends to be spotted between the different brackets
+of play.
+%
+The most notable is how quickly policies converge to a similar state.
+%
+While the strategy graphs for the less trained agents are less ``crisp''
+in their appearance thanks to their smaller levels self-certainty,
+the patterns of which policy to mainly follow at which times
+are quick to form.
+%
+This is useful because it allows for the possibility of running future
+experiments with fewer training epochs and thus in less time.
+%
+This in turn allows for a larger variety of methods to be tested to improve
+the cribbage-playing agent.
+%%%
+
+%%%
+Even more fascinating observations can be found from the strategy graphs
+from the winner's bracket (see Figure~\ref{r2-strats-winner}).
+%
+By focusing on the \handmaxmin\ and \handmaxavg\ strategies in particular,
+the sinusoidal wave along the diagonal can be observed extending further
+back along the diagonal to earlygame positions.
+%
+While not being of much use to the agent directly,
+this is a useful observation for a 
+% TODO: continue
+%%%
+
 \input{sections/findings/round2/flipbook_winner.fig.tex}
 
 \input{sections/findings/round2/flipbook_loser.fig.tex}
@@ -13,8 +65,4 @@
 \input{sections/findings/round2/strategies_loser.fig.tex}
 
 \input{sections/findings/round2/strategies_random.fig.tex}
-
-\input{sections/findings/round2/spreads_winner.fig.tex}
-
-\input{sections/findings/round2/spreads_loser.fig.tex}
 
