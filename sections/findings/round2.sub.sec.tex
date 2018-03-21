@@ -21,6 +21,8 @@
 % perspective
 %%%
 
+\input{sections/findings/round2/strategies_winner.fig.tex}
+
 %%%
 Despite the lack of performance increase after another million games played by
 both the winning and losing brackets,
@@ -47,22 +49,104 @@ from the winner's bracket (see Figure~\ref{r2-strats-winner}).
 %
 By focusing on the \handmaxmin\ and \handmaxavg\ strategies in particular,
 the sinusoidal wave along the diagonal can be observed extending further
-back along the diagonal to earlygame positions.
+back along the diagonal to earlier game positions,
+albeit with smaller amplitude.
 %
 While not being of much use to the agent directly,
-this is a useful observation for a 
-% TODO: continue
+this is a useful observation from a cribbage player's perspective.
+%
+Since it is possible to infer the state-value function,
+the implications of this wave are that earlier states are not crucial
+predictors for future success.
+%
+Not only that,
+but the agent has learned that changes in lead are likely and not necessarily
+detrimental to the ability to win the game.
 %%%
 
-\input{sections/findings/round2/flipbook_winner.fig.tex}
+%%%
+Care needs to be taken with this previous observation on the wave's amplitude
+and it must be pointed out to be speculation on the part of the author.
+%
+It may be the case that with enough training the sine wave will be at full
+amplitude in earlier positions.
+%
+A notable reason for the lack of clarity at the moment is the weight adjustment
+mechanism for training.
+%
+The training system pre-supposes that the earlier positions are of less
+importance in a game and adjusts them with a lower priority than later positions
+in the game.
+%
+While two million games is speculated to be enough to counteract this
+adjustment,
+there is no evidence to either support or disprove this conclusion.
+%%%
 
-\input{sections/findings/round2/flipbook_loser.fig.tex}
 
-\input{sections/findings/round2/flipbook_random.fig.tex}
-
-\input{sections/findings/round2/strategies_winner.fig.tex}
+%%%
+% Talking about loser's bracket and how it compares to winner's
+%%%
 
 \input{sections/findings/round2/strategies_loser.fig.tex}
 
+%%%
+By comparing the winner's bracket strategy graphs to those of the loser's
+bracket,
+a vast degree of similarity can be found.
+%
+In both brackets,
+the behavioral trends are learned.
+%
+However,
+there does exist a small amount of difference between the two
+in how quickly and surely each trend is learned.
+%
+The winner's bracket mostly reinforces its current weight choices
+with the losing triangle becoming slightly gradiated.
+% TODO: ^^^ gradiated (wrong) = to make something a gradient
+Meanwhile,
+in the loser's bracket,
+the gradient applies more evenly to the entire range of strategies
+across the winning-losing boundary.
+%
+Of additional note,
+there are fewer spaces in which
+strategies such as \cribminavg, \peggingmaxavggained, and \peggingminavggiven\ 
+have been strengthened within the \handmaxmin\ \textit{block}.
+%
+This is a good indicator that,
+although present,
+there is less of a bias towards those strategies which are initially winners.
+%%%
+
 \input{sections/findings/round2/strategies_random.fig.tex}
+
+%%%
+% TODO: discuss random tourny's stuff
+%%%
+
+%%%
+In analyzing the evolution of the \handmaxavg\ strategy in both the winner's
+and loser's brackets,
+it can clearly be seen that the general trend of behavior forms
+quickly,
+i.e. after the first half million games played.
+%
+Beyond that amount of games,
+the agent learns to refine the strategy boundaries
+but it can be said that there is little discovery being made.
+%
+This is useful because it allows for quicker training rounds to be played,
+and thus more possible variations in training can be tried in the time given
+with the goal of improving beyond random play.
+%%%
+
+
+\input{sections/findings/round2/flipbook_loser.fig.tex}
+
+\input{sections/findings/round2/flipbook_winner.fig.tex}
+
+\input{sections/findings/round2/flipbook_random.fig.tex}
+
 
