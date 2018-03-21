@@ -284,10 +284,15 @@ A sample set of scores can be found in Table~\ref{tab_r1-selftourny}.
 The point spreads from twenty separate 100-game tournaments
 are depicted in Figure~\ref{fig_r1-spreads_a}.
 %
-While point spreads are from total points pegged to the board
+While point spreads are from total points pegged to the board,
 not gained from wins
 and therefore not a direct indicator of performance in tournament play,
 it is useful for determining general performance.
+%
+Furthermore,
+point spreads are the parameters used for direct feedback as the rewards
+during the training phase,
+so it is a direct indicator of learning the task for which it was trained.
 %
 As can be seen, there is no discernible correlation or pattern between
 epoch checkpoint and performance.
