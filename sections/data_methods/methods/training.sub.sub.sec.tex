@@ -151,12 +151,16 @@ situations of exceptional bad luck can be treated as an outlier situation.
 %%%
 A further measure was taken to ensure adequate exploration.
 %
-At any given point in the game,
+Under normal conditions,
+cards were chosen by using the produced $p$ vector as a probability
+distribution.
+%
+At any given point in a training game, however,
 there was a chance of randomly selecting which cards are played,
-with the percent chance $p$ of random choice related to the variance of the 
+with the percent chance $e$ of random choice related to the variance of the 
 weights according to the formula:
 \[
-	p = k - \Var(w_{m,o,d})
+	e = k - \Var(w_{m,o,d})
 \]
 where $k$ is a constant around $\frac{1}{3}$ empirically chosen during the
 development process.
