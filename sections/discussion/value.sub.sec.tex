@@ -1,0 +1,59 @@
+% Discussion of how we learned policy which didn't have enough information
+% and how value function improvement would have been better
+
+% TODO: value iteration or value improvement?
+
+\subsection{Value Improvement vs. Policy Improvement}
+
+%%%
+This thesis focused on an attempt to use policy improvement to create an optimal
+cribbage-playing agent and to recover the strategy weights used to in turn
+improve the play of the author.
+%
+In the primary objective of evolving a cribbage agent to a good strategy,
+despite the setbacks of poor performance on a per-game level,
+the agent did remarkably well.
+%
+As has been discussed,
+the agent learns a very good set of guidelines as to how a position should
+be played in the majority of situations.
+% TODO: ensure performance/strategies have been discussed
+%%%
+
+%%%
+One of the reasons for its poor per-game play
+is the lack of knowledge as to how a set of cards lends itself to being played
+with a certain strategy.
+%
+The extent to which the cards themselves affect the action choice in the policy
+was greatly underestimated.
+%
+However, % TODO: conjunctive adverb use
+to include the knowledge of which cards are known into the policy decision
+would have increased the dimensionality of the search space from a relatively
+small three-dimensional problem tackled to a problem of nine dimensions since
+all dealt cards would need to be considered.
+%
+At this dimensionality,
+the search space would be far too massive and sparse to simulate an amount of
+games which would lead to any worthwhile learning.
+%%%
+
+%%%
+An alternative to including the cards in the policy would be to not learn a
+policy at all.
+%
+Instead,
+the state-value function could be learned.
+%
+By learning state-value function instead of a policy,
+an agent could determine which set of cards would likely place the agent in the
+most optimal resulting position,
+developing its own policy.
+%
+This value improvement would allow for a more adaptive agent and thus more
+optimal gameplay,
+leading to an agent that would win more consistently.
+%%%
+
+%\input{sections/discussion/value/*}
