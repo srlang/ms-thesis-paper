@@ -1,0 +1,148 @@
+
+\subsubsection{Something TODO}
+
+%%%
+At this point,
+the comparable performance to random weights must be addressed as a potential
+error in implementation rather than in training.
+%
+Since all methods of training so far have resulted in very similar policies
+being learned,
+it is fair to say that policy learned during training has been superior to
+random in some manner.
+%
+There are then a few items to consider as to why such poor results are occurring
+during the review tournaments.
+%%%
+
+
+\paragraph{Overfitting}
+
+%%%
+% Overfitting
+The first item to consider as the source of the discrepancy between the
+observation that a policy is learned,
+but its performance is abysmal
+is that the network is overfitting to the problem.
+%
+This would have been especially true of the first round where learning rates
+were much higher.
+%
+However,
+if the agents were to be overfitting,
+a number of differences would be found in their results.
+%
+Firstly,
+a different set of policy graphs would likely result from the training phase
+which is not the case. % TODO: <-- verify true
+%since all policies
+%
+More importantly,
+a definitive curve would be present in the tournament graphs as performance
+would increase before dropping.
+%
+As can be seen in Figure~\ref{whatever},
+this is not the case
+as performance is not apparently linked to training in any way.
+%
+Therefore, it can be safely concluded that overfitting is not the reason
+for the poor resulting performance.
+%%%
+
+\paragraph{Strictness of Policy Following}
+
+%%%
+If overfitting is not occurring,
+then the next question to ask is if there are implementation differences which
+have led to these discrepancies.
+%
+The training and testing phases use slightly different implementations of 
+card choosing algorithms.
+%
+In training,
+an exploration rate is used to give the agent a chance of choosing cards at
+uniform random
+whereas the testing phase does not.
+%
+This random percentage was added back in for testing and the results can be seen
+in Figure~\ref{whichever:a}.
+%
+As can be seen,
+the point spreads still display the same randomness and lack of pattern,
+indicating that the random exploration is not crucial to performance.
+%%%
+
+%%%
+In addition to the chance of purely random exploration,
+the agent also uses the produced \textit{desirability} vector $p$
+as a probability distribution to select a card combination with a probability.
+%
+The use of this probability distribution is the same between both training 
+and testing phases.
+%
+However,
+it can be speculated that since the introduction of randomness did not worsen
+the results of testing,
+it may be the case that the policy needs to be followed more strictly.
+%
+Since a weights vector is multiplied by a desirability matrix,
+the resulting probability distribution vector may not always be as
+varying as the weights vector itself.
+%
+Therefore,
+while a clear winner may be discernible as the maximum in the probability
+distribution,
+the actual probability of selecting that value could be very low in comparison
+to selecting any of the remainder.
+%
+As a result,
+a strict policy following agent was instead tested in which the maximum was
+selected from the probability distribution without exploration.
+%
+The results,
+found in Figure~\ref{whichever:b},
+indicate that this too was not an issue
+since as much variance in play is still present as when using a more exploratory
+implementation.
+%
+Therefore,
+even though implementation differences exist between the training and testing
+phases,
+they are not the reasons for the poor testing performance.
+%%%
+
+
+\paragraph{Scale of Play}
+
+%%%
+The final conjecture as to the reason for which the agent learns a policy
+but following that policy does not yield positive results in performance
+is the issue of scale.
+%
+The agent is trained on a million games,
+but tested on only a handful.
+%
+Since the cards being dealt are not taken into account by the policy,
+the decisions made will likely be inaccurate on the scale of a single game,
+but not for thousands.
+%
+As can be seen in Figure~\ref{blah:a},
+the jump to one thousand games begin to show signs of making a curve.
+%
+Although,
+there is still too much variance to make this observation without squinting
+on the part of the viewer.
+%
+Figure~\ref{blah:b} shows a single agent's tournament against its own previous
+iterations for a set of ten thousand games.
+%
+On this scale,
+the policy begins to be of use
+and the agent consistently wins against its previous iterations.
+% TODO: ^^^ verify vvv
+%
+There is a tighter points spread between the agent and its later checkpoints
+indicating that the agent is indeed learning and
+providing further evidence that overfitting is not occurring.
+%%%
+
