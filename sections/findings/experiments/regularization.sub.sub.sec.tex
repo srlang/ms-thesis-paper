@@ -29,6 +29,7 @@ the opportunity to overcome the bias of earlier strengthening of the strongest
 strategy.
 %%%
 
+\paragraph{Results}
 
 %%%
 % Results:
@@ -41,3 +42,48 @@ strategy.
 %	losing, still uncertain
 %		still chance of higher than regulation, because of aforementioned reason
 %%%
+
+%%%
+As expected,
+the limitation of maximum attainable value did indeed force the agent to learn
+multiple applicable strategies for each score location.
+%
+As can be seen in Figure~\ref{fig:r2-reg},
+the \handmaxmin\ and \handmaxavg\ strategies are now equally represented across
+the winning triangle area.
+%
+This is demonstrated by the monotone gray seen in these locations.
+%
+Rather than each strategy specializing to its own dominant location,
+the territory is shared between the two most most applicable strategies.
+%
+Therefore,
+the regularization does indeed prevent the dominance of a single strategy
+unintentionally discarding all other potential strategies.
+%%%
+
+%%%
+Additionally understandably,
+the nature of this gray mass alters significantly as the regularization rate is
+altered.
+%
+With a lower allowed maximum value,
+the strategy graphs take on the previously mentioned slightly amorphous gray
+blob shape.
+%
+As the maximum value approaches one,
+the gray shape begins to specialize more and begins to show resemblance to the
+final strategy graphs obtained without regularization.
+%%%
+
+%%%%
+%Interestingly,
+%even with this regularization,
+%small \textit{islands} of
+%\cribminavg, \peggingmaxavggained, and \peggingminavggiven
+%are seen to still exist in the \handmaxmin/\handmaxavg-dominated territory.
+%%
+%This indicates that regularization is not capable of addressing the situations
+%in which single score locations may benefit from
+%%%%
+

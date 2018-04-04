@@ -36,6 +36,8 @@ so that a neighborhood effect was present in the decision.
 %%%
 
 
+\paragraph{Results}
+
 %%%
 % Results:
 %	Mostly same appearnace
@@ -43,3 +45,59 @@ so that a neighborhood effect was present in the decision.
 %		peggingmaxmedgained/peggingmaxavggained
 %	Losing territory still in limbo, not much certainty there.
 %%%
+
+%%%
+% Not really good at making a blending/gradient
+% Definitely did eliminate islands though
+%%%
+
+%%%
+Perhaps unfortunately,
+the agent was not capable of weighting the different strategies in a
+gradient-like manner
+by using the neighboring score locations' weights vectors.
+%
+In fact,
+the \handmaxavg\ strategy,
+which one would expect most to form a gradient with and around the
+\handmaxmin\ strategy,
+was perhaps the most negatively affected.
+%
+As seen in Figure~\ref{fig:ex-neigh-blah},
+the \handmaxavg\ strategy graph has become more sparse in the winning
+triangle
+with very little gray area surrounding the black.
+%%%
+
+%%%
+Interestingly,
+while the neighboring weights did not solidify any presence in the graphs,
+the new training method did make progress in negative space.
+%
+This is to say that
+the weighted neighbors learning method eliminated the usually present islands
+of a single strategy within a swathe of another dominant strategy.
+%
+This white-space was present in both the winning and losing triangles.
+%
+This finding leads to the conclusion that weighted learning techniques
+do indeed allow for a sharing of knowledge between like states,
+but only insofar as to know what not to do.
+%%%
+
+%%%
+Furthermore,
+there is still a vast degree of uncertainty present in the losing triangles of
+the strategy graphs.
+%
+The hope that the certainty of the winning triangle might potentially
+\textit{bleed} over into the losing side was not demonstrated over the course of
+the first half million training games.
+%
+However,
+since the elimination of islands shows an improvement in
+preventing lucky happenstance dictate a space's future,
+the neighboring weights training method has shown usefulness in training a
+cribbage agent in which states neighboring states are often similar in nature.
+%%%
+
