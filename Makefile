@@ -19,6 +19,7 @@ paper.pdf: paper.tex *.bib\
 			sections/*.tex\
 			sections/*/*.tex\
 			sections/*/*/*.tex\
+			sections/*/*/*/*.tex\
 			appendices/*.tex\
 			algs/*.tex
 	pdflatex paper.tex
