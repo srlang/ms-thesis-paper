@@ -35,15 +35,22 @@
 \newcommand{\Policies}{\mathcal{P}}
 \newcommand{\policy}{\pi}
 
+% Allow for line-breaking of true-type fonts on underscores
+%	see: https://tex.stackexchange.com/questions/315369/how-to-deal-with-bad-line-wrapping-of-texttt
+\newcommand*\ttwrap[1]{\texttt{\expandafter\dottvar\detokenize{#1}\relax}}
+\newcommand*\dottvar[1]{\ifx\relax#1\else
+  \expandafter\ifx\string_#1\string_\allowbreak\else#1\fi
+  \expandafter\dottvar\fi}
+
 % define strategy names to avoid having to type \texttt{a\_b\_c} so much
-\newcommand{\handmaxmin}{\texttt{hand\_max\_min}}
-\newcommand{\handmaxavg}{\texttt{hand\_max\_avg}}
-\newcommand{\handmaxmed}{\texttt{hand\_max\_med}}
-\newcommand{\handmaxposs}{\texttt{hand\_max\_poss}}
-\newcommand{\cribminavg}{\texttt{crib\_min\_avg}}
-\newcommand{\peggingmaxavggained}{\texttt{pegging\_max\_avg\_gained}}
-\newcommand{\peggingmaxmedgained}{\texttt{pegging\_max\_med\_gained}}
-\newcommand{\peggingminavggiven}{\texttt{pegging\_min\_avg\_given}}
+\newcommand{\handmaxmin}{\ttwrap{hand_max_min}}
+\newcommand{\handmaxavg}{\ttwrap{hand_max_avg}}
+\newcommand{\handmaxmed}{\ttwrap{hand_max_med}}
+\newcommand{\handmaxposs}{\ttwrap{hand_max_poss}}
+\newcommand{\cribminavg}{\ttwrap{crib_min_avg}}
+\newcommand{\peggingmaxavggained}{\ttwrap{pegging_max_avg_gained}}
+\newcommand{\peggingmaxmedgained}{\ttwrap{pegging_max_med_gained}}
+\newcommand{\peggingminavggiven}{\ttwrap{pegging_min_avg_given}}
 
 % learned --> learne'd
 \newcommand{\learned}{learn\`ed}
