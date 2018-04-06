@@ -145,8 +145,47 @@ The reintroduction of an increasing curve
 is an indicator of overfitting in the middle stages.
 %
 Whereas the final agent is able to play well against these agents,
-they themselves have not learned the game so much as specialized play against
-the opposing agent.
+they themselves have decreased in performance capability.
+%
+This is speculated to be a result of learning how to outplay its opposing agent
+rather than an understanding of the game.
+%
+This is contingent upon the results of the round-robin play though,
+so no conclusions can be drawn at this time.
+% TODO ^^^ reaffirm when round-robin play is completed
+%%%
+
+%%%
+Also of further note is the scale on the aforementioned graphs.
+%
+In Figure~\ref{r2-time-series-10000},
+the maximum point spread achieved is just a shade above 10,000 points
+over the course of 10,000 games.
+%
+This means that the average point spread advantage is approximately 
+one point per game at peak performance\textemdash
+and most often $0.2$ points per game\textemdash
+in long-term play.
+%
+The average spread increases to $25$ points per game when fewer games are 
+played,
+but since performance is unpredictable on this scale,
+this can be explained as a result of the randomness of the cards given
+and cannot be considered a reliable measure of performance.
+%
+In fact,
+in sampled matches,
+it was not uncommon to observe losses and wins of 30 points or more
+as well as much closer games with margins of only a few points.
+%
+In addition to the randomness of cards dealt,
+this massive point sway could also be the result of the agents' uncertainty on 
+how to recover from a losing position.
+%
+While the reasons for this inability cannot be said to be more than speculation,
+the learning of a policy directly without taking into account cards dealt
+is the likely culprit,
+as explained previously.
 %%%
 
 
