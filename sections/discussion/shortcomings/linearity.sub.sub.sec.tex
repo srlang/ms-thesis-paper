@@ -1,0 +1,34 @@
+
+\subsubsection{Linearity}
+
+%%%
+% How the linearity of the model may be responsible for poor play
+%%%
+
+%%%
+One of the model's shortcomings that must be addressed is the linearity
+of the decision making apparatus.
+%
+As described in Section~\ref{sec:dm-methods-weighting},
+the mechanism for deciding which combination of cards to choose is\textemdash
+at its core\textemdash
+a simple linear operation.
+%
+The weights vector $w_{m,o,d}$ is multiplied by a desirability matrix $S$
+to produce a probability distribution $p$,
+from which the maximum value is chosen when the policy is strictly followed.
+%
+Although a human player would indeed evaluate which combinations are best
+to play with a set of strategies with varying importance over the course
+of the game,
+the nature of this relationship in the player's mind is unlikely
+to be a simple linear function.
+%
+Instead,
+a human player would also consider how two or more strategies would interact
+with each other at different points in the game.
+%in ways other than the simple addition of points,
+%but how points may be gained or lost in varying phases of the round:
+%a feat the current model is incapable of accomplishing although the
+%%%
+

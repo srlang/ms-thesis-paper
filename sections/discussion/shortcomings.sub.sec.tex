@@ -1,0 +1,35 @@
+%%%
+% Discussion on how the model's setup may have led down path to "failure"
+%%%
+
+\subsection{Shortcomings of the Model}
+
+%%%
+In addition to the shortcomings of the implementation decisions made or
+necessitated by other decisions,
+the features of the model itself should be considered and evaluated.
+%
+Several assumptions were made to limit the scope and dimensionality of the
+problem,
+but it is likely the case that these limitations also applied to the potential
+learning ability of the agent.
+% TODO ^^^ reword
+%%%
+
+\input{sections/discussion/shortcomings/linearity.sub.sub.sec.tex}
+
+\input{sections/discussion/shortcomings/strategies.sub.sub.sec.tex}
+
+%%%
+% Approach the idea of neural network solution
+%%%
+
+%%%
+As a result of these previous shortcomings,
+a better solution for the future would be to use an architecture that allows
+for the learning of nonlinearities and automatic feature discovery and
+learning,
+such as a neural network
+as per ~\cite{deepmind_alphago} and ~\cite{tdgammon}.
+%%%
+
