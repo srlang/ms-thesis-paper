@@ -17,6 +17,9 @@
 % to force 1-in margins
 %\usepackage[margin=1in]{geometry}
 
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning}
+
 % argmin and argmax for typesetting
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
@@ -99,9 +102,7 @@
 \input{sections/abstract.sec.tex}
 \end{abstract}
 
-%\section*{Thanks}
 %\input{sections/thanks.sec.tex}
-%\newpage
 
 \mytableofcontents
 
@@ -116,6 +117,8 @@
 \include{sections/discussion.sec}
 
 \include{sections/conclusion.sec}
+
+%\input{sections/thanks.sec.tex}
 
 \newpage
 
