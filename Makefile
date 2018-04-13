@@ -29,17 +29,20 @@ paper.pdf: paper.tex *.bib\
 
 wc: sections/*.sec.tex\
 		sections/*/*.tex\
-		sections/*/*/*.tex
+		sections/*/*/*.tex\
+		sections/*/*/*/*.tex
 	@cat $^ | sed -e 's/^%.*//' | sed -e 's/^\\.*//' | wc -w
 
 lc: sections/*.sec.tex\
 		sections/*/*.tex\
-		sections/*/*/*.tex
+		sections/*/*/*.tex\
+		sections/*/*/*/*.tex
 	@cat $^ | sed -e 's/^%.*//' | sed -e 's/^\\.*//' | wc -l
 
 lca: sections/*.sec.tex\
 		sections/*/*.tex\
-		sections/*/*/*.tex
+		sections/*/*/*.tex\
+		sections/*/*/*/*.tex
 	@cat $^ | wc -l
 
 clean:
