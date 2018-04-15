@@ -1,0 +1,112 @@
+
+%%%
+% History of Reinforcement Learning
+%%%
+
+\subsubsection{History}
+
+%%%
+From Samuel's seminal work in checkers~\cite{samuel_checkers}
+to more recent accomplishments against GrandMasters of
+Go~\cite{deepmind_alphago},
+the domain of games has been an area of great interest in machine learning
+research.
+%or even successes in \textit{Jeopardy!}!\cite{watson_jeopardy},
+%
+Games provide an isolated environment with a set of distinct rules and clear
+objectives which make them well suited to being expressed as Markov decision
+processes.
+%
+This in turn allows for modeling as a reinforcement learning problem and
+subsequent exploration.
+%%%
+
+
+%%%
+% Samuel's checkers
+% Holy cow, this guy was awesome
+%%%
+
+%%%
+No paper on reinforcement learning of sufficient size would be complete without
+mention Arthur L. Samuel's foundational paper on machine learning applied to
+checkers~\cite{samuel_checkers}.
+%
+In this paper,
+despite the technological limitations of his time,
+Samuel develops and describes two main methodologies he used to make an agent
+learn how to play checkers.
+%%%
+
+%%%
+The first method Samuel devises is what he called ``Rote learning.''
+%
+This strategy applied an arbitrarily decided polynomial value function
+to evaluate board positions.
+%
+Future positions were then found by searching a minimax tree
+of limited ply depth
+in which each agent was assumed to play optimally given its own position
+and using an early form of alpha-beta pruning.
+% TODO: ^^^ check really true
+%
+Although only a certain number of moves were allowed to be searched forward,
+a record of previously evaluated positions was stored.
+%
+These kept records would then be used to virtually extend the depth of the
+search tree:
+if the ply depth of the search is three and a previously evaluated position was
+located as a leaf on the search tree of the currently held position,
+then the effective depth of the tree along this route is now six since the
+stored position has already been evaluated to a depth of three.
+% TODO: ^^^ probably reword this
+%
+Samuel even recognized the idea of rewards being necessary for learning a task
+with what he called a ``pushing mechanism'' which would direct the agent towards
+winning the game and not just picking better positions.
+%%%
+
+%%%
+Although the learning aspect of his program was limited to merely evaluating
+deeper and deeper plies and saving results,
+Samuel's program was trained through self-play, recorded games, and occasionally
+through human interaction.
+%
+The recorded, or ``book games'' as Samuel terms them,
+provide a mechanism for supervised learning in which the agent could track its
+own choices against those made by the humans in the actual game,
+providing another method to update the value of a board position.
+%
+After training,
+and without imposing human knowledge such as bank of openings,
+the playing program was evaluated to play on the same level as a
+better-than-average novice.
+%%%
+
+%%%
+The other learning method Samuel explains is what he called
+``generalized learning''
+and was a preliminary simulated annealing or hill-climbing algorithm
+which was applied to improving the board position evaluation polynomial.
+%
+In the paper,
+two agents would play against each other:
+Alpha, in which the polynomial parameters could be tweaked,
+the other (Beta) using the same starting parameters but never updating them.
+%
+If Alpha won enough games in a tournament,
+Beta would inherit Alpha's parameters and the adjustments would begin again.
+%
+This had the effect of incrementally improving the learned parameters.
+%
+If Alpha was incapable of consistently beating Beta,
+then a local optimum was recognized and Alpha's polynomial would be randomly
+mutated to another starting position,
+smoothing out changes as needed to avoid large leaps in the search space.
+%
+Although the reader is cautioned that the learning method is not guaranteed to
+find globally optimal parameters,
+Samuel's proposed hill-climbing technique creates an agent which is capable
+of playing a better than average game of checkers.
+%%%
+
