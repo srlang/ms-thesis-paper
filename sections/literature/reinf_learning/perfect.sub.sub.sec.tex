@@ -1,0 +1,95 @@
+
+%%%
+% Discussion of DeepMind's AlphaGo strategy and DeepBlue's Chess
+%%%
+
+\subsubsection{Perfect Information Games}
+
+%%%
+Perfect information games are those in which the entire game state is observable
+at a given time.
+%
+Furthermore,
+an action has a definite and entirely predictable outcome:
+e.g. moving a chess piece on the board in a specific arrangement will always
+lead to the same resulting arrangement.
+%
+Checkers, chess, and go are all examples of perfect information games.
+%%%
+
+%%%
+Jumping ahead by nearly 40 years,
+the basic ideas of Samuel's paper can be seen applied to the slightly different
+domain of chess with IBM's DeepBlue
+and its victory against Garry Kasparov.
+%
+The DeepBlue team greatly expanded upon the idea of a minimax search to create a
+massively parallel search system for chess evaluation
+\cite{ibm_deepblue}.
+%
+The final system was able to evaluate hundreds of millions of chess positions
+per second:
+millions of times faster than Samuel's capabilities at the time.
+%
+However,
+the speed in evaluation was a result of hard-wiring an evaluation function at
+the chip level using chips custom-built for the purpose.
+%
+As with Rote learning,
+very little actual in terms of learning how to play or adjustments to internal
+mechanisms occurred
+beyond an expanded search space made possible by more capable hardware.
+%
+Despite this philosophical gripe,
+the IBM team was able to outplay a Grandmaster of chess,
+winning a match four games to two.
+% TODO: describe deepblue architecture and paper
+%%%
+
+%%%
+% deepmind's alphago
+%%%
+
+%%%
+Of notable attention recently is Google DeepMind's
+success in the game of Go with AlphaGo
+\cite{deepmind_alphago}.
+%
+More satisfying than DeepBlue's search approach,
+AlphaGo used multiple neural networks to evaluate value and policy functions.
+%
+A first neural network was trained using a database of human-played games
+to predict human play for a given board position.
+%
+Using this network as a starting point,
+a policy network was trained
+along with a value network which worked together to determine the optimal next
+move for the agent.
+%
+Both of these previous networks were trained through self-play.
+%
+Eventually,
+the network resulting from this self-play was able to beat Grandmaster Lee Sedol
+in match play by four games to one.
+% TODO: ^^^ check score
+%%%
+
+%%%
+% TODO: more detail on alphago structure
+%%%
+
+%%%
+DeepMind then took a step further and,
+following in Tesauro's footsteps~\cite{tdgammon},
+removed all human-imposed knowledge and
+trained a single neural network to play \textit{tabula rasa}, i.e. from scratch.
+%
+Using only this neural network and a tree search algorithm,
+AlphaGo Zero, the new program,
+was able to defeat the previous AlphaGo 89 - 11.
+%%%
+
+%%%
+% TODO: more about alphago zero, surely
+%%%
+
