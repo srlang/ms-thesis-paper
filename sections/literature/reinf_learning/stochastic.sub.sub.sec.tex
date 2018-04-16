@@ -125,13 +125,59 @@ to
 While Tesauro credits the neural network architecture and the game itself for
 the success of the TD-Gammon system,
 Drs. Pollack and Blair at Brandeis University undertook to demonstrate that
-TD-Gammon's successes were not a result of temporal difference learning or the
-neural network architecture,
+TD-Gammon's successes were not a result of
+temporal difference learning
+or even reinforcement learning necessarily,
 but due to the nature of backgammon itself and how self-play contributes to a
 constantly evolving environment
 \cite{why-td-gammon}.
 %
 In their efforts,
-Pollack and Blair applied
+Pollack and Blair applied a basic hill-climbing techniques to a simple neural
+network setup similar to that described in Tesauro's paper.
+%
+To this network,
+the authors applied the same strategy as Samuel's generalized learning:
+a mutant would be created by adding Gaussian noise to the ``champion'' weights
+and the normal weights would play the mutant for a number of games.
+%
+These games were done in pairs with each agent getting the chance to play as
+white and the same random seed to avoid unfair bias in the dice rolls.
+%
+With this setup,
+if two agents are identical,
+then the result of two games would be one win each.
+%
+If the mutant then won enough games,
+the champion's weights would then be shifted in the direction of the mutant.
+%
+At no point was reinforcement or temporal difference credit used to adjust the
+neural network's weights;
+not even backpropagation was used.
+%%%
+
+%%%
+With this setup,
+the authors were able to perform similarly to an earlier version of TD-Gammon
+based on comparative performance against other backgammon-playing systems.
+%
+This leads to the conclusion that the success of TD-Gammon was very much so
+the result of the dynamics of backgammon and how they contribute to providing an
+excellent environment for self-play learning
+and less a result of the technique used in optimizing the neural network.
+%
+In normal student-teacher learning,
+a teacher will attempt to point out edge cases of the student's knowledge
+and the student in turn learns by asking tougher and tougher questions.
+%
+In self-play learning,
+the teacher and student are the same,
+so it is possible that a student and teacher can reach a draw situation in which
+both agents are placated and neither is challenged to further best the other.
+%
+Characteristics mentioned by the authors include the lack of ability for a game
+to end in a draw which in turn means that the either the teacher or student is
+always required to improve its performance,
+leading to continuous improvement.
 %%%
 
