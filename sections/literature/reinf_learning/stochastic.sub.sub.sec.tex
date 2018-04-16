@@ -1,0 +1,137 @@
+
+%%%
+% Section on applying machine learning to
+%%%
+
+\subsection{Stochastic Games}
+
+%%%
+% TD- Gammon
+%%%
+
+%%%
+Another pivotal paper in machine learning of games,
+and a heavy influence in AlphaGo's creation,
+was TD-Gammon
+\cite{tdgammon}.
+%
+In his paper,
+Tesauro designed and trained a simple feed-forward neural network to play 
+backgammon.
+%
+Backgammon is an ancient board game in which moving abilities are determined
+through dice rolls.
+%
+The inclusion of dice rolls provides a stochastic environment since
+a desired outcome may not be the actual result of making a move.
+%
+As a result,
+the searching methodology of DeepBlue or Samuel's checkers is not applicable
+as there is no guarantee of reaching a given state.
+%
+Instead,
+the neural network is trained to predict the likely outcome of a game with a
+given position
+through observing several recorded games.
+%
+After a game had finished,
+the graph's weights were readjusted by using a final reward signal representing
+the actual outcome of the game.
+%%%
+
+%%%
+Since later outcomes were expected to be more accurate whereas earlier
+predictions were allowed to be more inaccurate as more resulting states were
+still reachable,
+a system of diminished rewards was implemented called
+TD($\lambda$) based on the idea of temporal difference.
+%
+TD($\lambda$) updates the weight differences according to the formula:
+\[
+	w_{t+1} - w_t =
+		\alpha (Y_{t+1}-Y_t)
+		\sum_{k=1}^t {\lambda^{t-k} \nabla_w Y_k}
+\]
+where $\alpha$ is a learning rate parameters,
+$\nabla_w Y_k$ is the gradient of the output with respect to the weights,
+and $\lambda$ controls how far back credit is assigned to an outcome
+or more accurately how much that credit decays.
+%
+For instance,
+$\lambda=0$ means only the last evaluation is credited,
+while $\lambda=1$ means all evaluations are credited equally
+and values in between provide smoothly decaying credit assignments.
+%%%
+
+%%%
+Later experiments extended training through the use of self-play.
+%
+TD-Gammon would play both sides of a single game and adjust its evaluation
+network accordingly.
+%
+This training method was proven to be highly successful when TD-Gammon was
+entered into the 1992 World Cup of Backgammon tournament and was shown to be a
+contender,
+losing by only 7 points total over the course of 38 games with highly respected
+players and even former world champions.
+%
+In qualitative evaluations by Kit Woolsey,
+one of backgammon's most respected analysts,
+TD-Gammon was declared to play better than humans in situations which were
+considered more complex as its evaluation function was able to precisely
+calculate the chances of winning without bias or emotion.
+%
+TD-Gammon has so impressed the backgammon community that strategies previously
+considered inferior due to human bias have been revisited and reanalyzed due to
+their favorability in TD-Gammon.
+%%%
+
+%%%
+Tesauro credits this success to both the self-play method of training
+as well as phenomena directly inherited from the nature of the game of
+backgammon.
+%
+The motion of the game is reliant on the outcomes of random dice rolls,
+the nature of the outcomes of these rolls naturally contributes to the
+exploration of a wide search space without the need for explicit exploration
+steps as would be needed in a perfect information game such as chess.
+%
+Furthermore,
+since checkers can only be moved forward
+with the exception of being knocked back by an advancing opponent,
+the game cannot enter a non-terminating loop and must eventually
+terminate.
+%%%
+
+%%%
+In addition to the backgammon community,
+TD-gammon made leaps and bounds in the area of games AI research,
+especially with respect to neural networks.
+%
+After the first few thousand training games,
+the system was capable of playing elementary backgammon,
+recognizing a few basic strategies for decent play.
+%
+This was determined to be the result of linear combinations of features which
+could be quickly evaluated by a linear function of the raw board position.
+%
+More complicated, context-sensitive strategies would develop later in training
+and are credited as being the result of the ability of neural networks to adapt
+to
+%%%
+
+
+%%%
+While Tesauro credits the neural network architecture and the game itself for
+the success of the TD-Gammon system,
+Drs. Pollack and Blair at Brandeis University undertook to demonstrate that
+TD-Gammon's successes were not a result of temporal difference learning or the
+neural network architecture,
+but due to the nature of backgammon itself and how self-play contributes to a
+constantly evolving environment
+\cite{why-td-gammon}.
+%
+In their efforts,
+Pollack and Blair applied
+%%%
+
