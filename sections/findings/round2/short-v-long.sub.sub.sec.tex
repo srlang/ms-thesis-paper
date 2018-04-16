@@ -62,7 +62,7 @@ card choosing algorithms.
 %
 In training,
 an exploration rate is used to give the agent a chance of choosing cards at
-uniform random
+random with $p$ used as a probability distribution
 whereas the testing phase does not.
 %
 This random percentage was added back in for testing and the results can be seen
@@ -74,7 +74,8 @@ indicating that the random exploration is not crucial to performance.
 %%%
 
 %%%
-In addition to the chance of purely random exploration,
+In addition to the chance of random exploration,
+it was falsely assumed (see section \ref{sec:findings-expts-rand}) that
 the agent also uses the produced \textit{desirability} vector $p$
 as a probability distribution to select a card combination with a probability.
 %
@@ -110,6 +111,13 @@ Therefore,
 even though implementation differences exist between the training and testing
 phases,
 they are not the reasons for the poor testing performance.
+%
+Unfortunately,
+the mistake explained in \ref{sec:findings-expts-rand} was not recognized
+at this time.
+%
+The only possible explanation for this lack of recognition was mistaking the
+unaltered code base for one in which the change had been made.
 %%%
 
 

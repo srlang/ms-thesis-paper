@@ -1,0 +1,62 @@
+
+\subsubsection{Random Exploration}
+\label{sec:findings-expts-rand}
+
+%%%
+While analysis was being performed on the results of Round 2 and further
+experimentation was underway,
+the discovery was made that the method for deciding which combination of cards
+should be picked was not as expected
+thanks to a overlooking the matter during development.
+%
+A ``correct'' method of choosing cards would have selected the card combination
+corresponding to the maximum value found in the produced $p$ vector,
+breaking ties randomly,
+with a chance of making an exploration step by selecting a combination at
+uniform random.
+%
+The implemented mechanism did indeed normally choose the maximally represented
+combination in the $p$ vector,
+but random exploration was performed using the $p$ vector as a probability
+distribution.
+%
+Further complicating the issue,
+a review of the code was misunderstood and it was wrongly concluded that
+the $p$ vector was normally used as a probability distribution
+and random exploration was carried out at uniform.
+%%%
+
+%%%
+Thanks to the nature of the produced $p$ vectors,
+it was assumed that the implemented solution would not make make a marked
+difference in performance or learning.
+%
+This is because $p$ for locations which were untrained 
+ended up producing $p$ vectors which were remarkably close to
+uniform themselves.
+%
+However,
+states which were trained often produced $p$ vectors in which
+three or four combinations of cards were almost equally highly weighted
+while unpopular combinations had nearly zero chance of being chosen.
+%
+While this resulting $p$ vector was created exactly as intended,
+the skewing towards certain combinations means that so-called
+random exploration steps are unlikely to actually explore policy options
+which have no recent bias
+in later, trained states.
+%
+This may result in only a negligible effect since
+only highly trained locations will show this bias
+and may even be helpful as it allows a set of weights to converge more quickly
+to a stable policy.
+%%%
+
+
+\paragraph{Results}
+\label{sec:findings-expts-rand-results}
+
+%%%
+% Results of the given experimental change(s) as they are generated.
+%%%
+
