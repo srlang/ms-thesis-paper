@@ -3,8 +3,72 @@
 
 %%%
 % Prior research performed in cribbage
-%	Evolutionary/genetic card picker
 %	paper on dealer's advantage
+%	Evolutionary/genetic card picker
+%	O'Connor's MLP
 %	whatever else found during proposal time
+%%%
+
+%%%
+On the topic of cribbage very little research has been done,
+perhaps as a result of its relative lack of popularity to such games as poker
+or its stochastic environment being too large to tackle.
+%
+There are three main papers in which cribbage receives the main focus:
+a mathematical analysis of dealer advantage~\cite{cribbage_optimal_ev},
+a genetic learner applied to the discard phase~\cite{adaptive_cribbage},
+and a multilayer perceptron attempt to apply a simpler version of TD($\lambda$)
+to cribbage~\cite{roconnor_cs486}.
+%%%
+
+%%%
+In his thesis,
+Philip Martin set out to find if the player which begins as the dealer
+had any statistical advantage in winning
+\cite{cribbage_optimal_ev}.
+%
+The method used to accomplish this task was to enumerate and evaluate all
+possible combinations of cards which can be dealt to a player.
+%
+From there,
+a matrix of potential average crib scores was created as a table indexed on each
+axis by one of ${52 \choose 2}$ combinations,
+introducing the minor accuracy of forgetting which cards have been seen by each
+player from their respective hands.
+%
+Using the bounds found,
+certain basic strategies were proven to be suboptimal,
+e.g. avoiding throwing a pair or fifteen to the crib as the pone,
+since their at least one of their expected outcomes
+was found to be below the lower bound for optimal strategies.
+%
+Despite the slight inaccuracy and assumption of a uniform distribution,
+the paper did conclude that being the first player to act as dealer gave the
+player an expected advantage of approximately 5 points on average.
+%
+However,
+since different strategies needed for other portions of the game were not
+mentioned,
+by the author's own admission this study barely scratched the surface of
+research into the game.
+%%%
+
+%%%
+The next,
+and perhaps most useful,
+study performed on the game of cribbage is Robert O'Connor's undergraduate
+projecti~\cite{roconnor_cs486}
+on adapting TD($\lambda$)~\cite{tdgammon} to the domain of cribbage.
+%
+O'Connor trained a feedforward multilayer perceptron with only a single hidden
+layer to play a single hand of cribbage.
+%
+He used TD($\lambda$) to adjust the weights as training proceeded with the
+network playing full games against itself:
+no score context data was included in the input vector for training.
+%
+After training for millions of games,
+the agent was able to choose hands reliably better than random,
+but just shy of an algorithm which would choose by maximum expected outcome.
 %%%
 
