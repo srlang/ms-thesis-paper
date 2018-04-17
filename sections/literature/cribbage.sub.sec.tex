@@ -57,7 +57,8 @@ research into the game.
 The next,
 and perhaps most useful,
 study performed on the game of cribbage is Robert O'Connor's undergraduate
-projecti~\cite{roconnor_cs486}
+project
+\cite{roconnor_cs486}
 on adapting TD($\lambda$)~\cite{tdgammon} to the domain of cribbage.
 %
 O'Connor trained a feedforward multilayer perceptron with only a single hidden
@@ -70,5 +71,50 @@ no score context data was included in the input vector for training.
 After training for millions of games,
 the agent was able to choose hands reliably better than random,
 but just shy of an algorithm which would choose by maximum expected outcome.
+%
+As there was no previous work done to produce an AI to play cribbage,
+no comparison could be made.
+%
+Furthermore,
+as the results of games vary wildly due to luck of card games,
+an infeasible amount of games would need to be played against a human to
+determine if any advantage was present
+and thus a comparison was not made to human play either.
+%
+Regardless,
+the system was demonstrated to be learning as it played significantly
+better than random over the course of matches of one thousand games each.
+%%%
+
+%%%
+It should be noted that the paper lacks significant details
+as to how the network was used, precisely.
+%
+The output of the network was a single linear output representing the state
+utility function at any state.
+%
+These states were represented by 209 binary values representing various cards in
+hand or in play.
+%
+There is no mention of how this state space is explored or how this value
+function is applied to the agent making a decision;
+it can only be assumed that the agent made the greedy choice among potentially
+reachable states for each possible legal move.
+%%%
+
+%%%
+The final paper worth addressing which attempts to learn cribbage
+is Kendall's and Shaw's adaptive cribbage player
+\cite{adaptive_cribbage}.
+%
+The authors use an evolutionary strategy,
+similar to a genetic algorithm,
+to make an agent learn to play the discard phase of the game.
+%
+In doing so,
+the limitation was imposed that the suit of a card would not be considered,
+sacrificing a small degree of accuracy in calculations to vastly simplify the
+search space.
+% TODO: finish discussing adaptive_cribbage
 %%%
 
