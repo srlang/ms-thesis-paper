@@ -60,3 +60,26 @@ to a stable policy.
 % Results of the given experimental change(s) as they are generated.
 %%%
 
+%%%
+By comparing the strategy graphs created from using the correct selection
+methodology seen in Figure~\ref{fig:expts-rand-strats}
+to those previously created with the faulty mechanism as in Round 2
+such as in Figure~\ref{fig:r2-strats-loser},
+it is evident that there is no functional difference between these two
+randomization techniques.
+%
+As expected,
+the nature of the produced $p$ vectors lent themselves to nearly uniform random
+choice for untrained sets leading to no significant change in exploration in
+early game situations.
+%
+Furthermore,
+in trained sets,
+the choice between three or four best combinations of cards rather than
+the full fifteen possibilities did not negatively affect the learning of
+strategy combinations overall.
+%%%
+
+
+\input{sections/findings/experiments/randomization/strats.fig.tex}
+%\label{fig:expts-rand-strats}
