@@ -1,0 +1,39 @@
+
+\begin{table}
+
+	\begin{tabular}{|r|c|c|c|p{4cm}|}
+		\hline
+		\textbf{Strategy} & \textbf{Top 1} & \textbf{Top 2} & \textbf{Top 3}
+			& \textbf{Percentage in Top 3 Human Choices} \\
+		\hline
+		\peggingminavggiven & 160 & 303 & 458 & 12.64 \\\hline
+		\peggingmaxmedgained & 268 & 519 & 796 & 21.97 \\\hline
+		\peggingmaxavggained & 347 & 650 & 963 & 26.58 \\\hline
+		\cribminavg & 380 & 177 & 1081 & 29.84 \\\hline
+		\handmaxmin & 1576 & 2288 & 2666 & 73.59 \\\hline
+		\textbf{Random} & \textbf{1581} & \textbf{2318} & \textbf{2759} &
+			\textbf{76.15} \\\hline
+		\handmaxmed & 1649 & 2353 & 2768 & 76.40 \\\hline
+		\textbf{Trained} & \textbf{1706} & \textbf{2426} & \textbf{2821} &
+			\textbf{77.86} \\\hline
+		\handmaxposs & 1677 & 2433 & 2847 & 78.58 \\\hline
+		\handmaxavg & 2066 & 2828 & 3168 & 87.44 \\\hline
+	\end{tabular}
+	% total = 3623
+	\caption{
+		Number of times the agent using a given strategy chose the same cards as
+		the most common choice by human users
+		according to 3623 total parsable records obtained from
+		\cite{dailycribbagehand}.
+		The columns labeled ``Top X'' display the number of times the given
+		strategy's choice was within the top X choices of the user base.
+		%if at least that many different choices were made
+		In this table,
+		\textbf{Random} is from the best result of five agents which each used
+		independently randomly allocated weights
+		and
+		\textbf{Trained} uses an agent trained from Round 2 for one million
+		games.
+	}
+	\label{tab:expts-starts-human}
+\end{table}
