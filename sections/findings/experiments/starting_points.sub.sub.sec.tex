@@ -12,5 +12,88 @@
 % How choices were compared
 %%%
 
+%%%
+Since a desired outcome of the learning process was to be able to use the
+generated strategy graphs to tell how a hand \textit{should} be played in a
+certain score position,
+a comparison was made between the produced agent and pure strategies
+on a database of choices made by humans.
+%
+There exists a website in which users are prompted with a set of dealt cards and
+a given score and must decide which set of cards they would keep in that
+specific situation
+\cite{dailycribbagehand}.
+%%%
+
+%%%
+With access to recorded answers,
+the agent's choices could be compared to how humans ranked the choice.
+%
+The retrieved database recorded which responses were given to each query
+and could be used to determine how well the agent's choice matched with those
+made by humans in the same situation.
+%
+For each of the more than 3600 usable records,
+the choice the agent made was compared against those made by the users of the
+website.
+%
+The results of this comparison can be seen in
+Table~\ref{tab:expts-starts-human}. % TODO: ref more tables if created
+%%%
+
+%%%
+Table~\ref{tab:expts-starts-human} shows that the trained agent chooses the same
+set of cards only marginally more often than an agent with randomly allocated
+weights.
+%
+In approximately half of the cases,
+the trained agent chooses the same answer as most humans;
+in almost 78 percent of the cases,
+the answer given by the agent is within the top three most common human answers.
+%
+Additionally,
+most pure strategies,
+created by setting their weight to 1 while all others are 0,
+performed worse than the trained mixture.
+%
+Notable exceptions to this trend are the \handmaxposs\ and \handmaxavg\ 
+strategies,
+suggesting that in more situations than the agent,
+the typical human player will play more according to what points can be expected
+to be gained from the cut card.
+%
+Interestingly,
+the \handmaxposs\ strategy's presence as the second most common pure strategy
+used indicates a significant degree of risk-taking present in the users'
+responses.
+%%%
+
+%%%
+As a result of this finding,
+each of these strategies were used as initial weights to the learning process
+in order to determine if the agent could learn to fine-tune a policy starting
+from a reasonable assertion of good game-play.
+%
+Since the update mechanism for weights relies upon renormalization of a vector
+which as been rewarded or punished,
+no modifications would occur in the case of punishment of a pure strategy
+since no other weights would have the chance to increase.
+%
+Therefore,
+the pure strategies used before were slightly modified so that each other
+element of the $w$ vector would have a small initial value which would be
+increased when the pure strategy was punished.
+%%%
+
+%%%%%%
+%%%It is worth remembering that the data used is collected from users' own
+%%%submissions and evaluations as an exercise,
+%%%not through actual gameplay.
+%%%%
+%%%As such,
+%%%as evidenced by occasional reading of the forums for each prompt,
+%%%the desire to maximize the
+%%%%%%
+
 \input{sections/findings/experiments/starting-points/human-comp.tab.tex}
 
