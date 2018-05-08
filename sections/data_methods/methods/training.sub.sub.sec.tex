@@ -16,16 +16,11 @@
 %%%
 
 %%%
-% Expert Witness Testimony functionality
-% TODO
-%%%
-
-%%%
 % Reinforcement Learning
 %%%
 
 %%%
-After a complete game had been played, the winning and losing agents need to
+After a complete game has been played, the winning and losing agents need to
 modify their weights in order to decide a ``correct'' strategy at that time
 coordinate.
 %
@@ -45,7 +40,7 @@ Instead, the strategies which advocated most for the chosen hand would be held
 responsible for the success or failure of the given hand and thought of as
 the action at the given step.
 %
-The strategies which most advocated for the hand were determined by those whose
+The strategies which most advocated for the hand were determined as those whose
 values in $S$ were the highest in its column.
 % TODO: ^^^ check column/row, put in indices
 %
@@ -74,6 +69,15 @@ where $j$ is the index along the path starting at 1,
 $C$ is a starting value of the adjustment constant,
 $T$ is the final step index,
 and $d$ is the rate of decay expressed as a ratio such that $0 < d < 1$.
+%
+In order to allow for closer losses to be less severely punished than worse
+losses and vice versa for wins,
+the adjustment constant $C$ was defined as proportional to the difference
+between the players' scores according to the formula:
+\[
+	C = s \cdot \left({MyScore} - {OppScore}\right) 
+\]
+where $s$ is a scaling factor analogous to a learning rate parameter.
 %%%
 
 %%%
@@ -176,16 +180,22 @@ into the pitfall of stationary uniform weights.
 %%%
 
 %%%
+The training was intended to take the form of a tournament of learning in which
+better and better agents would be paired off against each other until an
+ultimate agent was reached,
+allowing for more experience to be gained for agents from a variety of sources.
+%
 After a set number of training games,
 in the case of this project one million,
 the two agents were played against each other in a tournament match fashion.
 %
 The winner was determined as the agent with the most points at the end
 of a series of games, %\textemdash
-in this case 101, %\textemdash
+in this case 100, %\textemdash
 wherein two points would be awarded to the winner of a game and three if that
 win was by a margin of at least 31 points
-and ties broken by total point spread.
+and ties broken by total point spread,
+according to ACC rules~\cite{ACC_rules}.
 %
 After the match had completed,
 the winner would advance to the next round,

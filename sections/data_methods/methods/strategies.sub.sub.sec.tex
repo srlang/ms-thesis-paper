@@ -37,15 +37,16 @@ These included:
 	The hand(s) with the maximum median points possible to score will be the most
 	highly desired.
 	%
-	Similar to \texttt{hand\_max\_avg}, this strategy is useful when trying to
-	maximize one's hand's expected score.
+	%Similar to \texttt{hand\_max\_avg}, this strategy is useful when trying to
+	%maximize one's hand's expected score.
 	%
 \item \texttt{hand\_max\_poss}:
 	%
 	The hand(s) with the maximum possible score will be the most highly desired.
 	%
-	This strategy can be thought of as Hail Mary choice for the player trying to
-	score as many points as possible, not taking into account its unlikelihood.
+	This strategy can be thought of as a Hail Mary choice for the player trying
+	to score as many points as possible, not taking into account its
+	relatively low likelihood.
 	%
 \item \texttt{crib\_min\_avg}:
 	%
@@ -72,7 +73,7 @@ These included:
 	The hand(s) with the maximum median points scored during play will be the most
 	highly desired.
 	%
-	This strategy is similar to \texttt{pegging\_max\_avg\_gained} in its use,
+	This strategy is similar in nature to \peggingmaxavggained,
 	but uses a slightly different internal measure for ranking.
 	% TODO: ^ better explanation
 	%
@@ -145,22 +146,24 @@ There are ${52 \choose 6}$ possible combinations of card which can be dealt to
 either player.
 %
 Of these possibly dealt hands, there are then ${6 \choose 4} = 15$ possible
-combinations of cards that can be kept and ``tossed'' to the crib.
+combinations of cards that can be kept,
+with the remainder ``tossed'' to the crib.
 %
-For each of these $15$ possible there are a further $(52-6)=46$ possible cards
+For each of these $15$ possible combinations,
+there are a further $46$ remaining possible cards
 that must be considered as possible cut cards for the kept hand.
 %
 Additionally, for the thrown set of cards,
 there are ${46 \choose 2} = 1035$ possible combinations of cards which can be
 thrown by the opposing player into the crib as well as the
-$(46-2)=44$ remaining possible cut cards.
+$44$ remaining possible cut cards.
 %
 These cut cards must be considered separately in such a manner of
 evaluating ${46 \choose 2} \times 44 = 45540$ possibilities rather than
 simply looking at each of ${46 \choose 3} = 15180$ possibilities because
 whether or not the card is in the crib or not can affect the score.%
 \footnote{
-	For example, as per the right-jack rule,
+	For example, as per the right-jack (his nobs) rule,
 	a hand of 5\clubs\ 5\hearts\ 5\spades\ J\diamonds\ 
 	with a cut card of 5\diamonds\ is a perfect hand
 	with a score of 29,
@@ -169,6 +172,7 @@ whether or not the card is in the crib or not can affect the score.%
 	(i.e. hand of 5\clubs\ 5\hearts\ 5\spades\ 5\diamonds\
 	with a cut of J\diamonds)
 	yields a score of 28.
+	% TODO: ^^^ Better example: flush?
 }
 %
 Just as crucially, there are small differences in scoring the crib as opposed to
