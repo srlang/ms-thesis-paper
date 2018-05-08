@@ -92,7 +92,7 @@ The above definitions refer to a hand's desirability.
 This can be thought of as an internal ranking of how likely a given strategy
 would be willing to choose a particular combination of cards.
 %
-This desirability score is then scaled to to lie in the range $[0, 1]$ with
+This desirability score is then scaled to lie in the range $[0, 1]$ with
 $1$ representing the best possibilities.
 %
 This scaling allows for possibilities which are ``almost as good'' to not be
@@ -160,8 +160,10 @@ $44$ remaining possible cut cards.
 %
 These cut cards must be considered separately in such a manner of
 evaluating ${46 \choose 2} \times 44 = 45540$ possibilities rather than
-simply looking at each of ${46 \choose 3} = 15180$ possibilities because
-whether or not the card is in the crib or not can affect the score.%
+simply looking at each of ${46 \choose 3} = 15180$ possibilities
+since position of the card in the crib or as the cut card can affect the score.%
+%because
+%whether or not the card is in the crib or not can affect the score.%
 \footnote{
 	For example, as per the right-jack (his nobs) rule,
 	a hand of 5\clubs\ 5\hearts\ 5\spades\ J\diamonds\ 
@@ -176,7 +178,7 @@ whether or not the card is in the crib or not can affect the score.%
 }
 %
 Just as crucially, there are small differences in scoring the crib as opposed to
-scoring the player's own hand that mean that previous evaluations results are
+scoring the player's own hand that mean that previous evaluations' results are
 not reusable.
 %
 For instance, the rule for gaining points from a flush are more lenient for
@@ -228,8 +230,8 @@ Thankfully, most of the framework for this rewrite had actually been developed
 previously as part of a mental exercise, so the loss in time for the rewrite was
 minimal and well worth the time saved in execution.
 %
-Furthermore, access to a high-performance server allowed for futher
-paralellization which cut the final run time down to approximately 5 and a half
+Furthermore, access to a high-performance server allowed for further
+parallelization which cut the final run time down to approximately 5 and a half
 days.
 %%%
 
