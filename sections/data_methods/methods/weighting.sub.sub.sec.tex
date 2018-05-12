@@ -16,8 +16,8 @@
 
 %%%
 For the purposes of this project,
-how well certain combinations of cards are played with different strategies
-is not explored.
+how well certain combinations of cards lend themselves to being played with 
+different strategies is not directly explored.
 %
 Instead, only the player's position in score-space affects the decision as to
 which strategies to play by.
@@ -46,12 +46,12 @@ $0 \le S_{i,j} \le 1\ \forall i,j$.
 %$\sum_{i=1}^{m} S_{i,j} = 1\ \forall j$
 %and $\sum_{j=1}^{n} S_{i,j} = 1\ \forall i$.
 %
-A value vector $P$ of length $n$ representing the total perceived value of a
+A value vector $p$ of length $n$ representing the total perceived value of a
 possible keep combination
 can then be computed by
-$P = w S$
-wherein $\argmax_{x}{P_x}$ can be thought of to be the most desired combination
-of cards and $\argmin_{x}{P_x}$ as the least.
+$p = w S$
+wherein $\argmax_{x}{p_x}$ can be thought of to be the most desired combination
+of cards and $\argmin_{x}{p_x}$ as the least.
 %
 These collective desirability metrics can be later used to determine which
 combination of cards to choose and which to toss.

@@ -13,18 +13,19 @@ A few basic behavioral strategies were coded for the agent to learn
 over the course of multiple simulated games.
 %
 These represented most of the basic factors which a player will consider when
-making their decision as to which cards to keep.
+making their decision as to which cards to keep
+as well as some that are not quite as useful.
 %
 These included:
 \begin{itemize}
-\item \texttt{hand\_max\_min}:
+\item \handmaxmin:
 	%
-	The hand(s) which has the maximum minimum possible score for the kept cards
+	The hand(s) which has the highest minimum possible score for the kept cards
 	will be more highly desired.
 	%
 	This is equivalent to choosing the hand with the largest guaranteed points.
 	%
-\item \texttt{hand\_max\_avg}:
+\item \handmaxavg:
 	%
 	The hand(s) with the maximum average points over all possible cut cards will
 	be the most highly desired.
@@ -32,7 +33,7 @@ These included:
 	This strategy is useful for trying to maximize the expected score of one's
 	own hand.
 	%
-\item \texttt{hand\_max\_med}:
+\item \handmaxmed:
 	%
 	The hand(s) with the maximum median points possible to score will be the most
 	highly desired.
@@ -40,23 +41,24 @@ These included:
 	%Similar to \texttt{hand\_max\_avg}, this strategy is useful when trying to
 	%maximize one's hand's expected score.
 	%
-\item \texttt{hand\_max\_poss}:
+\item \handmaxposs:
 	%
 	The hand(s) with the maximum possible score will be the most highly desired.
 	%
 	This strategy can be thought of as a Hail Mary choice for the player trying
 	to score as many points as possible, not taking into account its
-	relatively low likelihood.
+	low likelihood to become reality.
 	%
-\item \texttt{crib\_min\_avg}:
+\item \cribminavg:
 	%
-	The hand(s) with the minimum average amount of points scored in the crib is
+	The hand(s) whose tossed cards led to cribs with the lowest average amount
+	of points for the dealer is
 	the most highly desired.
 	%
 	This strategy would be a very defensive strategy typically used by the pone
 	to avoid giving points to the dealer.
 	%
-\item \texttt{pegging\_max\_avg\_gained}:
+\item \peggingmaxavggained:
 	%
 	The hand(s) with the maximum average points gained through pegging is the most
 	highly desired.
@@ -68,16 +70,12 @@ These included:
 		``peg out''
 	since it is unlikely that they will get a chance to count their hand at all.
 	%
-\item \texttt{pegging\_max\_med\_gained}:
+\item \peggingmaxmedgained:
 	%
 	The hand(s) with the maximum median points scored during play will be the most
 	highly desired.
 	%
-	This strategy is similar in nature to \peggingmaxavggained,
-	but uses a slightly different internal measure for ranking.
-	% TODO: ^ better explanation
-	%
-\item \texttt{pegging\_min\_avg\_given}:
+\item \peggingminavggiven:
 	%
 	The hand(s) with the minimum average points scored by the opposing player
 	will be the most highly desired.
@@ -200,10 +198,11 @@ This means that, altogether, there are
 	\approx
 	1.3921 \times {10}^{13}
 	% Google answer: 1.3920952e13
+	%684790
 \]
 possible combinations of cards that need to be evaluated in total to fully 
 understand the statistics
-of a cribbage game for each hand.
+of a cribbage game for every set of cards that can possibly be dealt.
 % TODO: wording of above needs to be better
 %%%
 
@@ -225,10 +224,6 @@ database.
 The same functionality, with the addition of file I/O,
 in the C program would take a relatively mere 14 days
 on that same machine.
-%
-Thankfully, most of the framework for this rewrite had actually been developed
-previously as part of a mental exercise, so the loss in time for the rewrite was
-minimal and well worth the time saved in execution.
 %
 Furthermore, access to a high-performance server allowed for further
 parallelization which cut the final run time down to approximately 5 and a half
@@ -261,7 +256,7 @@ and there were only 6 cards for indexing,
 the concatenation of the cards' digits in (keep,toss) order
 would create a number with at most twelve digits,
 with an absolute maximum value of 484950514647,
-well within the range of numbers addressable by an integer.\footnote{
+well within the range of numbers addressable by a 64-bit integer.\footnote{
 	Thanks to implementation,
 	the order of cards was guaranteed to be sorted within each tuple,
 	so each combination of cards was tracked and not permutation.
@@ -281,27 +276,21 @@ while still being guaranteeably unique.
 
 
 %%%
-% TODO: need to write something about how the pegging was recorded
 While the combinations of chosen and tossed scores could be evaluated before any
 games had actually been played,
 the hands' usefulness during the pegging portion of the round needed to be
 evaluated in semi real-time.
 %
-%A single pegging agent was programmed with heuristics gained from %reading
-%a cribbage strategy book.%
-%\cite{cribbage_strategy_guide}
 A single pegging agent was programmed with a simple one-ahead greedy heuristic:
 the card that gained the most points when played next was selected with ties
-broken by choosing the lower-valued card that reached that score.
-% TODO: implementation change: choose the higher-valued card to potentially
-%	avoid giving a go
+broken by choosing the higher-valued card that reached that score
+to also potentially help outmaneuver the opponent from reaching a count of 31.
 %
 This agent was then played against a copy of itself with randomly allocated
 cards and the results of that round were recorded for each agent to provide an
 initial knowledge base.
 %
 These results would then be queried by the agent during the choose phase of the
-game and contributed to at the end of the pegging phase.
-% TODO: define pegging and choosing phases
+game and contributed to at the end of the pegging phase as training progressed.
 %%%
 

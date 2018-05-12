@@ -45,8 +45,8 @@ values in $S$ were the highest in its column.
 % TODO: ^^^ check column/row, put in indices
 %
 This subset of strategies,
-carefully chosen to only include the outliers or top percentage of contributors
-to avoid resulting uniform weights,
+carefully chosen to only include the top percentage of contributors
+to avoid stagnant resulting weights,
 would then be adjusted by a percentage of itself according to the formula:
 \[
 	w_{i,new} = c w_{i,old}
@@ -61,14 +61,15 @@ states and are less likely to affect the final outcome of the game,
 they are modified less than their later counterparts.
 %
 This is accomplished by decaying the adjustment amount for each step taken
-backward along the visited path of states:
+backward along the visited path of states in manner similar to TD($\lambda$):
 \[
 	c_j = C \cdot (1 - d)^{T-j}
 \]
 where $j$ is the index along the path starting at 1,
 $C$ is a starting value of the adjustment constant,
 $T$ is the final step index,
-and $d$ is the rate of decay expressed as a ratio such that $0 < d < 1$.
+and $d$ is the rate of decay expressed as a ratio such that $0 < d < 1$
+\cite{tdgammon}.
 %
 In order to allow for closer losses to be less severely punished than worse
 losses and vice versa for wins,
@@ -97,40 +98,28 @@ Were this not the case and instead the highest weights were to be directly
 punished or rewarded instead,
 without looking at their position on the current hand,
 it is more likely that a single group of weights would simply cycle
-back and forth in value, never yielding control to other strategies.
-%%%
-
-%%%
-% TODO
-% How exploration steps worked
+back and forth in value,
+never allowing other strategies to be explored.
 %%%
 
 %%%
 The reinforcement training framework operated very simply.
 %
-Given an initialization weights file for each agent, a new agent would be
-created with those stored weights.
+A simple text file of weights can be loaded to initialize an agent.
 %
 These agents would then be placed into a game and played against each other.
 %
 After the game had been completed, the weights for each agent would be adjusted
 accordingly along the path which the agent took.
 %
-After a set number of epochs, the agent would save its weight-state to a
+After a set number of epochs, the agent would save its weights configuration to a
 checkpoint file.
 %
-This allowed not only for tracking of weight adjustments over time, but also
-allowed for the ability to more easily recover potential issues and for more
-promising states to be explored further by using a checkpoint as an
-initialization state on a subsequent training run.
-%
-This checkpointing system allowed agents to be mixed and matched together to
-allow different combinations to learn from one another.
+This allowed for the convenient benefit of being able to track how weights
+adjusted over the course of time.
 %%%
 
 %%%
-% TODO: mention randomized initializations
-%
 To facilitate an adequate rate of exploration of the search space,
 randomized initializations were used for each of the training games.
 %
@@ -158,8 +147,8 @@ situations of exceptional bad luck can be treated as an outlier situation.
 A further measure was taken to ensure adequate exploration.
 %
 Under normal conditions,
-cards were chosen by using the produced $p$ vector as a probability
-distribution.
+cards were selected by choosing the combination which had the highest value in
+the produced $p$ vector.
 %
 At any given point in a training game, however,
 there was a chance of randomly selecting which cards are played,
@@ -168,16 +157,13 @@ weights according to the formula:
 \[
 	e = k - \Var(w_{m,o,d})
 \]
-where $k$ is a constant around $\frac{1}{3}$ empirically chosen during the
+where $k$ is set at a constant $0.3$ empirically chosen during the
 development process.
 %
 This was implemented in order to ensure that situations in which there were
 more uniform weights had a higher chance of being explored
-whereas those with a higher variance were deemed to be varied enough to be
-exploratory in nature.
-%
-Furthermore, this acted as yet another barrier to the possibility of falling
-into the pitfall of stationary uniform weights.
+whereas those with a higher variance were deemed to be varied enough to
+have been previously trained.
 %%%
 
 %%%
@@ -201,7 +187,24 @@ according to ACC rules~\cite{ACC_rules}.
 After the match had completed,
 the winner would advance to the next round,
 training against another winner from the previous round.
-The process is
+%
+The process would be
 repeated until one agent is declared the ultimate winner.
+%%%
+
+%%%
+After the tournament structure was found to not provide any further benefits
+to the learning process,
+a set of additional experiments were performed to determine the limits of
+learning possible.
+%
+While these will be covered in more detail in \ref{sec:findings},
+these modifications include simple items such as learning rate or decay rate 
+adjustments
+as well as
+more complicated adjustments
+including using neighboring weights
+or punishing a loss less severely than a corresponding win is rewarded
+in addition to sanity checks by starting from pure strategies.
 %%%
 

@@ -3,7 +3,7 @@
 % Section on applying machine learning to
 %%%
 
-\subsection{Stochastic Games}
+\subsubsection*{Stochastic Games}
 
 %%%
 % TD- Gammon
@@ -41,9 +41,12 @@ the actual outcome of the game.
 
 %%%
 % TODO: vvv reword (Chelsea)
-Since later outcomes were expected to be more accurate whereas earlier
-predictions were allowed to be more inaccurate as more resulting states were
-still reachable,
+%Since later outcomes were expected to be more accurate whereas earlier
+%predictions were allowed to be more inaccurate as more resulting states were
+%still reachable,
+Since predictions made later in the course of the game were expected to be more
+accurate than those made earlier
+since earlier states could lead to a wider range of resulting states,
 a system of diminished rewards was implemented called
 TD($\lambda$) based on the idea of temporal difference.
 %
@@ -113,12 +116,12 @@ After the first few thousand training games,
 the system was capable of playing elementary backgammon,
 recognizing a few basic strategies for decent play.
 %
-This was determined to be the result of linear combinations of features which
+This was determined to be the result of simple combinations of features which
 could be quickly evaluated by a linear function of the raw board position.
 %
 More complicated, context-sensitive strategies would develop later in training
 and are credited as being the result of the ability of neural networks to adapt
-to
+to nonlinear features.
 %%%
 
 
