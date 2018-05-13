@@ -19,8 +19,8 @@
 Round 1 consisted of 32 agents with randomly allocated starting weights
 paired off against each other.
 %
-These two agents played one million games against each other,
-each starting with a random score,
+Each pair of agents played one million games against each other,
+each game starting at a random score location,
 learning and reinforcing their weight vectors after each game.
 %%%
 
@@ -125,8 +125,8 @@ Ironically,
 the agent may play against its own best wishes by minimizing the average return
 of the crib.
 %
-This is speculated to be a result of alignment of the results between
-\cribminavg\ and more reasonable \handmaxmin\
+This is speculated to be a result of coincidental alignment of the results between
+\cribminavg\ and more the reasonable \handmaxmin\
 or \handmaxavg.
 %%%
 
@@ -152,13 +152,9 @@ are cyclically placed in a role of strongest weight,
 generating the fuzz seen now.
 %%%
 
-
 %%%
-% TODO: Similarity/differences between dealer and pone
-%%%
-
-%%%
-By comparing the pone's strategy graphs to those of the dealer's,
+By comparing the pone's strategy graphs (Figure~\ref{fig_r1-strats-pone})
+to those of the dealer's (Figure~\ref{fig_r1-strats}),
 a few patterns emerge.
 %
 At first glance,
@@ -230,10 +226,9 @@ play.
 
 %%%
 % discuss how it performed worse than random (got stonked)
-% TODO(Chelsea): remove personal feelings
-While it is
-aggravating that the agent learns to over-trust a single strategy,
-it is simultaneously reassuring that general trends in play are detected.
+It is clear from the strategy graphs that,
+while perhaps strategies are being over-trusted,
+basic game trends are clearly being learned by the agent.
 %
 However, perhaps the only metric which matters from a learning perspective is
 the agent's performance.
@@ -308,7 +303,7 @@ deterministic and non-adaptive in their weight assignments.
 %
 Additionally,
 a random agent was played against its future iterations in the same fashion,
-with the similar results depicted in Table~\ref{tab_r1-spreads_b}.
+with the similar results, not shown. % depicted in Table~\ref{tab_r1-spreads_b}.
 %%%
 
 
@@ -332,23 +327,31 @@ with the similar results depicted in Table~\ref{tab_r1-spreads_b}.
 %%%
 
 %%%
-As a result of the over-aggressive learning of single strategies,
+As a result of the presumed over-aggressive learning of single strategies,
 some learning parameters were altered for Round 2.
 %
 Since it was estimated to be the primary reason for the learning behavior,
-the first parameter tweak made was to decrease the learning rate drastically.
+the first parameter adjustment made was to decrease the learning rate drastically.
 %
 The learning rate was decreased to one fifth of what was used in Round 1.
 %
 The other major parameter alteration was to make the exploration rate a constant
 and not dependent upon the variance of the weights.
 %
-Because of the stipulation on the variance previously explained in the Methods
-section,
+%Because of the stipulation on the variance previously explained in 
+%Section~\ref{sec:dm},
+% TODO: check which way we want to go with this
+%	option 1: remove from methods and explain briefly here
+During Round 1,
+the exploration rate was defined as $e =: 0.3 - \Var{w_{p,o,d}}$
+in order to allow more trained states to be less affected by randomized
+exploration.
+%
+As a result,
 the most strongly biased weight locations would only allow for exploration
 even more rarely than before.
 %
-Although only producing a decrease from about a 30\% chance to 18\%,
+Although only producing a decrease from a 30\% chance to 18\%,
 this would still result in a smaller likelihood of exploring in the current 
 state,
 potentially further cementing of the dominant strategy in its position.
@@ -391,7 +394,7 @@ updating their parameters to combat each other.
 %%%
 
 %%%
-Since the agents were diagnosed with learning how to outplay each other
+Since the agents were assumed to be learning how to outplay each other
 but not the game,
 the next phase would attempt to determine the extent of this tailored learning.
 %

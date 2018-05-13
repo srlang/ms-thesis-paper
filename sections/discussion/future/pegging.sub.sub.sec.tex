@@ -98,7 +98,7 @@ play against an opponent.
 Before the first round of training,
 however,
 there was relatively little pre-population of these records done:
-roughly one hundred thousand randomly dealt cards were played against each
+roughly one hundred thousand randomly dealt hands were played against each
 other.
 %
 As a result of the small sample size,
@@ -118,5 +118,16 @@ misrepresented during the calculation,
 allowing for the possibility of a philosophically unfair
 punishment or reward for what would amount to a guess by the
 pegging-based strategies.
+%
+It also means that the information received by the agent during the weighting
+operation would not be static as other strategies were and thus could not be as
+reliably trusted for accuracy.
+%
+While
+this was counteracted by using records from a first round training session in 
+all subsequent training sessions,
+the questions remain whether this was enough
+and how much the variability in the data provided by the pegging strategies
+affected learning.
 %%%
 

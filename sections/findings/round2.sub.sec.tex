@@ -35,9 +35,9 @@ of play.
 The most notable is how quickly policies converge to a similar state.
 %
 While the strategy graphs for the less trained agents are less ``crisp''
-in their appearance thanks to their smaller levels of self-certainty,
+in their appearance thanks to their slower learning rates,
 the patterns of which policy to mainly follow at which times
-are quick to form.
+are still quick to form.
 %
 % TODO: vvv do we want to mention this at all? what purpose does it serve?
 This is useful because it allows for the possibility of running future
@@ -75,7 +75,8 @@ and it must be pointed out to be speculation on the part of the author.
 It may be the case that with enough training the sine wave will be at full
 amplitude in earlier positions.
 %
-A notable reason for the lack of clarity at the moment is the weight adjustment
+A reminder must be made that
+a notable reason for the lack of clarity at the moment is the weight adjustment
 mechanism for training.
 %
 The training system pre-supposes that the earlier positions are of less
