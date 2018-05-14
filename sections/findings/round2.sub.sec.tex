@@ -1,9 +1,9 @@
 % Round 2 findings section
 
-\subsection{Round 2}
+\subsubsection{Round 2}
 \label{sec:findings-r2}
 
-\subsubsection*{Performance}
+\paragraph*{Performance}
 \label{sec:findings-r2-perf}
 
 %%%
@@ -16,7 +16,7 @@
 
 
 
-\subsubsection*{Learning Process and Results}
+\paragraph*{Learning Process and Results}
 \label{sec:findings-r2-results}
 
 %%%
@@ -83,9 +83,9 @@ The training system pre-supposes that the earlier positions are of less
 importance in a game and adjusts them with a lower priority than later positions
 in the game.
 %
-While two million games is speculated to be enough to counteract this
-adjustment,
-there is no evidence to either support or disprove this conclusion.
+It may indeed be the case that two million games is still not enough to
+counteract the decay of temporal difference learning with the learning
+rate used.
 %%%
 
 
@@ -101,7 +101,7 @@ bracket,
 a vast degree of similarity can be found.
 %
 In both brackets,
-the behavioral trends are learned.
+the same behavioral trends are learned.
 %
 However,
 there does exist a small amount of difference between the two
@@ -135,7 +135,7 @@ there is less of a bias towards those strategies which are initially winners.
 In analyzing the evolution of the \handmaxavg\ strategy in both the winner's
 and loser's brackets,
 it can clearly be seen that the general trend of behavior forms
-quickly,
+relatively quickly,
 i.e. after the first half million games played.
 %
 Beyond that amount of games,

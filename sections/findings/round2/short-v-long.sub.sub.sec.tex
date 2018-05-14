@@ -1,10 +1,9 @@
 
-\subsubsection*{Potential Issues}
+\paragraph*{Potential Issues}
 \label{sec:findings-r2-potentialissues}
 
 %%%
-At this point,
-the comparable performance to random weights must be addressed as a potential
+The comparable performance to random weights must be addressed as a potential
 error in implementation rather than in training.
 %
 Since all methods of training so far have resulted in very similar policies
@@ -17,14 +16,14 @@ during the review tournaments.
 %%%
 
 
-\paragraph*{Overfitting}
+\subparagraph*{Overfitting}
 
 %%%
 % Overfitting
 The first item to consider as the source of the discrepancy between the
 observation that a policy is learned,
 but its performance is abysmal
-is that the network is overfitting to the problem.
+is that the weights table is overfitting to the problem.
 %
 This would have been especially true of the first round where learning rates
 were much higher.
@@ -42,89 +41,90 @@ More importantly,
 a definitive curve would be present in the tournament graphs as performance
 would increase before dropping.
 %
-As can be seen in Figure~\ref{whatever},
+As can be seen in Figures~\ref{fig:r2-spreads-winner}
+and~\ref{fig:r2-spreads-loser},
 this is not the case
 as performance is not apparently linked to training in any way.
 %
-Therefore, it can be safely concluded that overfitting is not the reason
+Therefore, it would seem safe to conclude that overfitting is not the reason
 for the poor resulting performance.
 %%%
 
-\paragraph*{Strictness of Policy Following}
+%%%\paragraph*{Strictness of Policy Following}
+%%%
+%%%%%%
+%%%If overfitting is not occurring,
+%%%then the next question to ask is if there are implementation differences which
+%%%have led to these discrepancies.
+%%%%
+%%%The training and testing phases use slightly different implementations of 
+%%%card choosing algorithms.
+%%%%
+%%%In training,
+%%%an exploration rate is used to give the agent a chance of choosing cards at
+%%%random with $p$ used as a probability distribution
+%%%whereas the testing phase does not.
+%%%%
+%%%This random percentage was added back in for testing and the results can be seen
+%%%in Figure~\ref{whichever:a}.
+%%%%
+%%%As can be seen,
+%%%the point spreads still display the same randomness and lack of pattern,
+%%%indicating that the random exploration is not crucial to performance.
+%%%%%%
+%%%
+%%%%%%
+%%%In addition to the chance of random exploration,
+%%%it was falsely assumed (see Section~\ref{sec:findings-expts-rand}) that
+%%%the agent also uses the produced \textit{desirability} vector $p$
+%%%as a probability distribution to select a card combination with a probability.
+%%%%
+%%%The use of this probability distribution is the same between both training 
+%%%and testing phases.
+%%%%
+%%%However,
+%%%it can be speculated that since the introduction of randomness did not worsen
+%%%the results of testing,
+%%%it may be the case that the policy needs to be followed more strictly.
+%%%%
+%%%Since a weights vector is multiplied by a desirability matrix,
+%%%the resulting probability distribution vector may not always be as
+%%%varying as the weights vector itself.
+%%%%
+%%%Therefore,
+%%%while a clear winner may be discernible as the maximum in the probability
+%%%distribution,
+%%%the actual probability of selecting that value could be very low in comparison
+%%%to selecting any of the remainder.
+%%%%
+%%%As a result,
+%%%a strict policy following agent was instead tested in which the maximum was
+%%%selected from the probability distribution without exploration.
+%%%%
+%%%The results,
+%%%found in Figure~\ref{whichever:b},
+%%%indicate that this too was not an issue,
+%%%since as much variance in play is still present as when using a more exploratory
+%%%implementation.
+%%%%
+%%%Therefore,
+%%%even though implementation differences exist between the training and testing
+%%%phases,
+%%%they are not the reasons for the poor testing performance.
+%%%%
+%%%Unfortunately,
+%%%the mistake explained in \ref{sec:findings-expts-rand} was not recognized
+%%%at this time.
+%%%%
+%%%The only possible explanation for this lack of recognition was mistaking the
+%%%unaltered code base for one in which the change had been made.
+%%%%%%
+
+
+\subparagraph*{Scale of Play}
 
 %%%
-If overfitting is not occurring,
-then the next question to ask is if there are implementation differences which
-have led to these discrepancies.
-%
-The training and testing phases use slightly different implementations of 
-card choosing algorithms.
-%
-In training,
-an exploration rate is used to give the agent a chance of choosing cards at
-random with $p$ used as a probability distribution
-whereas the testing phase does not.
-%
-This random percentage was added back in for testing and the results can be seen
-in Figure~\ref{whichever:a}.
-%
-As can be seen,
-the point spreads still display the same randomness and lack of pattern,
-indicating that the random exploration is not crucial to performance.
-%%%
-
-%%%
-In addition to the chance of random exploration,
-it was falsely assumed (see section \ref{sec:findings-expts-rand}) that
-the agent also uses the produced \textit{desirability} vector $p$
-as a probability distribution to select a card combination with a probability.
-%
-The use of this probability distribution is the same between both training 
-and testing phases.
-%
-However,
-it can be speculated that since the introduction of randomness did not worsen
-the results of testing,
-it may be the case that the policy needs to be followed more strictly.
-%
-Since a weights vector is multiplied by a desirability matrix,
-the resulting probability distribution vector may not always be as
-varying as the weights vector itself.
-%
-Therefore,
-while a clear winner may be discernible as the maximum in the probability
-distribution,
-the actual probability of selecting that value could be very low in comparison
-to selecting any of the remainder.
-%
-As a result,
-a strict policy following agent was instead tested in which the maximum was
-selected from the probability distribution without exploration.
-%
-The results,
-found in Figure~\ref{whichever:b},
-indicate that this too was not an issue,
-since as much variance in play is still present as when using a more exploratory
-implementation.
-%
-Therefore,
-even though implementation differences exist between the training and testing
-phases,
-they are not the reasons for the poor testing performance.
-%
-Unfortunately,
-the mistake explained in \ref{sec:findings-expts-rand} was not recognized
-at this time.
-%
-The only possible explanation for this lack of recognition was mistaking the
-unaltered code base for one in which the change had been made.
-%%%
-
-
-\paragraph*{Scale of Play}
-
-%%%
-The final conjecture as to the reason for which the agent learns a policy,
+The prevailing theory as to the reason for which the agent learns a policy,
 but following that policy does not yield positive results in performance,
 is the issue of scale.
 %
@@ -171,7 +171,7 @@ the winner of the game is no more predictable than a truly random coin toss.
 %%%
 When the scale is increased to one thousand games,
 a slight pattern begins to emerge
-when visualized in Figure~\ref{fig:r2-time-series-1000}
+when visualized in Figure~\ref{fig:r2-time-series-1000}.
 %
 Whereas the majority of the graph remains highly varying and unpatterned,
 the first few games follow a common pattern.
@@ -182,7 +182,7 @@ consistently beaten by the final agent.
 %%%
 
 %%%
-Although fewer matches are played to accommodate the increased time needed to
+Although fewer matches are played to compensate for the increased time needed to
 play the increased number of games,
 the same pattern present in the thousand-game scale is visible in the
 ten thousand-game matches.
@@ -192,8 +192,8 @@ the least \learned\ agents perform the poorest against the final
 \learned\ agent.
 %
 % TODO(chelsea): what?
-Play is approximately evenly matched when between agents
-when the opposing agent has been trained for 300,000 to 700,000 games.
+Play is approximately evenly matched between the fully trained agent
+and its checkpoints after training for 300,000 to 700,000 games.
 %
 Following these matches,
 the agent begins to, again, win more consistently when more training is done.
@@ -217,7 +217,7 @@ Instead,
 the shape of the curve implies that,
 since the random agent performs consistently better than the trained agent,
 the learning process is not learning the game so much as how to outplay its
-opponent.
+opponent in some corner case that does not reappear during testing.
 %
 This conclusion is supported by the observation that the agents with limited
 training are steadfastly outplayed.
@@ -239,12 +239,13 @@ is an indicator of overfitting in the middle stages.
 Whereas the final agent is able to play well against these agents,
 they themselves have decreased in performance capability.
 %
-This is speculated to be a result of learning how to outplay its opposing agent
-rather than an understanding of the game.
-%
-This is contingent upon the results of the round-robin play though,
-so no conclusions can be drawn at this time.
-% TODO ^^^ reaffirm when round-robin play is completed
+This can be speculated to be a result of learning how to outplay its opposing agent
+rather than an understanding of the game,
+but similar performance when the opposing agent
+has fixed random weights\textemdash
+as can be seen in comparisons between Figures
+\ref{fig:r2-spreads-winner} and \ref{fig:r2-spreads-random}\textemdash
+counters this postulate.
 %%%
 
 %%%

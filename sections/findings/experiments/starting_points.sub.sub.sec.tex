@@ -43,8 +43,8 @@ Table~\ref{tab:expts-starts-human}. % TODO: ref more tables if created
 
 %%%
 Table~\ref{tab:expts-starts-human} shows that the trained agent chooses the same
-set of cards only marginally more often than an agent with randomly allocated
-weights.
+set of cards as the human users only marginally more often than an agent with 
+randomly allocated weights.
 %
 In approximately half of the cases,
 the trained agent chooses the same answer as most humans;
@@ -72,7 +72,8 @@ responses.
 As a result of this finding,
 each of these strategies were used as initial weights to the learning process
 in order to determine if the agent could learn to fine-tune a policy starting
-from a reasonable assertion of good game-play.
+from a reasonable assertion of good game-play
+as well as learn to discount demonstrably poor strategies.
 %
 Since the update mechanism for weights relies upon renormalization of a vector
 which as been rewarded or punished,

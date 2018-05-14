@@ -53,14 +53,14 @@ As expected,
 the limitation of maximum attainable value did indeed force the agent to learn
 multiple applicable strategies for each score location.
 %
-As can be seen in Figure~\ref{fig:r2-reg},
-the \handmaxmin\ and \handmaxavg\ strategies are now equally represented across
-the winning triangle area.
+As can be seen in Figure~\ref{fig:reg-strats-0.50},
+the \handmaxmin\ and \handmaxavg\ strategies are now 
+more or less equally represented across the winning triangle area.
 %
 This is demonstrated by the monotone gray seen in these locations.
 %
 Rather than each strategy specializing to its own dominant location,
-the territory is shared between the two most most applicable strategies.
+the territory is shared between the two most applicable strategies.
 %
 Therefore,
 the regularization does indeed prevent the dominance of a single strategy
@@ -81,22 +81,30 @@ the gray shape begins to specialize more and begins to show resemblance to the
 final strategy graphs obtained without regularization.
 %%%
 
-%%%%
-%Interestingly,
-%even with this regularization,
-%small \textit{islands} of
-%\cribminavg, \peggingmaxavggained, and \peggingminavggiven
-%are seen to still exist in the \handmaxmin/\handmaxavg-dominated territory.
-%%
-%This indicates that regularization is not capable of addressing the situations
-%in which single score locations may benefit from
-%%%%
-
 \input{sections/findings/experiments/regularization/tourny-regs.fig.tex}
 
 %%%
 Furthermore,
 as can be seen in Figure~\ref{fig:reg-tournies},
-% TODO: analysis of regularization rate tournaments
+only a regularization rate of $r = 0.80$ (Figure~\ref{fig:reg-tournies-0.80}
+can be said to be similar to a loss curve.
+%
+With rates of $r=0.50$ (Figure~\ref{fig:reg-tournies-0.50},
+$r = 0.60$ (Figure~\ref{fig:reg-tournies-0.60}),
+and $r = 0.70$ (Figure~\ref{fig:reg-tournies-0.70}),
+the tournament point spread curves show that a trained agent plays on par with
+its recent checkpoints,
+but consistently worse than random weights.
+%
+The endpoints of the point spread curves using $r = 0.80$
+show a decrease from better-than-random play for the trained agent
+to more-or-less on-par performance with its later checkpoints,
+indicative of an increase in performance as training progresses.
+%
+However,
+the increases and decreases of performance along the time axis
+the wide range of spreads present and the sinusoidal nature of intermediate
+checkpoints' spreads leads to the conjecture that, perhaps,
+performance is not quite as predictable as that.
 %%%
 

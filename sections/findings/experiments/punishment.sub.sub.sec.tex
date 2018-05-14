@@ -9,7 +9,7 @@ it followed that punishing losing states for something beyond the agent's
 control was slightly unfair.
 %
 Furthermore,
-it was postulated that since the punishment mechanism really functioned to cycle
+it was postulated that since the punishment mechanism in effect cycled
 strategies
 and that there was a possibility that an occasionally winning strategy was often
 outweighed by the tendency to lose,
@@ -20,6 +20,12 @@ As such,
 the update step for modifying the weights was adjusted slightly
 so that the constant adjustment factor was significantly smaller for losing
 games than it was for winning games.
+%
+Instead of using the adjustment constant of
+$C = s \cdot (\text{MyScore} - \text{OppScore})$,
+for both winning and losing agents,
+the losing agent's adjustment factor was defined as
+$C = \frac{1}{4} s \cdot (\text{MyScore} - \text{OppScore})$.
 %%%
 
 \paragraph*{Results}
