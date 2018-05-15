@@ -29,6 +29,25 @@ parameters:
 Additionally,
 the pegging records database was standardized across all experiments
 as one selected from those resulting from the first round of training.
+%
+As a final note,
+the mechanism for choosing a combination of cards using the \p\ vector 
+during the tournament was altered slightly.
+%
+As previously mentioned,
+when making an exploration step,
+instead of using \p\ as a probability distribution,
+the choice was made at uniform random,
+in a manner true to $\epsilon$-greedy exploration~\cite{rl_book}.
+%
+This was done for the sake of simplicity.
+%
+Furthermore,
+the difference in choosing mechanisms demonstrably
+made no noticeable difference in the learning behavior,
+perhaps as a result of \p\ being near-uniformly random for untrained states
+and in essence a choice between three or four most desirable choices when
+states had been visited.
 %%%
 
 %\input{sections/findings/experiments/round_robin.sub.sub.sec.tex}

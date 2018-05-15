@@ -151,8 +151,10 @@ cards were selected by choosing the combination which had the highest value in
 the produced $p$ vector.
 %
 At any given point in a training game, however,
-there was a chance of randomly selecting which cards are played,
-with the percent chance $e$ of random choice related to the variance of the 
+there was a chance of selecting which cards are played
+by random by using $p$ as a probability distribution.
+%
+This chance $e$ of random choice was related to the variance of the 
 weights according to the formula:
 \[
 	e = k - \Var(w_{m,o,d})
