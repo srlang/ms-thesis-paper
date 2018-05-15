@@ -22,7 +22,7 @@ to cribbage~\cite{roconnor_cs486}.
 %%%
 
 %%%
-In his thesis,
+In his senior thesis,
 Philip Martin set out to find if the player which begins as the dealer
 had any statistical advantage in winning
 \cite{cribbage_optimal_ev}.
@@ -117,5 +117,81 @@ the limitation was imposed that the suit of a card would not be considered,
 sacrificing a small degree of accuracy in calculations to vastly simplify the
 search space.
 % TODO: finish discussing adaptive_cribbage
+%
+For hand dealt,
+the evolutionary algorithm attempted to learn a set of weights for choosing
+which cards to keep and which to throw into the crib,
+in order to optimize its own hand.
+%
+The choices made were contrasted against optimal possible choices for that hand
+when including the cut card in order to determine fitness
+and weights were updated if the resulting hand scored below a threshold
+percentage of optimal.
+%
+While initial results were positive and learning occurred alongside an increase
+in points obtained by the agents,
+performance eventually returned to levels on par with the initial randomized
+weights.
+%
+This was because values associated with each card converged until suboptimal
+behavior was reintroduced.
+%%%
+
+%%%
+Additionally,
+the authors attempted also to use a co-evolutionary strategy in which
+two agents would learn to adjust their weights for each hand when playing each
+other by using the opponent's score as comparison for weights adjustment.
+%
+This proved to be detrimental to agent performance when different hands were
+dealt to each competing agent
+as a result of the fact that one agent must always update its weights
+as the loser
+and because losing may be unfair since the values of hands can vary widely.
+%
+However,
+when the agents were trained by using the same set of cards,
+results were far more positive since the losing agent was always challenged to
+improve on its present choice in a fair manner.
+%%%
+
+%%%
+The paper continued by prompting the evolutionary agent to learn a different set
+of weights for the hand
+when playing as either the dealer or as the pone.
+%
+As a demonstration,
+a single set of dealt cards was set to the task
+and different sets of weights were learned for each position.
+%%%
+
+%%%
+As a final experiment,
+the trained agents were played against a commercially available cribbage-playing
+program on various difficulty setting levels.
+%
+To supplement the developed card-choosing agent,
+a simple heuristic was included to play the pegging portion of the game.
+%
+This conglomerate agent was able to outperform the opponent program
+easily on its `easy' difficulty.
+%
+The matches were more evenly matched between the agent and the program on
+its `medium' difficulty,
+narrowly winning three of five games.
+%
+The `hard' and `harder' difficulties proved too much for the simple pegging
+heuristic
+and the agent lost all five games.
+%%%
+
+%%%
+Thus,
+the authors have demonstrated that an agent can be made to learn how to choose a
+combination of cards well using evolutionary methods.
+%
+Furthermore,
+they have demonstrated that the agent could be trained to recognize differences
+in play present when playing as the dealer or as the pone.
 %%%
 
