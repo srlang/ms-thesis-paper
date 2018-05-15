@@ -38,6 +38,14 @@
 \newcommand{\Policies}{\mathcal{P}}
 \newcommand{\policy}{\pi}
 
+% p-vector simplicity TODO: sed *.tex to make happen in all files later
+% # BSD sed b/c mac
+% sed -i '' -e 's#\$p\$#\\p\\#g'
+% similar for S & w
+\newcommand{\p}{$\hat{p}$}
+\newcommand{\S}{$\mathbf{S}$}
+\newcommand{\w}{$\hat{w}$}
+
 % Allow for line-breaking of true-type fonts on underscores
 %	see: https://tex.stackexchange.com/questions/315369/how-to-deal-with-bad-line-wrapping-of-texttt
 \newcommand*\ttwrap[1]{\texttt{\expandafter\dottvar\detokenize{#1}\relax}}
