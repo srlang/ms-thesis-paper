@@ -7,12 +7,46 @@
 \label{sec:findings-r2-perf}
 
 %%%
-% Discussion of performance
+% TODO: Discussion of performance
+%%%
+
+%%%
+Judging by the lack of pattern found in
+Figures~\ref{fig:r2-spreads-winner},
+\ref{fig:r2-spreads-loser},
+and~\ref{fig:r2-spreads-random},
+there is no significant performance increase to be found from Round 2.
+%
+If learning had occurred,
+Figures~\ref{fig:r2-spreads-winner-a},
+\ref{fig:r2-spreads-loser-a},
+and~\ref{fig:r2-spreads-random-a}
+would take on the form of a decreasing curve,
+gradually approaching zero,
+while Figures~\ref{fig:r2-spreads-winner-b},
+\ref{fig:r2-spreads-loser-a},
+and~\ref{fig:r2-spreads-random-a}
+would be their mirror across the x-axis.
+%
+Figure~\ref{fig:r2-spreads-winner} alone
+would indicate that an agent trained for one million games plays on par with
+one trained for two million games.
+%
+On its own,
+this would indicate that performance had reached a peak and saturated.
+%
+However,
+the similarity to Figure~\ref{fig:r2-spreads-loser}
+and even Figure~\ref{fig:r2-spreads-random}
+show that neither bracket learned to perform better than previous iterations.
 %%%
 
 \input{sections/findings/round2/spreads_winner.fig.tex}
 
 \input{sections/findings/round2/spreads_loser.fig.tex}
+
+% TODO: vvv include
+%\input{sections/findings/round2/spreads_random.fig.tex}
 
 
 
