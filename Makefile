@@ -1,6 +1,6 @@
 # Sean R. Lang
 
-.PHONY: all cleanup submission sections secs TODO todo used_cites force push
+.PHONY: all cleanup submission sections secs TODO todo used_cites force push check
 
 all: paper submission
 
@@ -8,6 +8,11 @@ submission: SeanLang_MS_thesis.pdf
 
 SeanLang_MS_thesis.pdf: paper.pdf
 	@cp -v $^ $@
+
+check:
+	# just makes sure that all stuff compiles in LaTeX without taking the full
+	# time to actually run all runs which takes a long enough time
+	pdflatex paper.tex
 
 force:
 	touch paper.tex
@@ -55,9 +60,10 @@ sections:
 	@cat paper.tex | grep section
 
 used_cites: paper.tex\
-		sections/*.sec.tex\
-		sections/subsections/*.sub.sec.tex\
-		sections/subsections/subsubsections/*.sub.sub.sec.tex
+		sections/*.tex\
+		sections/*/*.tex\
+		sections/*/*/*.tex\
+		sections/*/*/*/*.tex
 	@grep -oh "cite{.*}" $^ | awk '{print $1}' | sort | uniq
 
 todo: TODO
