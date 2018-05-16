@@ -5,7 +5,7 @@
 \label{alg:mces}
 
 Initialize for all $s \in \States, a \in \Actions(s)$:
-\begin{itemize}[noitemsep]
+\begin{itemize}[noitemsep,topsep=0pt]
 	\item $Q(s,a) \gets$ arbitrary
 	\item $\policy(s) \gets$ arbitrary
 	\item $\textit{Returns}(s,a) \gets$ empty list
@@ -13,18 +13,18 @@ Initialize for all $s \in \States, a \in \Actions(s)$:
 
 
 Repeat forever:
-\begin{itemize}[noitemsep]
+\begin{itemize}[noitemsep,topsep=0pt]
 	\item Choose $S_0 \in \States$ and $A_0 \in \Actions(S_0)$
 		such that all pairs have probability $> 0$
 	\item Generate an episode starting from $S_0,A_0$, following $\policy$
 	\item For each pair $s,a$ appearing in the episode:
-		\begin{enumerate}[noitemsep]
+		\begin{enumerate}[noitemsep,topsep=0pt]
 		\item $G \gets$ return following the first occurrence of $s,a$
 		\item Append $G$ to $\textit{Returns}(s,a)$
 		\item $Q(s,a) \gets \text{average}(\textit{Returns}(s,a))$
 		\end{enumerate}
 	\item For each $s$ in the episode:
-		\begin{itemize}[noitemsep]
+		\begin{itemize}[noitemsep,topsep=0pt]
 			\item $\policy(s) \gets \argmax_a Q(s,a)$
 		\end{itemize}
 \end{itemize}
