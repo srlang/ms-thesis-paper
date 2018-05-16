@@ -28,10 +28,17 @@
 						}$
 
 				\If {$\textit{old-action} \neq \policy(s)$}
-					\State $\textit{policy-stable} \gets \textit{true}$
+					\State $\textit{policy-stable} \gets \textit{false}$
 				\EndIf
 
 			\EndFor
+
+			\If {$\textit{old-action} \neq \policy(s)$}
+				\State \Return $V \approx v_*$
+					and $\policy \approx \policy_*$
+			\Else
+				\State Go to Step 2.
+			\EndIf
 		\end{algorithmic}
 
 \end{enumerate}

@@ -1,0 +1,40 @@
+% Value iteration algorithm
+
+\begin{algorithm}
+\caption{Value Iteration}
+\label{alg:valueiter}
+
+\begin{algorithmic}[0]
+
+	\Require $V$ initialized arbitrarily
+		(e.g. $V(s) = 0 \ \forall s \in \States$), \\
+		$\theta$ (some small number)
+
+	\Repeat
+
+		\State $\Delta \gets 0$
+
+		\ForAll {$something$}
+
+			\State $v \gets V(s)$
+
+			\State $V(s) \gets
+				\max_a \sum_{s',r} {
+					p(s',r|s,a)\left[ r + \gamma V(s') \right]
+				}$
+
+			\State $\Delta \gets \max(\Delta, |v-V(s)|)$
+
+		\EndFor
+
+	\Until $\Delta < \theta$
+
+	\State \Return Deterministic policy $\policy \approx \policy_*$
+		such that \\
+		$\policy(s) = \argmax_a \sum_{s',r} {
+					p(s',r|s,a)\left[ r + \gamma V(s') \right]
+				}$
+
+\end{algorithmic}
+
+\end{algorithm}
