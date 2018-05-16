@@ -79,6 +79,13 @@ between the players' scores according to the formula:
 	C = s \cdot \left({MyScore} - {OppScore}\right) 
 \]
 where $s$ is a scaling factor analogous to a learning rate parameter.
+%
+This scaling factor remains constant throughout training
+and does not decrease as it would in something like gradient descent.
+%
+This is because all games are equally important,
+so a loss using strategy $i$ during game $x$ is just as important as
+it would be during game $y$.
 %%%
 
 %%%
