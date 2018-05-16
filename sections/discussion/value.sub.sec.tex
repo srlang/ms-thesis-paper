@@ -3,21 +3,28 @@
 
 % TODO: value iteration or value improvement?
 
-\subsection{Value Improvement vs. Policy Improvement}
+\subsection{Policy Iteration vs. Value Iteration}
 \label{sec:disc-value}
 
 %%%
-This thesis focused on an attempt to use policy improvement to create an optimal
-cribbage-playing agent and to recover the strategy weights used to in turn
+This thesis focused on an attempt to use policy iteration
+in order to develop a well-playing
+cribbage agent capable of weighing different strategies
+with the intention of using these learned weights to 
+and to recover the strategy weights used to in turn
 improve the play of the author.
 %
 In the primary objective of evolving a cribbage agent to a good strategy,
 despite the setbacks of poor performance on a per-game level,
-the agent did remarkably well.
+the agent did remarkably well
+by removing irrelevant strategies
+such as \handmaxmed\ and \peggingmaxmedgained\ 
+and emphasizing more useful strategies
+like \handmaxavg\ and \handmaxmin.
 %
-As has been discussed,
-the agent learns a very good set of guidelines as to how a position should
-be played in the majority of situations.
+%As has been discussed,
+%the agent learns a decent set of guidelines as to how a position should
+%be played in situations where the agent is winning the game.
 % TODO: ensure performance/strategies have been discussed
 %%%
 
@@ -31,7 +38,7 @@ was greatly underestimated.
 %
 However, % TODO: conjunctive adverb use
 to include the knowledge of which cards are known into the policy decision
-would have increased the dimensionality of the search space from a relatively
+would have increased the dimensionality of the search space from the relatively
 small three-dimensional problem tackled to a problem of nine dimensions since
 all dealt cards would need to be considered.
 %
@@ -55,7 +62,7 @@ an agent could determine which set of cards would likely place the agent in the
 most optimal resulting position,
 developing its own policy.
 %
-This value improvement would allow for a more adaptive agent and thus more
+This value iteration should allow for a more adaptive agent and thus more
 optimal gameplay,
 leading to an agent that would win more consistently.
 %%%
