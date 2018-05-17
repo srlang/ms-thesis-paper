@@ -7,14 +7,14 @@
 \begin{algorithmic}[0]
 
 	\Require $V$ initialized arbitrarily
-		(e.g. $V(s) = 0 \ \forall s \in \States$), \\
+		(e.g. $V(s) = 0 \ \forall s \in \States$), %\\
 		$\theta$ (some small number)
 
 	\Repeat
 
 		\State $\Delta \gets 0$
 
-		\ForAll {$something$}
+		\ForAll {$s \in \States$}
 
 			\State $v \gets V(s)$
 
@@ -29,7 +29,7 @@
 
 	\Until $\Delta < \theta$
 
-	\State \Return Deterministic policy $\policy \approx \policy_*$
+	\State \Return Deterministic policy $\policy \approx \policy_*$,
 		such that \\
 		$\policy(s) = \argmax_a \sum_{s',r} {
 					p(s',r|s,a)\left[ r + \gamma V(s') \right]
