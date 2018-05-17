@@ -6,7 +6,7 @@
 
 \begin{enumerate}[topsep=0pt]
 
-	\item Initialization \\
+	\item Initialization: \\
 		$V(s) \in \Reals$
 		and
 		$\policy(s) \in \Actions(s)$ arbitrarily for all $s$
@@ -14,13 +14,13 @@
 	\item Policy Evaluation (see Algorithm~\ref{alg:poleval}).
 
 
-	\item Policy Improvement
+	\item Policy Improvement:
 		\begin{algorithmic}[0]
-			\State $\textit{policy-true} \gets \textit{true}$
+			\State $\textit{policy-stable} \gets \textit{true}$
 
 			\ForAll{$s \in \States$}
 
-				\State $\textit{old-policy} \gets \policy(s)$
+				\State $\textit{old-action} \gets \policy(s)$
 
 				\State $\policy(s) \gets
 					\argmax_{a} \sum_{s',r} {
@@ -33,7 +33,7 @@
 
 			\EndFor
 
-			\If {$\textit{old-action} \neq \policy(s)$}
+			\If {\textit{policy-stable}}
 				\State \Return $V \approx v_*$
 					and $\policy \approx \policy_*$
 			\Else
