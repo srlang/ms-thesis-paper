@@ -1,9 +1,7 @@
 % Discussion of how we learned policy which didn't have enough information
 % and how value function improvement would have been better
 
-% TODO: value iteration or value improvement?
-
-\subsection{Policy Iteration vs. Value Iteration}
+\subsection{Learning Policy vs. State-Value Function}
 \label{sec:disc-value}
 
 %%%
@@ -21,11 +19,6 @@ by removing irrelevant strategies
 such as \handmaxmed\ and \peggingmaxmedgained\ 
 and emphasizing more useful strategies
 like \handmaxavg\ and \handmaxmin.
-%
-%As has been discussed,
-%the agent learns a decent set of guidelines as to how a position should
-%be played in situations where the agent is winning the game.
-% TODO: ensure performance/strategies have been discussed
 %%%
 
 %%%
@@ -36,7 +29,7 @@ with a certain strategy.
 The extent to which the cards themselves affect the action choice in the policy
 was greatly underestimated.
 %
-However, % TODO: conjunctive adverb use
+However,
 to include the knowledge of which cards are known into the policy decision
 would have increased the dimensionality of the search space from the relatively
 small three-dimensional problem tackled to a problem of nine dimensions since

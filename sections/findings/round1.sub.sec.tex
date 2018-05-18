@@ -172,8 +172,9 @@ the only major suggestion being to play more riskily to regain the lead.
 %%%
 
 %%%
-However, upon closer inspection,
-with a side-by-side\textemdash or perhaps even overlaying\textemdash comparison,
+However,
+upon closer inspection,
+with a side-by-side comparison,
 there are subtle differences that can be found.
 %
 The most major of these differences is that all patterns are shifted lower and
@@ -182,11 +183,6 @@ correlating with scores which are more advantageous to the player.
 %
 This means that the agent is more ``comfortable'' when it has a slightly larger
 lead as the dealer than it necessarily needs as the pone.
-%
-It also means that the unexplored state area as the pone is larger in the area
-where it is further ahead.
-%
-% TODO: continue this thought
 %%%
 
 
@@ -338,10 +334,6 @@ The learning rate was decreased to one fifth of what was used in Round 1.
 The other major parameter alteration was to make the exploration rate a constant
 and not dependent upon the variance of the weights.
 %
-%Because of the stipulation on the variance previously explained in 
-%Section~\ref{sec:dm},
-% TODO: check which way we want to go with this
-%	option 1: remove from methods and explain briefly here
 During Round 1,
 the exploration rate was defined as $e =: 0.3 - \Var{w_{p,o,d}}$
 in order to allow more trained states to be less affected by randomized
