@@ -33,25 +33,25 @@ and
 $\textit{Dealer?} \in \{0,1\}$.
 %(\textit{MyScore:$[0,120]$, OpponentScore:$[0,120]$, Dealer?:$\{0,1\}$}).
 %
-At each score-space location is a vector $w_{p,o,d} = [w_1,w_2,\ldots,w_m]$
+At each score-space location is a vector $\wvecm_{p,o,d} = [w_1,w_2,\ldots,w_m]$
 where $m$ is the number of all possible strategies to be considered.
-% TODO: ^: how do we want to notate this? w_i? explain f_i is a float?
+%
 At the beginning of each round, each of $m$ strategies is evaluated for all
 $n = {6 \choose 4}$ possible combinations of cards kept to produce an
 $m \times n$ matrix \Smat\
-where $S_{i,j}$ is the desirability of the $i^{\textit{th}}$ keep/toss
+where $\Smatm_{i,j}$ is the desirability of the $i^{\textit{th}}$ keep/toss
 combination according to the $j^{\textit{th}}$ strategy
 further constrained by
-$0 \le S_{i,j} \le 1\ \forall i,j$.
+$0 \le \Smatm_{i,j} \le 1\ \forall i,j$.
 %$\sum_{i=1}^{m} S_{i,j} = 1\ \forall j$
 %and $\sum_{j=1}^{n} S_{i,j} = 1\ \forall i$.
 %
 A value vector \pvec\ of length $n$ representing the total perceived value of a
 possible keep combination
 can then be computed by
-$p = w S$
-wherein $\argmax_{x}{p_x}$ can be thought of to be the most desired combination
-of cards and $\argmin_{x}{p_x}$ as the least.
+$\pvecm = \wvecm \Smatm$
+wherein $\argmax_{x}{\pvecm_x}$ can be thought of to be the most desired combination
+of cards and $\argmin_{x}{\pvecm_x}$ as the least.
 %
 These collective desirability metrics can be later used to determine which
 combination of cards to choose and which to toss.
