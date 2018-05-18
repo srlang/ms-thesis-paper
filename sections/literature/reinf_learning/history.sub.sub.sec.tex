@@ -45,9 +45,7 @@ to evaluate board positions.
 %
 Future positions were then found by searching a minimax tree
 of limited ply depth
-in which each agent was assumed to play optimally given its own position
-and using an early form of alpha-beta pruning.
-% TODO: ^^^ check really true
+in which each agent was assumed to play optimally given its own position.
 %
 Although only a certain number of moves were allowed to be searched forward,
 a record of previously evaluated positions was stored.
@@ -58,7 +56,6 @@ if the ply depth of the search is three and a previously evaluated position was
 located as a leaf on the search tree of the currently held position,
 then the effective depth of the tree along this route is now six since the
 stored position has already been evaluated to a depth of three.
-% TODO: ^^^ probably reword this
 %
 Samuel even recognized the idea of rewards being necessary for learning a task
 with what he called a ``pushing mechanism'' which would direct the agent towards
