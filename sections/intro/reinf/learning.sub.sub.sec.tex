@@ -169,7 +169,7 @@ the iterative nature of policy evaluation leads to a slow converging rate
 for the process of policy iteration.
 %
 However,
-the full convergence needs not occur for an optimal policy to be learned.
+the full convergence needs not occur for an optimal policy to be computed.
 %
 Instead,
 a very truncated form of policy evaluation can be done to improve the speed
@@ -195,6 +195,60 @@ to policy iteration's gradient descent.
 % Meaty crux of the thesis.
 % An explanation of how policy improvement can be approximated using simulated
 % results.
+%%%
+
+%%%
+Policy iteration requires full knowledge of the environment to be computed.
+%
+However,
+this is often not practical in real-world applications.
+%
+Monte Carlo methods are a set of ways in which
+state-value functions or policies can be learned through experience without
+complete knowledge of the environment.
+%
+These experience can come from episodes in the real environment
+or through simulated encounters
+where an episode is simply a separable set of events that occur together in
+time.
+%%%
+
+%%%
+By averaging observed returns from experienced episodes,
+the state-value function,
+and thus policy,
+can be learned.
+%
+The key problem in learning through experience is how to balance
+the exploitation of the current value function or policy
+with exploration of the environment to discover potentially better returns.
+%
+The exploration/exploitation debate is analogous to a breadth-first or
+depth-first search of a tree.
+%
+An agent which explores too much (breadth-first)
+may not have very accurate knowledge of each subtree,
+while an agent which exploits too much (depth-first) will have accurate
+knowledge of only a few paths down the tree.
+% TODO: ^^^ work analogy better
+%
+There are two simple mechanisms to ensure the necessary exploration of the
+environment.
+%
+The first,
+using exploring starts,
+starts each episode randomly in the environment's state-space.
+%
+An algorithm for this sort of Monte Carlo method is given in
+Algorithm~\ref{alg:mces}.
+%
+The other,
+using an $\epsilon$-greedy policy,
+follows the policy less strictly,
+taking an action at uniform random with chance $\epsilon$.
+%
+Naturally,
+both of these methods can be combined to further ensure adequate exploration.
 %%%
 
 \input{algs/mces.alg.tex}
