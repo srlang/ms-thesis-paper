@@ -49,7 +49,7 @@ carefully chosen to only include the top percentage of contributors
 to avoid stagnant resulting weights,
 would then be adjusted by a percentage of itself according to the formula:
 \[
-	w_{i,new} = c w_{i,old}
+	\wvecm_{i,new} = c \wvecm_{i,old}
 \]
 for all indices $i$ which are in the most-highly-advocated group and
 where $c$ is a shared adjustment constant.
@@ -164,7 +164,7 @@ by random by using \pvec\ as a probability distribution.
 This chance $e$ of random choice was related to the variance of the 
 weights according to the formula:
 \[
-	e = k - \Var(w_{m,o,d})
+	e = k - \Var(\wvecm_{m,o,d})
 \]
 where $k$ is set at a constant $0.3$ empirically chosen during the
 development process.
