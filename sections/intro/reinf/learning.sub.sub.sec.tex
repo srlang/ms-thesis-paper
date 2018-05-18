@@ -18,8 +18,6 @@ representation.
 % TODO: ^^^ check that this is needed
 %%%
 
-% TODO: need a value function explanation (background knowledge, maybe?)
-
 \paragraph*{Metrics}
 
 %%%
@@ -123,7 +121,6 @@ it is then possible to improve on that policy.
 This process is as simple as greedily choosing the action at each state such
 that the expected resulting reward is maximized.
 %
-% TODO: vvv probably reword
 Intuitively,
 this is understandably a better policy
 since each action taken will optimize its expected returns if ever the
@@ -228,9 +225,8 @@ depth-first search of a tree.
 %
 An agent which explores too much (breadth-first)
 may not have very accurate knowledge of each subtree,
-while an agent which exploits too much (depth-first) will have accurate
+while an agent which explores too little (depth-first) will have accurate
 knowledge of only a few paths down the tree.
-% TODO: ^^^ work analogy better
 %
 There are two simple mechanisms to ensure the necessary exploration of the
 environment.
