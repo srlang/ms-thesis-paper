@@ -34,8 +34,7 @@ a number of differences would be found in their results.
 %
 Firstly,
 a different set of policy graphs would likely result from the training phase
-which is not the case. % TODO: <-- verify true
-%since all policies
+which is not the case.
 %
 More importantly,
 a definitive curve would be present in the tournament graphs as performance
@@ -121,13 +120,15 @@ With the exception of the purely untrained agent,
 the least \learned\ agents perform the poorest against the final
 \learned\ agent.
 %
-% TODO(chelsea): what?
 Play is approximately evenly matched between the fully trained agent
-and its checkpoints after training for 300,000 to 700,000 games.
+and its checkpoints which have been trained for 300,000 to 700,000 games.
 %
 Following these matches,
 the agent begins to, again, win more consistently when more training is done.
-% TODO: ^^^ rewrite performance analysis since we know results
+%
+This confusingly indicates that more recent agents are getting worse
+than earlier iterations,
+but that the final agent is better than these.
 %%%
 
 %%%
