@@ -9,37 +9,37 @@ thanks to an oversight of the matter during development.
 %
 % TODO(Chelsea): reword to make sure tenses agree, kind of disagree
 A ``correct'' method of choosing cards would have selected the card combination
-corresponding to the maximum value found in the produced $p$ vector,
+corresponding to the maximum value found in the produced \pvec\ vector,
 breaking ties randomly,
 with a chance of making an exploration step by selecting a combination at
 uniform random.
 %
 The implemented mechanism did indeed normally choose the maximally represented
-combination in the $p$ vector,
-but random exploration was performed using the $p$ vector as a probability
+combination in the \pvec\ vector,
+but random exploration was performed using the \pvec\ vector as a probability
 distribution.
 %
 Further complicating the issue,
 a review of the code was misunderstood and it was wrongly concluded that
-the $p$ vector was normally used as a probability distribution
+the \pvec\ vector was normally used as a probability distribution
 and random exploration was carried out at uniform.
 %%%
 
 %%%
-Thanks to the nature of the produced $p$ vectors,
+Thanks to the nature of the produced \pvec\ vectors,
 it was assumed that the implemented solution would not make make a marked
 difference in performance or learning.
 %
-This is because $p$ for locations which were untrained 
-ended up producing $p$ vectors which were remarkably close to
+This is because \pvec\ for locations which were untrained 
+ended up producing \pvec\ vectors which were remarkably close to
 uniform themselves.
 %
 However,
-states which were trained often produced $p$ vectors in which
+states which were trained often produced \pvec\ vectors in which
 three or four combinations of cards were almost equally highly weighted
 while unpopular combinations had nearly zero chance of being chosen.
 %
-While this resulting $p$ vector was created exactly as intended,
+While this resulting \pvec\ vector was created exactly as intended,
 the skewing towards certain combinations means that so-called
 random exploration steps are unlikely to actually explore policy options
 which have no recent bias
@@ -68,7 +68,7 @@ it is evident that there is no functional difference between these two
 randomization techniques.
 %
 As expected,
-the nature of the produced $p$ vectors lent themselves to nearly uniform random
+the nature of the produced \pvec\ vectors lent themselves to nearly uniform random
 choice for untrained sets leading to no significant change in exploration in
 early game situations.
 %
