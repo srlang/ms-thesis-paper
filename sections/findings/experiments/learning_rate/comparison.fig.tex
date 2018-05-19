@@ -1,0 +1,41 @@
+\begin{figure}[h]
+	\centering
+
+	\begin{tabular}{c | c c c c}
+		% Outline:
+		%   s\g |  250k | 500k | 750k | 1mm
+		%	0.25
+		%   0.50
+		%   1.00
+		%   1.50
+		$s$\textbackslash game & 250,000 & 500,000 & 750,000 & 1,000,000 \\
+		\hline
+		0.25 & % a & b & c & d
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_025_250.png} & % 250
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_025_500.png} & % 500
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_025_750.png} & % 750
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_025_1mm.png} \\ % 1mm
+		0.50 & 
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_050_250.png} & % 250
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_050_500.png} & % 500
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_050_750.png} & % 750
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_050_1mm.png} \\ % 1mm
+		1.00 & 
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_100_250.png} & % 250
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_100_500.png} & % 500
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_100_750.png} & % 750
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_100_1mm.png} \\ % 1mm
+		1.50 & 
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_150_250.png} & % 250
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_150_500.png} & % 500
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_150_750.png} & % 750
+			\includegraphics[width=2cm]{images/findings/experiments/learning_rate/lr_150_1mm.png} \\ % 1mm
+	\end{tabular}
+
+\caption{
+	Comparison of different learning rates learning the \handmaxavg\ strategy
+	when playing as the dealer
+	over the course of one million games.
+	}
+\label{fig:expts-lr-comp}
+\end{figure}
