@@ -1,0 +1,57 @@
+\begin{figure}
+\centering
+
+\begin{tabular}{ l l l l l l } %    c}
+	%                    label
+	%  l            | l1   l2   l3   l4
+	%  a   ---------+-------------------
+	%  b   starting | a1 | a2 | a3 | a4
+	%  e   strat    | b1 | b2 | b3 | b4
+	%  l   ...
+	& & \multicolumn{4}{c}{\textit{Strategy}} \\
+	& & \handmaxmin & \handmaxavg & \handmaxposs & \handmaxmed \\
+	%\cline{3-6}
+	\multirow{7}{*}{
+	\rotatebox{90}{
+	\parbox[c]{6.5cm}{
+		\textit{Starting Strategy}
+	}
+	}
+	}
+	%
+	& \rotatebox[origin=c]{90}{\handmaxmin}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxmin_handmaxmin.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxmin_handmaxavg.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxmin_handmaxposs.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxmin_handmaxmed.png}}
+		%&
+	\\ & & & & & \\
+	%
+	& \rotatebox[origin=c]{90}{\handmaxavg}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxavg_handmaxmin.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxavg_handmaxavg.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxavg_handmaxposs.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxavg_handmaxmed.png}}
+		%&\parbox[c]{1em}
+	\\& & & & & \\
+	%
+	& \rotatebox[origin=c]{90}{\handmaxposs}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxposs_handmaxmin.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxposs_handmaxavg.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxposs_handmaxposs.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxposs_handmaxmed.png}}
+		%&\parbox[c]{1em}
+	\\& & & & & \\
+	%
+	& \rotatebox[origin=c]{90}{\handmaxmed}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxmed_handmaxmin.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxmed_handmaxavg.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxmed_handmaxposs.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/starting_points/matrix_handmaxmed_handmaxmed.png}}
+		%&\parbox[c]{1em}
+	\\
+\end{tabular}
+
+\caption{}
+\label{fig:findings-expts-sanitycheck-matrix}
+\end{figure}
