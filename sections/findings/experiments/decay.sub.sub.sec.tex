@@ -15,8 +15,54 @@ were tested to demonstrate the effect of temporal learning.
 \paragraph*{Results}
 
 %%%
-% TODO: results
+% TODO: verify results after rerun
 %%%
 
+%%%
+As can be seen in Figure~\ref{fig:expts-decay-comp},
+the decay rate had no effect on the behavioral trends learned.\footnote{
+	At the time of this draft,
+	this is pure speculation as the actual experiment ran with a bug and needs
+	to be re-run for now.
+	% TODO: remove footnote and ensure accuracy of stated conclusions
+}
+%
+However,
+as expected,
+the rate of learning of these behaviors in earlier states is most affected
+by this parameter.
+%
+With lower decay rates,
+more of the responsibility for the final result of the game is transferred
+to earlier game states.
+%
+It is worthwhile to note just how clearly
+the sinusoidal wave along the diagonal takes form
+and subsequently loses amplitude
+when there is no decay.
+%
+While this would seemingly indicate that earlier states needed to be
+%
+Contrarily,
+with higher decay rates,
+it is nearly impossible to learn earlier game states,
+so behavior remains random,
+as clearly seen when $d = 0.50$.
+%
+For explanation,
+a typical cribbage game will take approximately ten to twelve hands
+to complete.
+%
+At this rate,
+the first states will be adjusted by a factor of
+$(1-d)^{10} = (0.5)^{10} \approx 0.00098$.
+%
+Even over the course of one million games,
+this small magnitude of modification is not enough
+for any meaningful learning to occur.
+% TODO: ^^^ make sure accurate when real results happen
+%%%
+
+% fig:expts-decay-comp
 \input{sections/findings/experiments/decay/comparison.fig.tex}
 

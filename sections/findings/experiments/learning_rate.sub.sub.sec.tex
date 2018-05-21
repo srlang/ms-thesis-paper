@@ -15,8 +15,71 @@ making too large of an adjustment.
 \paragraph*{Results}
 
 %%%
-% TODO: results
+% TODO: verify results when experiment has been rerun
+% and choose correct set of answers
 %%%
 
+%%%
+% 2 possibilities foreseeable for results:
+%	1. patterns are the same
+%	2. something new is learned
+%%%
+
+
+%%%
+As can be seen in Figure~\{ref{expts-lr-comp},
+the same set of behavioral patterns are learned as in previous training
+sessions.\footnote{
+	As with the decay section,
+	this part needs to be rerun,
+	so accuracy will need to be verified.
+	% TODO: remove footnote
+	What's more: since this section is speculative,
+	only one of either this paragraph or the next one will actually be used.
+}
+%
+Therefore,
+it is safe to speculate that some optimum is not being stepped over,
+allowing a worse set of weights to be pursued instead.
+%
+Thus,
+the agent is correctly learning to solve the problem.
+%
+Ergo,
+the problem setup itself or else the system of rewards
+must be flawed in some manner.
+% TODO: ^ if this is the case, consider opening the sanitycheck section with
+% a pointing out of this
+%
+However,
+a decrease in scaling factor leads to slower adjustments,
+showing that the scaling factor does indeed function as a learning rate.
+%%%
+
+%%%
+% TODO: ^ or v: choose one
+%%%
+
+%%%
+As can be seen in Figure~\{ref{expts-lr-comp},
+a different set of behavioral patterns are learned when the
+scaling factor,
+i.e. the learning rate,
+is lowered to \${VALUE}. % TODO: <-- value
+%
+This serves to show that a better policy was previously being skipped over
+by previous training sessions.
+%
+Were time to permit,
+this new learning rate would be further trained to find a more optimal
+policy.
+%
+Alas, this is no longer an option,
+so the results of such an inquiry are left for speculation
+or for future research.
+% TODO: ^ if this is the case, probably include in discussion section
+%%%
+
+% fig:expts-lr-comp
 \input{sections/findings/experiments/learning_rate/comparison.fig.tex}
 
