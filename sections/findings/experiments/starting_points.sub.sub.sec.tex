@@ -85,6 +85,122 @@ increased when the pure strategy was punished.
 
 \paragraph*{Results}
 
+%%%
+There are very two interesting trends that arise from starting from nearly pure
+strategies.
+%
+The first is that the starting strategy is,
+at least for those tested,
+is the dominant strategy in winning positions.
+%
+Similarly,
+this strategy is always un-learned in losing positions.
+%
+This serves as a confirmation that losing positions are simply unlikely to be
+recovered from by the agent,
+no matter how seemingly rational the strategy is.
+%
+There are two likely reasons for this dominance of the winning positions'
+weights.
+%
+The first,
+the pure mathematical operation of overcoming such an astoundingly heavily
+weighted strategy requires many games to explore enough and perform better than
+the given strategy
+which itself may often coincide with \handmaxavg\ or \handmaxmin\ 
+which would normally occupy these positions.
+%
+The second,
+since the opponent is a static agent always using the same starting
+mostly pure strategy and never training these weights,
+playing a similar strategy ensures a similar resulting position.
+%
+When already in the lead,
+this desirable as the agent will likely continue to be in a winning position
+and closer to the goal score of 121.
+%%%
+
+%%%
+An intriguing counter to this pattern of dominance in winning positions
+is the \handmaxavg\ strategy
+which yields some control of winning positions to \handmaxmed.
+%
+In normal training procedures,
+this space is occupied by \handmaxmin.
+%%%
+
+%%%
+The second interesting observation is what learning does occur
+in the losing positions.
+%
+With most starting strategies,
+the losing positions are mainly left to the influence of a single
+other strategy.
+%
+This losing strategy also varies depending on the starting strategy.
+%
+The reason for this varying losing strategy is again
+because the opponent for each of these agents during training
+was an agent always using the same mostly pure strategy.
+%
+As a result,
+the learning agent developed a counter strategy to each different
+opponent it faced.
+%
+For instance,
+when faced with \handmaxmin\ which will always play safe,
+the agent learns to swing for the fences by playing according to \handmaxposs\ 
+when it is losing
+since the opponent will not be taking any risks itself
+and risk is the only way to make up ground.
+%
+Similarly,
+the agent learns that the best way to recover from a losing position
+against \handmaxavg,
+which plays to expectations and avoids unnecessary risk,
+is to mostly play safely according to \handmaxmin.
+%
+As a counter to the dominance of a single strategy in the losing positions,
+starting with \handmaxposs\ leads to a losing strategy
+shared between \handmaxavg\ and \handmaxmed.
+%
+This is because either of these two strategies is likely to recover ground
+against an agent which always tries to get the maximum amount of points
+with no regard for the likelihood of this outcome.
+%%%
+
 % fig:findings-expts-sanitycheck-matrix
 \input{sections/findings/experiments/starting_points/strat-matrix.fig.tex}
+
+%%%
+As this experiment showed promise in an agent potentially learning
+to out-play its opponent,
+an agent trained with a beginning pure strategy of \handmaxavg\ was played
+against its previous iterations in several 10,000-game tournaments.
+%
+% TODO: vvv sanity check results
+The results,
+depicted in Figure~\ref{fig:expts-sanitycheck-spreads}
+show that ... TODO ...
+%%%
+
+% fig:expts-sanitycheck-spreads[-{a,b}]
+\input{sections/findings/experiments/starting_points/tourny.fig.tex}
+
+%%%
+% TODO: vvv sanity check second training round results
+Furthermore,
+as the agents were previously each trained against different pure strategies,
+the ability to improve a basic policy to overcome a randomly-weighted agent,
+rather than to learn a policy from scratch,
+was tested by training an agent starting with a semi-pure
+\handmaxavg\ strategy against an unlearning agent with random weights.
+%
+The results of this further training,
+seen in Figure~\ref{fig:expts-sanitycheck-strats},
+show that ... TODO ...
+%%%
+
+% fig:expts-sanitycheck-strats
+\input{sections/findings/experiments/starting_points/strats.fig.tex}
 
