@@ -31,8 +31,35 @@ $C = \frac{1}{4} s \cdot (\text{PlayerScore} - \text{OppScore})$.
 \paragraph*{Results}
 
 %%%
-% TODO: results
+The introduction of an amount of forgiveness did not lead to any worthwhile
+difference in learned policy.
+%
+In contrast to the goal of allowing an occasionally good strategy to form
+in losing positions,
+not unexpectedly,
+the losing positions are even less sure as to which strategy to take,
+as seen in Figure~\ref{fig:findings-expts-punish-strats}.
+%
+Therefore,
+it may be concluded that the increased likelihood of losing is 
+likely not unfairly punishing potentially good recovery policies.
+%
+It can be argued that $\frac{1}{4}$ was not a proper ratio
+to compensate for the likelihood of loss,
+but the similarity of patterns learned and decreased certainty
+indicate that the punishment mechanism is functioning adequately
+%
+Similarly,
+while reducing the amplitude of changes
+does lead to a more gradiented losing policy,
+this is effectively the result of a learning rate adjustment.
+%
+As will be shown in the learning rate experiments,
+these forms of adjustments do not lead to differences in learned behaviors.
+% TODO: ^^^ really need to verify that learning rate didn't change anything
+% for this to be true
 %%%
 
+% fig:findings-expts-punish-strats
 \input{sections/findings/experiments/punishment/strategies.fig.tex}
 
