@@ -1,0 +1,65 @@
+
+\subsubsection*{Multi-agent Play}
+\label{sec:disc-future-rr}
+
+%%%
+% Discussion of how round-robin play could improve play and learning
+%%%
+
+%%%
+In all of the tournament training sessions and other experiments,
+two agents were paired against each other for a million games.
+%
+%While the opponent for each agent changed due to the learning process,
+%this process was gradual and each agent only had to ever adapt to a single
+%
+It is rare for humans playing the game to only play a single opponent
+for an extended period of time.
+%
+Only in tournaments would a human player play more than a couple of games
+against the same opponent.
+%
+Although the reinforcement learning algorithm requires far more games to
+achieve similar progress in learning,
+there is no need to limit the agent to a single opponent.
+%%%
+
+%%%
+As an alternative,
+the agent could be pitted against multiple agents with their own unique set of
+weights.
+%
+This would force the agent to learn how to overcome a variety of opposing
+strategies,
+strengthening the overall performance of the agent.
+%
+One potential solution to this is to have a pool of agents
+from which the agent will randomly select an opponent.
+%
+Similarly,
+two agents could be chosen from a pool at random and pitted against each
+other.
+%%%
+
+%%%
+After the promising results of the experiments using different starting points
+of the agents,
+the idea of learning how to overcome multiple, widely varying agents
+rather than a single co-adapting agent
+seems to be the most promising starting point for continued research into this
+topic.
+%
+While learning from self-play was idealistic
+and even demonstrated possible by AlphaGo Zero~\cite{deepmind_alphago_zero},
+it was perhaps naive as
+the need for some priming was a crucial step in earlier AlphaGo
+work~\cite{deepmind_alphago} and in TD-Gammon~\cite{tdgammon}.
+%
+As an alternative to pure self-play,
+and in the absence of recorded games,
+an agent representing each of the most potent basic strategies
+(e.g. \handmaxavg, \handmaxmin, and \handmaxposs)
+could similarly be played against and used to train the learning agent
+to basic levels before self-play is used for further improvement.
+%%%
+
