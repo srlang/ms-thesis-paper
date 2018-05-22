@@ -1,6 +1,6 @@
 # Sean R. Lang
 
-.PHONY: all cleanup submission sections secs TODO todo used_cites force push check
+.PHONY: all cleanup submission sections secs TODO todo used_cites force push check fc
 
 all: paper submission
 
@@ -49,6 +49,9 @@ lca: sections/*.sec.tex\
 		sections/*/*/*.tex\
 		sections/*/*/*/*.tex
 	@cat $^ | wc -l
+
+fc:
+	@find . -iname "*.tex" | wc -l
 
 clean:
 	@rm -v paper.{aux,bbl,blg,pdf,toc}
