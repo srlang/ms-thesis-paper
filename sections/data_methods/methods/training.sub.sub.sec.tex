@@ -16,17 +16,11 @@
 
 %%%
 After a complete game has been played, the winning and losing agents need to
-modify their weights in order to decide a ``correct'' strategy at that time
+modify their weights in order to decide a correct strategy at that time
 coordinate.
 %
-In contrast with textbook forms of reinforcement learning,
-the agent is not directly learning which cards to take and throw.
-%
-To do so would require a search space of ${6 \choose 4}{52 \choose 6}$
-at each state.
-%
-Instead, the agent is learning which subset of strategies make the best
-decision in combination at a given point.
+The agent attempted to learn which subset of strategies make the best
+decision in tandem at a given point.
 %
 Therefore, there is no deterministic single action taken at any given
 time.
@@ -35,56 +29,26 @@ Instead, the strategies which advocated most for the chosen hand would be held
 responsible for the success or failure of the given hand and thought of as
 the action at the given step.
 %
-The strategies which most advocated for the hand were determined as those whose
+These responsible strategies were determined as those whose
 values in \Smat\ were the highest in its column.
 % TODO: ^^^ check column/row, put in indices
 %
 This subset of strategies,
 carefully chosen to only include the top percentage of contributors
 to avoid stagnant resulting weights,
-would then be adjusted by a percentage of itself according to the formula:
+would then be adjusted proportionally to itself according to the formula:
 \[
 	\wvecm_{i,new} = c \wvecm_{i,old}
 \]
-for all indices $i$ which are in the most-highly-advocated group and
+for all indices $i$ which are in the responsible group and
 where $c$ is a shared adjustment constant.
 %
-All other weights would be left alone before re-normalizing the weights vector.
-%
-Since locations earlier in the game have a higher number of potential resulting
-states and are less likely to affect the final outcome of the game,
-they are modified less than their later counterparts.
-%
-This is accomplished by decaying the adjustment amount for each step taken
-backward along the visited path of states in manner similar to TD($\lambda$):
-\[
-	c_j = C \cdot (1 - d)^{T-j}
-\]
-where $j$ is the index along the path starting at 1,
-$C$ is a starting value of the adjustment constant,
-$T$ is the final step index,
-and $d$ is the rate of decay expressed as a ratio such that $0 < d < 1$
-\cite{tdgammon}.
-%
-In order to allow for closer losses to be less severely punished than worse
-losses and vice versa for wins,
-the adjustment constant $C$ was defined as proportional to the difference
-between the players' scores according to the formula:
-\[
-	C = s \cdot \left({PlayerScore} - {OppScore}\right) 
-\]
-where $s$ is a scaling factor analogous to a learning rate parameter.
-%
-This scaling factor remains constant throughout training
-and does not decrease as it would in something like gradient descent.
-%
-This is because all games are equally important,
-so a loss using strategy $i$ during game $x$ is just as important as
-it would be during game $y$.
+All other weights would be left unaltered
+before re-normalizing the weights vector.
 %%%
 
 %%%
-The resulting effect is to slightly reward or punish the weights
+The resulting effect of this mechanism is to slightly reward or punish the weights
 corresponding to only the strategies which were most in favor of choosing
 the chosen cards.
 %
@@ -98,13 +62,47 @@ advocacy for a given hand which summed up to a larger value.
 Were this not the case and instead the highest weights were to be directly
 punished or rewarded instead,
 the resulting changes would merely reward or punish those strategies which
-were randomly allocated slightly higher weights.
+were randomly allocated slightly higher weights initially.
+%%%
+
+%%%
+Since locations earlier in the game have a higher number of potential resulting
+states and are less likely to affect the final outcome of the game,
+they are modified less than their later counterparts.
+%
+This is accomplished by decaying the adjustment amount for each step taken
+backward along the visited path of states in manner similar to TD($\lambda$)
+\cite{tdgammon}:
+\[
+	c_j = C \cdot (1 - d)^{T-j}
+\]
+where $j$ is the index along the path starting at 1,
+$C$ is a starting value of the adjustment constant,
+$T$ is the final step index,
+and $d$ is the rate of decay expressed as a ratio such that $0 < d < 1$.
+%
+In order to allow for closer losses to be less severely punished than worse
+losses and vice versa for wins,
+the adjustment constant $C$ was defined as proportional to the difference
+between the players' scores according to the formula:
+\[
+	C = s \cdot \left({PlayerScore} - {OppScore}\right) 
+\]
+where $s$ is a scaling factor,
+analogous to a learning rate parameter.
+%
+This scaling factor remains constant throughout training
+and does not itself decrease or decay.
+%
+This is because all games are equally important,
+so a loss using strategy $i$ during game $x$ is just as important as
+it would be during game $y$.
 %%%
 
 %%%
 The reinforcement training framework operated very simply.
 %
-A simple text file of weights can be loaded to initialize an agent.
+A text file of weights was loaded to initialize an agent.
 %
 These agents would then be placed into a game and played against each other.
 %
@@ -119,13 +117,12 @@ adjusted over the course of time.
 %%%
 
 %%%
-To facilitate an adequate rate of exploration of the search space,
+To facilitate an adequate rate of exploration of the state space,
 randomized initializations were used for each of the training games.
 %
 A random score was chosen for each of the agents,
 keeping the spread of scores to within 60 points
-in order to limit the search space to only imaginably likely reachable
-situations.
+in order to limit the search space.
 %
 This value was chosen since,
 with a maximum point total of 121,
@@ -137,7 +134,7 @@ it is a very rare occurrence and can be thought of as a failure of luck
 rather than of skill.
 %
 As this is a matter of training skill and proficiency in the game of cribbage,
-situations of exceptional bad luck can be treated as an outlier situation.
+situations of exceptional bad luck can be treated as outlier situations.
 %%%
 
 %\DeclareMathOperator{\variance}{
@@ -164,7 +161,8 @@ development process.
 This was implemented in order to ensure that situations in which there were
 more uniform weights had a higher chance of being explored
 whereas those with a higher variance were deemed to be varied enough to
-have been previously trained.
+have been previously trained
+and thus should be further exploited.
 %%%
 
 %%%
@@ -179,7 +177,6 @@ the two agents were played against each other in a tournament match fashion.
 %
 The winner was determined as the agent with the most points at the end
 of a series of games, %\textemdash
-in this case 100, %\textemdash
 wherein two points would be awarded to the winner of a game and three if that
 win was by a margin of at least 31 points
 and ties broken by total point spread,
@@ -199,13 +196,12 @@ to the learning process,
 a set of additional experiments were performed to determine the limits of
 learning possible.
 %
-While these will be covered in more detail in \ref{sec:findings},
-these modifications include simple items such as learning rate or decay rate 
-adjustments
+While these will be covered in more detail in Section~\ref{sec:findings},
+these modifications include simple
+parameter adjustments, such as to the learning or decay rate,
 as well as
-more complicated adjustments
+more complicated alterations 
 including using neighboring weights
-or punishing a loss less severely than a corresponding win is rewarded
-in addition to sanity checks by starting from pure strategies.
+or punishing a loss less severely than a corresponding win is rewarded.
 %%%
 
