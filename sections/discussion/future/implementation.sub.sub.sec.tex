@@ -3,7 +3,8 @@
 \label{sec:disc-future-implementation}
 
 %%%
-Due to the desire to get a system up and running as quickly as possible,
+Due to the desire to get a training framework constructed
+and running as quickly as possible,
 runtime speed took a back seat to development speed.
 %
 As a result,
@@ -12,7 +13,8 @@ Python became the language of choice.
 While this is a great multipurpose language,
 the overhead of using a higher-level, interpreted language
 proved to be a mistake
-not only directly because of its slower speed,
+not only directly because of its slower speed involved with the
+lower-level calculations and manipulations needed for cribbage applications,
 but also because of resulting decisions that needed to be made to accommodate
 this reduced speed.
 %%%
@@ -63,7 +65,7 @@ there was only limited local storage space available
 on each of the compute nodes in the Computer Science Department's Ukko2 high
 performance compute cluster,
 jobs had to be constructed carefully and spread across nodes to avoid
-accidentally disrupting other users' calculations.
+accidentally disrupting other users' processes.
 %
 This was mitigated slightly by using the Physics Department's Kale cluster
 which allowed for significantly more manageable locally mounted drive space,
@@ -73,7 +75,7 @@ albeit in a slightly slower hard disk with a RAID0 setup.
 %%%
 Were this project to be repeated,
 it would be recommended to use the Python code from this attempt as an outline
-for a rewrite in a slightly lower-level language.
+for a rewrite in a lower-level language.
 %
 Using a language such as C++,
 which could be optimized more for run-time efficiency and memory management,
@@ -82,29 +84,29 @@ of a statistics database entirely.
 %
 While the data gathered from previously played pegging rounds would still need
 to be stored and retrieved between training rounds,
-the size of this data would likely not exceed a few gigabytes and would fit
+the total size of this data would likely not exceed a few gigabytes and would fit
 easily in the program's RAM space.
 %
 This is especially true since the strategies utilizing the median were not
 learned to be a useful metric for choosing cards,
 meaning that a list of scores gained and given are not needed,
-only the cumulative amount and times seen.
+only the cumulative amount and number of times seen.
 % TODO: ^^^ ensure accuracy
 %
 Also,
 like weight checkpoints are in the current system,
-these stored results could be exported in a text or otherwise simple format
+these stored results could be exported
 for transfer between rounds.
 %%%
 
 %%%
 With these changes made,
 the training program would be CPU-bound,
-which thankfully can be compensated for by adding or improving hardware.
+which thankfully can be compensated for by parallelization.
 %
 In contrast,
 the I/O-bound training program used in this thesis used only half the total
 processing power of a single CPU core
-as the limitation was the database file on a solid state drive.
+as the limitation was the database file on a hard drive.
 %%%
 

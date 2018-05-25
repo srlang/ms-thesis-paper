@@ -9,8 +9,8 @@ This thesis focused on an attempt to use policy iteration
 in order to develop a well-playing
 cribbage agent capable of weighing different strategies
 with the intention of using these learned weights to 
-and to recover the strategy weights used to in turn
-improve the play of the author.
+potentially
+improve the play of the author and readers.
 %
 In the primary objective of evolving a cribbage agent to a good strategy,
 despite the setbacks of poor performance on a per-game level,
@@ -32,12 +32,14 @@ was greatly underestimated.
 However,
 to include the knowledge of which cards are known into the policy decision
 would have increased the dimensionality of the search space from the relatively
-small three-dimensional problem tackled to a problem of nine dimensions since
-all dealt cards would need to be considered.
+small three-dimensional problem tackled to a problem of at least nine
+dimensions,
+depending on representation.
 %
 At this dimensionality,
 the search space would be far too massive and sparse to simulate an amount of
-games which would lead to any worthwhile learning.
+games which would lead to any worthwhile learning
+in a manageable amount of time.
 %%%
 
 %%%
