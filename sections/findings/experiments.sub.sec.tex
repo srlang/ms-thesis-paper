@@ -8,13 +8,14 @@
 
 %%%
 As the results of Round 2 emulated those of Round 1,
-additional modifications were applied to the learning process.
+the tournament structure was abandoned and
+additional modifications were made to the learning process.
 %
 These methods focused on directly affecting the weights applied to each
 decision made,
-both in learning and at choosing time.
+both during learning and at choosing time.
 %
-The intended goal of these modifications were to find a policy
+The intended goal of these modifications was to find a policy
 capable of learning a policy which plays the game consistently better than
 random.
 %
@@ -34,19 +35,21 @@ As a final note,
 the mechanism for choosing a combination of cards using the \pvec\ vector 
 during the tournament was altered slightly.
 %
-As previously mentioned,
-when making an exploration step,
-instead of using \pvec\ as a probability distribution,
+% TODO: vvv check section reference is correct
+When making an exploration step,
+instead of using \pvec\ as a probability distribution
+as described in Section~\ref{sec:dm-methods-weighting},
 the choice was made at uniform random,
 in a manner true to $\epsilon$-greedy exploration~\cite{rl_book}.
 %
 This was done for the sake of simplicity.
 %
 Furthermore,
-the difference in choosing mechanisms demonstrably
-made no noticeable difference in the learning behavior,
-perhaps as a result of \pvec\ being near-uniformly random for untrained states
-and in essence a choice between three or four most desirable choices when
+the difference in choosing mechanisms
+made no demonstrable difference in the learning behavior,
+most likely as a result of \pvec\ being similar to uniformly random
+for untrained states
+and, in essence, a choice between three or four most desirable choices when
 states had been visited.
 %%%
 

@@ -3,8 +3,9 @@
 \label{sec:findings-expts-punishments}
 
 %%%
-Since it was deemed likely that being in a losing position early in the game
-tended to never recover and thus result in a loss,
+Since the prevailing theory was that a player in a losing position
+early in the game tended to never recover and thus lost as a result of
+unfortunate positioning,
 it followed that punishing losing states for something beyond the agent's
 control was slightly unfair.
 %
@@ -26,6 +27,8 @@ $C = s \cdot (\text{PlayerScore} - \text{OppScore})$,
 for both winning and losing agents,
 the losing agent's adjustment factor was defined as
 $C = \frac{1}{4} s \cdot (\text{PlayerScore} - \text{OppScore})$.
+%
+The reduction to $\frac{1}{4}$ was made arbitrarily for illustrative purposes.
 %%%
 
 \paragraph*{Results}

@@ -9,7 +9,7 @@ would have on learning.
 %
 Instead of the default decay rate of 10\%,
 rates ranging from 0\% to 50\%
-were tested to demonstrate the effect of temporal learning.
+were tested to demonstrate the effect of temporal difference learning.
 %%%
 
 \paragraph*{Results}
@@ -42,6 +42,7 @@ and subsequently loses amplitude
 when there is no decay.
 %
 While this would seemingly indicate that earlier states needed to be
+% TODO: ^^^ finish this thought
 %
 Contrarily,
 with higher decay rates,
@@ -50,7 +51,7 @@ so behavior remains random,
 as clearly seen when $d = 0.50$.
 %
 For explanation,
-a typical cribbage game will take approximately ten to twelve hands
+a typical cribbage game will take approximately ten hands
 to complete.
 %
 At this rate,
@@ -58,8 +59,9 @@ the first states will be adjusted by a factor of
 $(1-d)^{10} = (0.5)^{10} \approx 0.00098$.
 %
 Even over the course of one million games,
-this small magnitude of modification is not enough
-for any meaningful learning to occur.
+this small magnitude of modification,
+combined with the rate of visitation of a single state,
+is not enough for any meaningful learning to occur.
 % TODO: ^^^ make sure accurate when real results happen
 %%%
 

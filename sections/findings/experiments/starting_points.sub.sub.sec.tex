@@ -8,7 +8,7 @@
 
 %%%
 Since a desired outcome of the learning process was to be able to use the
-generated strategy graphs to tell how a hand \textit{should} be played in a
+generated strategy graphs to tell how a hand should be played in a
 certain score position,
 a comparison was made between the produced agent and pure strategies
 on a database of choices made by humans.
@@ -20,34 +20,33 @@ specific situation
 %%%
 
 %%%
-With access to recorded answers,
+With access to recorded answers this website,
 the agent's choices could be compared to how humans ranked the choice.
 %
 The retrieved database recorded which responses were given to each query
-and could be used to determine how well the agent's choice matched with those
-made by humans in the same situation.
+and could be used to compare the agent's choice
+to those made by humans in the same situation.
 %
-For each of the more than 3600 usable records,
+For each of the approximately 3600 usable records,
 the choice the agent made was compared against those made by the users of the
 website.
-%
-The results of this comparison can be seen in
-Table~\ref{tab:expts-starts-human}. % TODO: ref more tables if created
 %%%
 
 %%%
-Table~\ref{tab:expts-starts-human} shows that the trained agent chooses the same
+The results of this comparison,
+seen in Table~\ref{tab:expts-starts-human}, % TODO: ref more tables if created
+show that the trained agent chooses the same
 set of cards as the human users only marginally more often than an agent with 
 randomly allocated weights.
 %
-In approximately half of the cases,
+To approximately half of the prompts,
 the trained agent chooses the same answer as most humans;
-in almost 78 percent of the cases,
+in almost 78 percent of the situations,
 the answer given by the agent is within the top three most common human answers.
 %
 Additionally,
 most pure strategies,
-created by setting their weight to 1 while all others are 0,
+created by setting their weight to 1 while all other strategies are set to 0,
 performed worse than the trained mixture.
 %
 Notable exceptions to this trend are the \handmaxposs\ and \handmaxavg\ 
@@ -64,20 +63,26 @@ responses.
 
 %%%
 As a result of this finding,
-each of these strategies were used as initial weights to the learning process
+some of these strategies were used as initial weights to the learning process
 in order to determine if the agent could learn to fine-tune a policy starting
 from a reasonable assertion of good game-play
 as well as learn to discount demonstrably poor strategies.
 %
 Since the update mechanism for weights relies upon renormalization of a vector
 which as been rewarded or punished,
-no modifications would occur in the case of punishment of a pure strategy
+no modifications would occur in the case of punishment of a completely pure strategy
 since no other weights would have the chance to increase.
 %
 Therefore,
-the pure strategies used before were slightly modified so that each other
-element of the \wvec\ vector would have a small initial value which would be
-increased when the pure strategy was punished.
+the pure strategies used before were slightly modified
+such that each other
+element of the \wvec\ vector would have a small initial value which could be
+increased when this semi-pure strategy was punished.
+%
+Two agents,
+each initialized with the same semi-pure strategy,
+were played against each other for a million games,
+with only a single agent updating its weights.
 %%%
 
 \input{sections/findings/experiments/starting_points/human-comp.tab.tex}
@@ -104,7 +109,7 @@ There are two likely reasons for this dominance of the winning positions'
 weights.
 %
 The first,
-the pure mathematical operation of overcoming such an astoundingly heavily
+the purely mathematical operation of overcoming such an astoundingly heavily
 weighted strategy requires many games to explore enough and perform better than
 the given strategy
 which itself may often coincide with \handmaxavg\ or \handmaxmin\ 
@@ -112,11 +117,11 @@ which would normally occupy these positions.
 %
 The second,
 since the opponent is a static agent always using the same starting
-mostly pure strategy and never training these weights,
+semi-pure strategy and never training these weights,
 playing a similar strategy ensures a similar resulting position.
 %
 When already in the lead,
-this desirable as the agent will likely continue to be in a winning position
+this is desirable as the agent will likely continue to be in a winning position
 and closer to the goal score of 121.
 %
 An intriguing counter to this pattern of dominance in winning positions
@@ -124,7 +129,8 @@ is the \handmaxavg\ strategy
 which yields some control of winning positions to \handmaxmed.
 %
 In normal training procedures,
-this space is occupied by \handmaxmin.
+this space is occupied by \handmaxmin,
+not allowing a larger gap to develop.
 %%%
 
 %%%

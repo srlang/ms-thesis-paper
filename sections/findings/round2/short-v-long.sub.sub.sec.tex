@@ -40,8 +40,7 @@ More importantly,
 a definitive curve would be present in the tournament graphs as performance
 would increase before dropping.
 %
-As can be seen in Figures~\ref{fig:r2-spreads-winner}
-and~\ref{fig:r2-spreads-loser},
+As can be seen in Figure~\ref{fig:r2-time-series},
 this is not the case
 as performance is not apparently linked to training in any way.
 %
@@ -103,7 +102,7 @@ a slight pattern begins to emerge
 when visualized in Figure~\ref{fig:r2-time-series-1000}.
 %
 Whereas the majority of the graph remains highly varying and unpatterned,
-the first few games follow a common pattern.
+the first few games begin to trace a common curve.
 %
 The match against the random agent is still unpredictable,
 but the matches against the 100,000 and 200,000 game trained checkpoints are
@@ -111,7 +110,7 @@ consistently beaten by the final agent.
 %%%
 
 %%%
-Although fewer matches are played to compensate for the increased time needed to
+Although fewer matches are played to compensate for the additional time needed to
 play the increased number of games,
 the same pattern present in the thousand-game scale is visible in the
 ten thousand-game matches.
@@ -128,7 +127,7 @@ the agent begins to, again, win more consistently when more training is done.
 %
 This confusingly indicates that more recent agents are getting worse
 than earlier iterations,
-but that the final agent is better than these.
+yet the final agent is better than these.
 %%%
 
 %%%
@@ -152,31 +151,6 @@ opponent in some corner case that does not reappear during testing.
 %
 This conclusion is supported by the observation that the agents with limited
 training are steadfastly outplayed.
-%%%
-
-%%%
-However,
-since there is a sharp dip after 300,000 training epochs before increasing
-again,
-the results are difficult to interpret.
-%
-The final \learned\ agent is more evenly matched in performance with an agent
-trained for 400,000 games
-than it is against a more recently trained agent.
-%
-The reintroduction of an increasing curve
-is an indicator of overfitting in the middle stages.
-%
-Whereas the final agent is able to play well against these agents,
-they themselves have decreased in performance capability.
-%
-This can be speculated to be a result of learning how to outplay its opposing agent
-rather than an understanding of the game,
-but similar performance when the opposing agent
-has fixed random weights\textemdash
-as can be seen in comparisons between Figures
-\ref{fig:r2-spreads-winner} and \ref{fig:r2-spreads-random}\textemdash
-counters this postulate.
 %%%
 
 %%%

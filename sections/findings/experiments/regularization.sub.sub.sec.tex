@@ -16,13 +16,13 @@ a hard limit was placed on the pre-normalized update value.
 %
 Expressed mathematically,
 \[
-    w'_{m,o,d}[i] = \max\{K,cw_{m,o,d}[i]\}
+    \wvecm'_{p,o,d}[i] = \max\{K,c\wvecm_{p,o,d}[i]\}
 \]
 where $K$ is some constant value throughout the training.
 %
 While the value of $w_{m,o,d}[i]$ could exceed $K$ after re-normalization
 for a particularly strongly weighted strategy,
-the value could be seen converging to $K$ within a handful of iterations.
+the value could be seen converging to $K$ within just a handful of iterations.
 %
 The desired intention of this regularization was to allow other strategies
 the opportunity to overcome the bias of earlier strengthening of the strongest
@@ -49,7 +49,7 @@ strategy.
 \input{sections/findings/experiments/regularization/strats-0.80.fig.tex}
 
 %%%
-As expected,
+As was expected,
 the limitation of maximum attainable value did indeed force the agent to learn
 multiple applicable strategies for each score location.
 %
@@ -68,7 +68,7 @@ unintentionally discarding all other potential strategies.
 %%%
 
 %%%
-Additionally understandably,
+Additionally,
 the nature of this gray mass alters significantly as the regularization rate is
 altered.
 %
@@ -104,7 +104,7 @@ indicative of an increase in performance as training progresses.
 However,
 the increases and decreases of performance along the time axis
 the wide range of spreads present and the sinusoidal nature of intermediate
-checkpoints' spreads leads to the conjecture that, perhaps,
-performance is not quite as predictable as that.
+checkpoints' spreads
+prevents the conclusion that performance is as predictable as that.
 %%%
 

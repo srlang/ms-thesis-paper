@@ -21,7 +21,8 @@ paired off against each other.
 %
 Each pair of agents played one million games against each other,
 each game starting at a random score location,
-learning and reinforcing their weight vectors after each game.
+learning and reinforcing their weight vectors after each game,
+according to Section~\ref{sec:dm-methods-training}.
 %%%
 
 \paragraph*{Learning Process}
@@ -64,8 +65,8 @@ point,
 but an almost all-or-nothing attitude towards adhering to a single strategy.
 %
 This means there is little to no nuance to which cards are chosen
-and there is little to no chance for other strategies to collectively overrule 
-or veto the major strategy.
+or chance for other strategies to collectively override
+the major strategy.
 %%%
 
 %%%
@@ -101,7 +102,7 @@ so they cannot have their weights adjusted.
 %%%
 Despite the all-or-nothing nature of how a single strategy is potentially
 learned,
-it is still worth noting that the agent did in fact learn to play different
+it is still worth noting that the agent did, in fact, learn to play different
 strategies at different times.
 %
 As can be seen in Figure~\ref{fig_r1-strats},
@@ -147,7 +148,7 @@ the resulting punishment will decrease the top two or three strategies that were
 most responsible for the hand choice at that state,
 effectively increasing all others.
 %
-This, in turn, would likely later lead to a cycle in which different strategies
+This, in turn, would lead to a cycle in which different strategies
 are cyclically placed in a role of strongest weight,
 generating the fuzz seen now.
 %%%
@@ -181,7 +182,7 @@ The most major of these differences is that all patterns are shifted lower and
 more to the left when the agent is the dealer,
 correlating with scores which are more advantageous to the player.
 %
-This means that the agent is more ``comfortable'' when it has a slightly larger
+This means that the agent is more comfortable when it has a slightly larger
 lead as the dealer than it necessarily needs as the pone.
 %%%
 
@@ -210,10 +211,10 @@ the dealer and when the pone.
 Not only is this fascinating since the agent is learning a state-value function
 indirectly,
 but in the game of cribbage,
-there exist different \textit{checkpoints} in which the player aims to get
+there exist different checkpoints in which the player aims to get
 himself by the end of a round to be in favorable position for the next.
 %
-Here we see evidence that the agent is learning these checkpoints throughout its
+Here it is seen that the agent is learning these checkpoints through its
 play.
 %%%
 
@@ -241,7 +242,7 @@ the learned agent lost easily to the randomly-weighted agent:
 with the exception of a spectacular loss in Game 3,
 all other games were close losses if not wins.
 %
-This is speculated to be a result of the previously mentioned over-aggressive
+This was speculated to be a result of the previously mentioned over-aggressive
 learning pattern and its all-or-nothing end result.
 %
 Since the agent aligns so intensely to a single strategy,
@@ -299,7 +300,7 @@ deterministic and non-adaptive in their weight assignments.
 %
 Additionally,
 a random agent was played against its future iterations in the same fashion,
-with the similar results, not shown. % depicted in Table~\ref{tab_r1-spreads_b}.
+with similar results shown in Fig~\ref{fig_r1-spreads_b}.
 %%%
 
 
@@ -323,11 +324,13 @@ with the similar results, not shown. % depicted in Table~\ref{tab_r1-spreads_b}.
 %%%
 
 %%%
-As a result of the presumed over-aggressive learning of single strategies,
+Because it was presumed that the over-aggressive learning of singular strategies
+was negatively impacting performance,
 some learning parameters were altered for Round 2.
 %
 Since it was estimated to be the primary reason for the learning behavior,
-the first parameter adjustment made was to decrease the learning rate drastically.
+the first parameter adjustment made was to decrease the scaling factor 
+drastically.
 %
 The learning rate was decreased to one fifth of what was used in Round 1.
 %
@@ -339,19 +342,14 @@ the exploration rate was defined as $e = 0.3 - \Var({\wvecm_{p,o,d}})$
 in order to allow more trained states to be less affected by randomized
 exploration.
 %
-As a result,
-the most strongly biased weight locations would only allow for exploration
-even more rarely than before.
+This had the understandable but unintended effect
+of further exacerbating the all-or-nothing behavior
+by more quickly exploiting a single strategy.
 %
 Although only producing a decrease from a 30\% chance to 18\%,
 this would still result in a smaller likelihood of exploring in the current 
 state,
 potentially further cementing of the dominant strategy in its position.
-%
-Additionally,
-it was a complication which, upon further thought, would not result in much
-difference over the course of time
-and thus deemed non-beneficial and ultimately unnecessary.
 %%%
 
 %%%
@@ -364,19 +362,18 @@ reasonable mixes which could outplay a random agent,
 the structure of the tournament was updated.
 %
 In addition to having the winners of the previous pair of agents square
-off against one another,
-there was a ``loser's bracket'' created
+off against one another in a ``winner's bracket,''
+there was also a ``loser's bracket'' created
 in which the losers would start over from ground zero.
 %
 These two ways of playing were intended as a two-pronged approach
 in order to see if multiple agents could be trained at the same time
 which could outperform random.
 %
-The ``winners bracket'' would determine if a highly-biased set of agents could
+The winners bracket would determine if a highly-biased set of agents could
 learn nuance
-while the ``losers bracket'' would test if it were possible for two constantly
-competing agents could ever actually increase performance when both are each
-updating their parameters to combat each other.
+while the losers bracket would
+act as a reset with a different set of learning parameters.
 %%%
 
 %%%
@@ -391,7 +388,7 @@ but not the game,
 the next phase would attempt to determine the extent of this tailored learning.
 %
 In addition to the previously mentioned alterations to the tournament structure,
-a new batch of agents would be trained against a static, entirely random agent.
+a new batch of agents would be trained against a static, randomly weighted agent.
 %
 Rather than both agents in the game learning and altering their weights after
 each game,
