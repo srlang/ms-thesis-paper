@@ -16,7 +16,7 @@ Games provide an isolated environment with a set of distinct rules and clear
 objectives which make them well suited to being expressed as Markov decision
 processes~\cite{samuel_checkers}.
 %
-This in turn allows for modeling as a reinforcement learning problem and
+This, in turn, allows for modeling as a reinforcement learning problem and
 subsequent exploration.
 %%%
 
@@ -38,7 +38,7 @@ learn how to play checkers.
 %%%
 
 %%%
-The first method Samuel devises is what he called ``Rote learning.''
+The first method Samuel devises is what he called ``rote learning.''
 %
 This strategy applied an arbitrarily decided polynomial value function
 to evaluate board positions.
@@ -51,14 +51,16 @@ Although only a certain number of moves were allowed to be searched forward,
 a record of previously evaluated positions was stored.
 %
 These kept records would then be used to virtually extend the depth of the
-search tree:
+search tree.
+%
+For instance,
 if the ply depth of the search is three and a previously evaluated position was
 located as a leaf on the search tree of the currently held position,
 then the effective depth of the tree along this route is now six since the
-stored position has already been evaluated to a depth of three.
+stored position has already been evaluated a further three plies.
 %
 Samuel even recognized the idea of rewards being necessary for learning a task
-with what he called a ``pushing mechanism'' which would direct the agent towards
+with what he called a ``pushing mechanism,'' which would direct the agent towards
 winning the game and not just picking better positions.
 %%%
 
@@ -68,7 +70,7 @@ deeper and deeper plies and saving results,
 Samuel's program was trained through self-play, recorded games, and occasionally
 through human interaction.
 %
-The recorded, or ``book games'' as Samuel terms them,
+The recorded games, or ``book games'' as Samuel terms them,
 provide a mechanism for supervised learning in which the agent could track its
 own choices against those made by the humans in the actual game,
 providing another method to update the value of a board position.
@@ -82,7 +84,7 @@ better-than-average novice.
 %%%
 The other learning method Samuel explains is what he called
 ``generalized learning''
-and was a preliminary simulated annealing or hill-climbing algorithm
+and was a preliminary simulated annealing algorithm
 which was applied to improving the board position evaluation polynomial.
 %
 In the paper,
@@ -103,6 +105,6 @@ smoothing out changes as needed to avoid large leaps in the search space.
 Although the reader is cautioned that the learning method is not guaranteed to
 find globally optimal parameters,
 Samuel's proposed hill-climbing technique creates an agent which is capable
-of playing a better than average game of checkers.
+of playing a better-than-average game of checkers.
 %%%
 
