@@ -1,4 +1,4 @@
-\subsubsection*{Rewards and the Environment}
+\subsubsection*{Agent, Rewards, and Environment}
 
 %%%
 % Explanation of basic background topics in reinforcement learning
@@ -11,6 +11,8 @@
 The three most important, constantly interacting components in a reinforcement
 learning scenario are
 the environment, the agent, and the rewards.
+%
+The agent is the actor that makes decisions and learns the task at hand.
 %
 The agent must learn to navigate the environment in order to maximize its
 rewards,
@@ -25,8 +27,7 @@ the agent interacts with and navigates what is known as the environment.
 %
 The environment is a set of states in which an agent can find itself.
 %
-What exactly constitutes the environment is problem-specific
-and the line between agent and environment is not often clearly defined.
+What exactly constitutes the environment is problem-specific.
 %
 An individual state can be any situation in which the agent finds itself
 and can be in either discrete or continuous space.
@@ -42,13 +43,13 @@ its current state.
 %
 In the example of chess,
 an action is discrete and would be to move a piece X to position Y,
-e.g. moving the bishop to G4 (\textit{Bg4}).
+e.g. moving the bishop to g4 (\textit{Bg4}).
 %
 In golf, the action is, again, continuous and may be
 which club to use in which direction and with how much power.
 %%%
 
-\paragraph*{Goals and Rewards}
+\paragraph*{Rewards and Goals}
 
 %%%
 Merely being able to move around in an environment does not satisfy the
@@ -57,17 +58,18 @@ requirement for learning unless a given task is being completed.
 This desired task can be called the goal of the agent.
 %
 For games scenarios,
-this is simply the notion of winning.
+this is frequently simply the notion of winning.
 %%%
 
 %%%
-Rewards can be thought of as a way of enticing the agent to accomplish the goal.
-%
-A reward is a positive feedback event that encourages and affirms progress
-towards the goal.
+A reward is a positive feedback event that encourages or affirms progress
+towards the goal
+and 
+can be thought of as a way of enticing the agent to accomplish the goal.
 %
 As with a dog learning to jump through a hoop,
-a treat is given after the dog has successfully jumped through the hoop,
+the reward of a treat is given after the dog has successfully jumped
+through the hoop,
 or perhaps a partial treat for first walking through a stationary hoop
 or other similar subtask.
 %%%
@@ -95,9 +97,11 @@ encourage actions conducive to reaching the terminal state in a speedy fashion:
 %%%
 A policy is a mapping of actions to states.
 %
-A policy $\policy$ describes a set probabilities $P(a|s)$ where
-$a \in \Actions$ is an action in the set of actions
-and $s \in \States$ is a state somewhere in the environment.
+A policy $\policy$ describes a set probabilities $P(a|s)$
+of taking action $a \in \Actions$
+when in state $s \in \States$
+where $\Actions$ is the set of all possible actions
+and $\States$ is the set of all states in the environment.
 %
 An optimal policy $\policy_*$,
 of which there may be several,

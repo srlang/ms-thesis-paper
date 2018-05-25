@@ -15,7 +15,7 @@ discrete representations.
 %
 Heretofore, %unless otherwise stated,
 all discussion will assume a discrete representation
-as it is simpler and the domain of cribbage falls into this category.
+as the domain of cribbage falls into this category.
 % TODO: ^^^ verify continuous space no longer used
 %%%
 
@@ -32,8 +32,10 @@ A state can have a \textit{value} associated with it given a policy $\policy$.
 %
 The value of a state $s \in \States$ under policy $\policy$ is denoted
 $v_\policy(s)$
-which can signal the ``worth'' of the given state
-and is defined as the expected total reward by following policy $\policy$ from
+which can signal the worth of the given state.
+%
+The value of a state
+is defined as the expected total reward by following policy $\policy$ from
 state $s$:
 \begin{align*}
 	v_\policy(s) &= \Expectation_\policy\left[G_t | S_t = s\right] \\
@@ -61,7 +63,7 @@ $\policy$ is defined as:
 				\sum_{k=0}^{\infty}\gamma^k R_{t+k+1} | S_t = s, A_t = a
 			\right]
 \end{align*}
-and its optimum $q_*(s,a)$ is accordingly defined as:
+and its optimum $q_*(s,a)$ is consequently defined as:
 \[
 	q_*(s,a) = \max_{\policy}q_\policy(s,a)\ 
 		\forall a\in\Actions\ \forall s\in\States
@@ -98,8 +100,9 @@ function $v_\policy$ for some policy $\policy$.
 %
 By repeatedly updating the value of a state
 as its cumulative expected reward when taking each possible action,
-the state-value function of a policy can be estimated to an
-arbitrary precision.
+the state-value function of a policy can be computed to an
+arbitrary precision
+in situations in which the entire state space is observable.
 %
 This process is shown in Algorithm~\ref{alg:poleval}.
 %
@@ -126,14 +129,13 @@ Intuitively,
 this is understandably a better policy
 since each action taken will optimize its expected returns if ever the
 agent finds itself in the given state,
-leading to a better policy
-assuming the starting policy to be improved upon was suboptimal.
+assuming the starting policy was suboptimal.
 %
 Using this simple greedy policy improvement mechanism,
 the idea of policy iteration is formed.
 %
 Alternating steps of policy evaluation and policy improvement are repeated
-until a stable policy is reached that is approximately optimal.
+until a stable policy is reached that is within some precision bound of  optimal.
 %
 This process is given in Algorithm~\ref{alg:politer}
 and can be visualized as:
@@ -141,12 +143,13 @@ and can be visualized as:
 	\policy_0 \Earrow v_{\policy_0} \Iarrow
 	\policy_1 \Earrow v_{\policy_1} \Iarrow
 	\policy_2 \Earrow \ldots \Iarrow
-	\policy_* \Earrow v_{\policy_*} \Iarrow
+	\policy_* \Earrow v_{\policy_*}
 \]
 where $\Earrow$ shows policy evaluation and $\Iarrow$ show policy improvement.
 %
 Although Algorithm~\ref{alg:politer}'s conditional check before
-returning the value function can allow cycling between multiple optimal
+returning the value function written as is
+can allow cycling between multiple optimal
 policies,
 the algorithm is illustrative
 and care can be taken in implementation to remove this possibility.
@@ -180,7 +183,7 @@ and is shown in Algorithm~\ref{alg:valueiter}.
 This algorithm still converges to optimal policy,
 just with less accurate steps made in improvement.
 %
-The analogy can be made where value iteration is stochastic gradient descent
+An analogy can be made where value iteration is stochastic gradient descent
 to policy iteration's gradient descent.
 % TODO: ^^^ probably cite definitions for each or something
 %%%
@@ -202,21 +205,21 @@ However,
 this is often not practical in real-world applications.
 %
 Monte Carlo methods are a set of ways in which
-state-value functions or policies can be learned through experience without
+state-value functions or policies can be estimated through experience without
 complete knowledge of the environment.
 %
 These experience can come from episodes in the real environment
 or through simulated encounters
-where an episode is simply a separable set of events that occur together in
+where an episode is a separable set of events that occur together in
 time.
-%%%
-
-%%%
+%
 By averaging observed returns from experienced episodes,
 the state-value function,
 and thus policy,
 can be learned.
-%
+%%%
+
+%%%
 The key problem in learning through experience is how to balance
 the exploitation of the current value function or policy
 with exploration of the environment to discover potentially better returns.
@@ -226,8 +229,9 @@ depth-first search of a tree.
 %
 An agent which explores too much (breadth-first)
 may not have very accurate knowledge of each subtree,
-while an agent which explores too little (depth-first) will have accurate
-knowledge of only a few paths down the tree.
+while an agent which explores too little (depth-first)
+will only have accurate
+knowledge of a few very specific paths down the tree.
 %
 There are two simple mechanisms to ensure the necessary exploration of the
 environment.
