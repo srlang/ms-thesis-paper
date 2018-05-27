@@ -99,7 +99,7 @@ Policy evaluation is the iterative process of approximating the state-value
 function $v_\policy$ for some policy $\policy$.
 %
 By repeatedly updating the value of a state
-as its cumulative expected reward when taking each possible action,
+to its cumulative expected reward, when taking each possible action,
 the state-value function of a policy can be computed to an
 arbitrary precision
 in situations in which the entire state space is observable.
@@ -127,7 +127,8 @@ that the expected resulting reward is maximized.
 %
 Intuitively,
 this is understandably a better policy
-since each action taken will optimize its expected returns if ever the
+since each action taken will optimize its expected returns,
+if ever the
 agent finds itself in the given state,
 assuming the starting policy was suboptimal.
 %
