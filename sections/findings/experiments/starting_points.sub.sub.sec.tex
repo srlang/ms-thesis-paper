@@ -59,6 +59,12 @@ Interestingly,
 the \handmaxposs\ strategy's presence as the second most common pure strategy
 used indicates a significant degree of risk-taking present in the users'
 responses.
+%
+According to user comments,
+this increased riskiness in play
+may be a result of some users attempting to maximize points of the hand,
+without the responsibility to actually play the resulting game,
+and may not be entirely representative of actual in-game choices.
 %%%
 
 %%%
@@ -90,32 +96,36 @@ with only a single agent updating its weights.
 
 \paragraph*{Results}
 
+%%%%
+%There are very two interesting trends that arise from starting from nearly pure
+%strategies.
+%%
+%The first is that the starting strategy is,
+%at least for those tested,
+%is the dominant strategy in winning positions.
+%%
+%The second is what learning occurs in losing positions.
+%%%%
+
 %%%
-There are very two interesting trends that arise from starting from nearly pure
-strategies.
+The comparison of different strategies' development after training
+(Figure~\ref{fig:findings-expts-sanitycheck-matrix})
+shows the agent learning applicable policies
+for both winning and losing positions.
 %
-The first is that the starting strategy is,
-at least for those tested,
-is the dominant strategy in winning positions.
+In the winning positions of the strategy graphs,
+the starting strategy is further strengthened to dominance.
 %
-Similarly,
-this strategy is always un-learned in losing positions.
+The purely mathematical operation of overcoming such a heavily
+weighted strategy requires many games to explore enough
+and perform better than the starting strategy
+to be rewarded;
 %
-This serves as a confirmation that losing positions are simply unlikely to be
-recovered from by the agent,
-no matter how seemingly rational the strategy is.
+the explored strategy itself
+may coincide with the starting strategy
+already occupying these positions.
 %
-There are two likely reasons for this dominance of the winning positions'
-weights.
-%
-The first,
-the purely mathematical operation of overcoming such an astoundingly heavily
-weighted strategy requires many games to explore enough and perform better than
-the given strategy
-which itself may often coincide with \handmaxavg\ or \handmaxmin\ 
-which would normally occupy these positions.
-%
-The second,
+Additionally,
 since the opponent is a static agent always using the same starting
 semi-pure strategy and never training these weights,
 playing a similar strategy ensures a similar resulting position.
@@ -134,22 +144,9 @@ not allowing a larger gap to develop.
 %%%
 
 %%%
-The second interesting observation is what learning does occur
-in the losing positions.
-%
-With most starting strategies,
-the losing positions are mainly left to the influence of a single
-other strategy.
-%
-This losing strategy also varies depending on the starting strategy.
-%
-The reason for this varying losing strategy is again
-because the opponent for each of these agents during training
-was an agent always using the same mostly pure strategy.
-%
-As a result,
-the learning agent developed a counter strategy to each different
-opponent it faced.
+In losing positions,
+the agent develops a reasonable counter policy
+to the given semi-pure opponent.
 %
 For instance,
 when faced with \handmaxmin\ which will always play safe,
