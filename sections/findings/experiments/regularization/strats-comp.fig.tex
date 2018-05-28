@@ -1,0 +1,42 @@
+
+\begin{figure}
+\centering
+
+	\begin{tabular}{l l p{2.75cm} p{2.75cm} p{2.75cm} p{2.75cm}}
+	& & \multicolumn{4}{c}{\textit{Regularization Rate}} \\
+	&
+		& $r = 0.5$
+		& $r = 0.6$
+		& $r = 0.7$
+		& $r = 0.8$
+		\\
+	%
+	\multirow{2}{*}{
+	\rotatebox{90}{
+	\parbox[c]{2.5cm}{
+		\textit{Strategy}
+	}
+	}
+	}
+	%
+	& \rotatebox[origin=c]{90}{\handmaxmin}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/regularization/strats/0.50/hand_max_min.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/regularization/strats/0.60/hand_max_min.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/regularization/strats/0.70/hand_max_min.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/regularization/strats/0.80/hand_max_min.png}}
+	%
+	\\ & & & & & \\
+	& \rotatebox[origin=c]{90}{\handmaxavg}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/regularization/strats/0.50/hand_max_avg.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/regularization/strats/0.60/hand_max_avg.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/regularization/strats/0.70/hand_max_avg.png}}
+		&\parbox[c]{1em}{\includegraphics[width=2.5cm]{images/findings/experiments/regularization/strats/0.80/hand_max_avg.png}}
+\end{tabular}
+
+\caption{
+	Comparison of the \handmaxmin\ and \handmaxavg\ strategies
+	for each of the regularization rates ($r$) used.
+}
+\label{fig:expts-reg-comp}
+\end{figure}
+
