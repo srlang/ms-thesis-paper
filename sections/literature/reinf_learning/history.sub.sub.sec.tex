@@ -98,9 +98,9 @@ Beta would inherit Alpha's parameters and the adjustments would begin again.
 This had the effect of incrementally improving the learned parameters.
 %
 If Alpha was incapable of consistently beating Beta,
-then a local optimum was recognized and Alpha's polynomial would be randomly
-mutated to another starting position,
-smoothing out changes as needed to avoid large leaps in the search space.
+then a local optimum was recognized and Alpha's polynomial would be drastically
+mutated to another starting position
+by eliminating the leading term of the polynomial.
 %
 Although the reader is cautioned that the learning method is not guaranteed to
 find globally optimal parameters,

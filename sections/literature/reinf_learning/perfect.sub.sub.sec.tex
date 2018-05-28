@@ -61,36 +61,51 @@ A first neural network was trained using a database of human-played games
 to predict human play for a given board position.
 %
 Using this network as a starting point,
-a policy network was trained
-along with a value network which worked together to determine the optimal next
-move for the agent.
+a policy network was trained to win more games than its previous renditions.
+%
+From that policy network,
+a value network was trained to determine the likelihood of winning when in a
+given state.
 %
 Both of these previous networks were trained through self-play.
 %
-The network resulting from this self-play was able to beat 
+The AlphaGo program would use this value network in combination with a
+Monte Carlo Tree Search algorithm,
+similar in nature to a minimax tree
+but using Monte Carlo simulations to create approximate state values within the
+tree as well as a policy to determine which transitions to take within the
+simulation tree,
+to determine the optimal move to make next.
+%
+The final value network resulting from this training pipeline was able to beat
 European Go Champion Fan Hui in match play
-five games to one,
+five games to zero~\cite{deepmind_alphago},
 eventually going as far as winning against
 Grandmaster Lee Sedol four games to one~\cite{deepmind_overview}.
 %%%
 
 %%%
-% TODO: more detail on alphago structure
-%%%
-
-%%%
 DeepMind then took a step further,
-%following in Tesauro's footsteps~\cite{tdgammon},
 removing all human-imposed knowledge and
 training a single neural network to play \textit{tabula rasa}, i.e. from scratch.
 %
-Using only this neural network and a tree search algorithm,
-AlphaGo Zero, the new program,
-was able to defeat the previous AlphaGo 89 games to 11
-\cite{deepmind_alphago_zero}.
-%%%
-
-%%%
-% TODO: more about alphago zero, surely
+Using only this single neural network,
+the team trained AlphaGo Zero,
+the new program,
+using a simplified Monte Carlo tree search algorithm to evaluate positions
+during the game.
+%
+After a self-play game had been played,
+the network used batches of observed states during the game to update
+the network's weights to predict values
+more closely align to those of the simulated policy.
+%
+After only 72 hours of training and using only a single machine,
+AlphaGo Zero was able to defeat the previous version of AlphaGo
+one hundred games to zero~\cite{deepmind_alphago_zero}.
+%
+For context,
+AlphaGo was distributed across multiple machines
+and trained over a period of several months.
 %%%
 
