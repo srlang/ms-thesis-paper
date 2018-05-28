@@ -4,7 +4,17 @@
 \label{sec:findings-r2}
 
 %%%
-Round consisted of 
+Round consisted of ten agents paired off against each other
+in both the winners' and losers' brackets.
+% TODO: check to make sure brackets use plural possessive globally
+%
+The winners' bracket used agents previously trained from Round 1
+while the losers' bracket agents started with random initializations.
+%
+These agents were each trained for a million games
+with mostly the same configuration as in Round1,
+except the scaling factor was lowered to $s = 2.0$
+and exploration rate was set to a constant $e = 0.30$.
 %%%
 
 \paragraph*{Performance}
