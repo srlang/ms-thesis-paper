@@ -71,7 +71,7 @@ shows that neither bracket learned to perform better than previous iterations.
 
 %%%
 Despite the lack of performance increase after another million games played by
-both the winning and losing brackets,
+both the winners' and losers' brackets,
 there are still interesting trends to be spotted between the different brackets
 of play.
 %
@@ -85,7 +85,7 @@ are still quick to form.
 
 %%%
 Even more fascinating observations can be found from the strategy graphs
-from the winner's bracket (see Figure~\ref{fig:r2-strats-winner}).
+from the winners' bracket (see Figure~\ref{fig:r2-strats-winner}).
 %
 By focusing on the \handmaxmin\ and \handmaxavg\ strategies in particular,
 the sinusoidal wave along the diagonal can be observed extending further
@@ -126,15 +126,15 @@ rate used.
 
 
 %%%
-% Talking about loser's bracket and how it compares to winner's
+% Talking about losers' bracket and how it compares to winner's
 %%%
 
 \input{sections/findings/round2/strategies_loser.fig.tex}
 
 %%%
-By comparing the winner's bracket strategy graphs
+By comparing the winners' bracket strategy graphs
 (Figure~\ref{fig:r2-strats-winner})
-to those of the loser's bracket
+to those of the losers' bracket
 (Figure~\ref{fig:r2-strats-loser}),
 a vast degree of similarity can be found.
 %
@@ -145,11 +145,11 @@ However,
 there does exist a small amount of difference between the two
 in how quickly and surely each trend is learned.
 %
-The winner's bracket mostly reinforces its current weight choices
+The winners' bracket mostly reinforces its current weight choices
 with the losing positions becoming only slightly gradiented.
 %
 Meanwhile,
-in the loser's bracket,
+in the losers' bracket,
 the gradient can be seen slightly more evenly to all strategies
 and
 across the winning-losing boundary.
@@ -172,9 +172,9 @@ there may be less of a bias towards those strategies which are initially winners
 %%%
 
 %%%
-In analyzing the evolution of the \handmaxavg\ strategy in both the winner's
+In analyzing the evolution of the \handmaxavg\ strategy in both the winners'
 (Figure~\ref{fig:r2-flip-winner})
-and loser's brackets (Figure~\ref{fig:r2-flip-loser}),
+and losers' brackets (Figure~\ref{fig:r2-flip-loser}),
 it can clearly be seen that the general trend of behavior forms
 relatively quickly,
 i.e. after approximately 500,000 games played.
