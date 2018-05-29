@@ -56,11 +56,12 @@ Note that this is not necessarily the same set of weights which were the highest
 contributors to the final choice.
 %
 It may be the case that weights $x$ and $y$ are the highest at a given point,
-but that strategies $u$ and $v$ with slightly lower weight values had higher
-advocacy for a given hand which summed up to a larger value.
+but that strategies $u$ and $v$,
+with slightly lower weight values,
+had higher advocacy for a given hand which summed up to a larger value.
 %
 Were this not the case,
-and instead,
+and, instead,
 the highest weights were to be directly punished or rewarded,
 the resulting changes would merely reward or punish those strategies which
 were randomly allocated slightly higher weights initially.
@@ -105,12 +106,13 @@ The reinforcement training framework operated very simply.
 %
 A text file of weights was loaded to initialize an agent.
 %
-These agents would then be placed into a game and played against each other.
+These agents were then placed into a game and played against each other.
 %
-After the game had been completed, the weights for each agent would be adjusted
+After the game had been completed,
+the weights for each agent were be adjusted
 accordingly along the path which the agent took.
 %
-After a set number of epochs, the agent would save its weights configuration to a
+After a set number of epochs, the agent saved its weights configuration to a
 checkpoint file.
 %
 This allowed for the convenient benefit of being able to track how weights
@@ -160,9 +162,9 @@ where $k$ is set at a constant $0.3$ empirically chosen during the
 development process.
 %
 This was implemented in order to ensure that situations in which there were
-more uniform weights had a higher chance of being explored
+more uniform weights had a higher chance of being explored,
 whereas those with a higher variance were deemed to be varied enough to
-have been previously trained
+have been previously trained,
 and thus should be further exploited.
 %%%
 
@@ -173,18 +175,19 @@ ultimate agent was reached,
 allowing for more experience to be gained for agents from a variety of sources.
 %
 After a set number of training games,
-in the case of this project one million,
+one million in the case of this thesis, 
 the two agents were played against each other in a tournament match fashion.
 %
 The winner was determined as the agent with the most points at the end
 of a series of games, %\textemdash
-wherein two points would be awarded to the winner of a game and three if that
-win was by a margin of at least 31 points
-and ties broken by total point spread,
+wherein two points would be awarded to the winner of a game
+or three if that win was by a margin of at least 31 points
+%
+Ties were broken by total point spread,
 according to ACC rules~\cite{ACC_rules}.
 %
 After the match had completed,
-the winner would advance to the next round,
+the winner advanced to the next round,
 training against another winner from the previous round.
 %
 The process would be

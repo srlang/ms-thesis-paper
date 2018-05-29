@@ -77,12 +77,11 @@ Since only those states which have been visited can have their weights
 influenced,
 the remainder will continue to stay untouched.
 %
-As can be seen in the top-right and bottom-left corners,
-representing extremely unlikely scores to reach in which one player has
-achieved a rather large lead while only allowing a few points,
-contain only the dull gray of the initial weights.
+Note the top-right and bottom-left corners of the strategy graphs:
+regions in which one player has amassed a large lead.
 %
-This is because even with a potential spread of 60 points when initialized,
+These states remain unvisited because,
+even with a potential spread of 60 points when initialized,
 these outlandish scores are outside the realm of potential visitation.
 %
 Therefore, they have not been a part of any game,
@@ -383,7 +382,7 @@ act as a reset with a different set of learning parameters.
 %%%
 
 %%%
-Since the agents were assumed to be learning how to outplay each other
+Since the agents were assumed to be learning how to outplay each other,
 but not the game,
 the next phase would attempt to determine the extent of this tailored learning.
 %
