@@ -16,37 +16,37 @@ during the review tournaments.
 %%%
 
 
-\subparagraph*{Overfitting}
-
+%%%\subparagraph*{Overfitting}
 %%%
-% Overfitting
-The first item to consider as the source of the discrepancy between the
-observation that a policy is learned,
-but its performance is abysmal,
-is that the weights table is overfitting to the problem.
-%
-This would have been especially true of the first round where learning rates
-were much higher.
-%
-However,
-if the agents were to be overfitting,
-a number of differences would be found in their results.
-%
-Firstly,
-a different set of policy graphs would likely result from the training phase
-which is not the case.
-%
-More importantly,
-a definitive curve would be present in the tournament graphs as performance
-would increase before dropping.
-%
-As can be seen in Figure~\ref{fig:r2-time-series},
-this is not the case
-as performance is not apparently linked to training in any way.
-%
-Therefore, it would seem safe to conclude that overfitting is not the reason
-for the poor resulting performance.
-%%%
+%%%%%%
+%%%% Overfitting
+%%%The first item to consider as the source of the discrepancy between the
+%%%observation that a policy is learned,
+%%%but its performance is abysmal,
+%%%is that the weights table is overfitting to the problem.
+%%%%
+%%%This would have been especially true of the first round where learning rates
+%%%were much higher.
+%%%%
+%%%However,
+%%%if the agents were to be overfitting,
+%%%a number of differences would be found in their results.
+%%%%
+%%%Firstly,
+%%%a different set of policy graphs would likely result from the training phase
+%%%which is not the case.
+%%%%
+%%%More importantly,
+%%%a definitive curve would be present in the tournament graphs as performance
+%%%would increase before dropping.
+%%%%
+%%%As can be seen in Figure~\ref{fig:r2-time-series},
+%%%this is not the case
+%%%as performance is not apparently linked to training in any way.
+%%%%
+%%%Therefore, it would seem safe to conclude that overfitting is not the reason
+%%%for the poor resulting performance.
+%%%%%%
 
 
 \subparagraph*{Scale of Play}
@@ -130,6 +130,8 @@ than earlier iterations,
 yet the final agent is better than these.
 %%%
 
+\subparagraph*{Overfitting}
+
 %%%
 If the agent is being trained correctly and no overfitting is occurring,
 then the point spread should be a positive number,
@@ -147,7 +149,7 @@ Instead,
 the shape of the curve implies that,
 since the random agent performs consistently better than the trained agent,
 the learning process is not learning the game so much as how to outplay its
-opponent in some corner case that does not reappear during testing.
+opponent in some corner cases that do not reappear during testing.
 %
 This conclusion is supported by the observation that the agents with limited
 training are steadfastly outplayed.
@@ -170,11 +172,11 @@ played,
 but since performance is unpredictable on this scale,
 this can be explained as a result of the randomness of the cards given
 and cannot be considered a reliable measure of performance.
-%
-In fact,
-in sampled matches,
-it was not uncommon to observe losses and wins of 30 points or more
-as well as much closer games with margins of only a few points.
+%%%%
+%%%In fact,
+%%%in sampled matches,
+%%%it was not uncommon to observe losses and wins of 30 points or more
+%%%as well as much closer games with margins of only a few points.
 %
 In addition to the randomness of cards dealt,
 this massive point sway could also be the result of the agents' uncertainty on 
