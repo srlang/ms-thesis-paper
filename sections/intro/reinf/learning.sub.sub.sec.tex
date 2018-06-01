@@ -38,9 +38,9 @@ The value of a state
 is defined as the expected total reward by following policy $\policy$ from
 state $s$:
 \begin{align*}
-	v_\policy(s) &= \Expectation_\policy\left[G_t | S_t = s\right] \\
+	v_\policy(s) &= \Expectation_\policy\left[G_t \middle| S_t = s\right] \\
 		&= \Expectation_\policy \left[
-				\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s
+				\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \middle| S_t = s
 			\right]
 \end{align*}
 %
@@ -57,11 +57,12 @@ The quality of an action $a\in\Actions$ at state $s\in\States$ under policy
 $\policy$ is defined as:
 \begin{align*}
 	q_\policy(s,a)
-		&= \Expectation_\policy\left[ G_t | S_t = s, A_t = a \right]
+		&= \Expectation_\policy\left[ G_t \middle| S_t = s, A_t = a \right]
 		\\
 		&= \Expectation_\policy\left[
-				\sum_{k=0}^{\infty}\gamma^k R_{t+k+1} | S_t = s, A_t = a
+				\sum_{k=0}^{\infty}\gamma^k R_{t+k+1} \middle| S_t = s, A_t = a
 			\right]
+		% TODO: Topi: make this inline via: \textstyle{}
 \end{align*}
 and its optimum $q_*(s,a)$ is consequently defined as:
 \[
