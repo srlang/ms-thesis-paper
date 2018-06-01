@@ -18,6 +18,11 @@ These latter games,
 in which state transitions
 proceed according to a set of transition probabilities,
 are called \textit{stochastic}~\cite{stochastic_games}.
+%
+Examples include games involving
+dice rolls (e.g.\ backgammon, craps),
+playing cards (e.g.\ poker, blackjack, cribbage),
+and other games of change (e.g.\ roulette, slot machines).
 %%%
 
 %%%
@@ -32,21 +37,21 @@ was TD-Gammon
 \cite{tdgammon}.
 %
 In his paper,
-Tesauro designed and trained a simple feed-forward neural network to play 
+Tesauro designed and trained a simple feed-forward multilayer perceptron to play 
 backgammon.
 %
 Backgammon is an ancient board game in which moving abilities are determined
 through dice rolls.
 %
 The inclusion of dice rolls provides a stochastic environment since
-a desired outcome may not be the actual result of making a move.
+a desired move may or may not be possible given a dice roll.
 %
 As a result,
 the searching methodology of DeepBlue or Samuel's checkers is not applicable
 as there is no guarantee of reaching a given state.
 %
 Instead,
-the neural network is trained to predict the likely outcome of a game with a
+the neural network was trained to predict the likely outcome of a game from a
 given position
 through observing several recorded games.
 %
@@ -68,7 +73,7 @@ TD($\lambda$) updates the weight differences according to the formula:
 		\alpha (Y_{t+1}-Y_t)
 		\sum_{k=1}^t {\lambda^{t-k} \nabla_w Y_k}
 \]
-where $\alpha$ is a learning rate parameters,
+where $\alpha$ is a learning rate parameter,
 $\nabla_w Y_k$ is the gradient of the output with respect to the weights,
 and $\lambda$ controls how far back credit is assigned to an outcome
 or more accurately how much that credit decays.
@@ -82,8 +87,8 @@ and values in between provide smoothly decaying credit assignments.
 %%%
 Later experiments extended training through the use of self-play.
 %
-TD-Gammon would play both sides of a single game and adjust its evaluation
-network accordingly.
+TD-Gammon would play both sides of a single game and adjust its
+weights according to the observed result.
 %
 This training method was proven to be highly successful when TD-Gammon was
 entered into the 1992 World Cup of Backgammon tournament and was shown to be a
@@ -98,7 +103,7 @@ considered more complex,
 as its evaluation function was able to precisely
 calculate the chances of winning without bias or emotion.
 %
-TD-Gammon has so impressed the backgammon community that strategies previously
+TD-Gammon so impressed the backgammon community that strategies previously
 considered inferior due to human bias have been revisited and reanalyzed due to
 their favorability in TD-Gammon.
 %%%
@@ -122,7 +127,7 @@ terminate.
 
 %%%
 In addition to the backgammon community,
-TD-gammon made leaps and bounds in the area of games AI research,
+TD-Gammon made leaps and bounds in the area of games AI research,
 especially with respect to neural networks.
 %
 After the first few thousand training games,
@@ -133,15 +138,15 @@ This was determined to be the result of simple combinations of features which
 could be quickly evaluated by a linear function of the raw board position.
 %
 More complicated, context-sensitive strategies would develop later in training
-and are credited as being the result of the ability of neural networks to adapt
-to nonlinear features.
+and are credited as being the result of the ability of neural networks to detect
+nonlinear features.
 %%%
 
 
 %%%
 While Tesauro credits the neural network architecture and the game itself for
-the success of the TD-Gammon system,
-Drs.\ Pollack and Blair from Brandeis University undertook to demonstrate that
+the success of TD-Gammon,
+Drs.\ Pollack and Blair from Brandeis University demonstrated that
 TD-Gammon's successes were not a result of
 temporal difference learning
 or even reinforcement learning necessarily,
@@ -154,23 +159,24 @@ Pollack and Blair applied basic hill-climbing techniques to a simple neural
 network setup similar to that described in Tesauro's paper.
 %
 To this network,
-the authors applied the same strategy as Samuel's generalized learning:
-a mutant would be created by adding Gaussian noise to the ``champion'' weights
-and the normal weights would play the mutant for a number of games.
+the authors applied a similar strategy to Samuel's generalized learning:
+a mutant was created by adding Gaussian noise to the ``champion'' weights.
 %
-These games were done in pairs with each agent getting the chance to play as
-white and the same random seed to avoid unfair bias in the dice rolls.
+The normal weights played the mutant for a number of games.
+%
+Each of these games was played in pairs
+so each agent got the chance to play as white,
+and started with the same random seed to avoid unfair bias in the dice rolls.
 %
 With this setup,
 if two agents are identical,
-then the result of two games would be one win each.
+then the result of the two games would be one win each.
 %
 If the mutant then won enough games,
-the champion's weights would then be shifted in the direction of the mutant.
+the champion's weights were shifted in the direction of the mutant.
 %
 At no point was reinforcement or temporal difference credit used to adjust the
-neural network's weights;
-not even backpropagation was used.
+neural network's weights.
 %%%
 
 %%%
@@ -185,16 +191,15 @@ not necessarily a result of the technique used in optimizing the neural network.
 %
 In normal student-teacher learning,
 a teacher will attempt to point out edge cases of the student's knowledge
-and the student in turn learns by asking tougher and tougher questions.
+and the student, in turn, learns by asking tougher and tougher questions.
 %
 In self-play learning,
 the teacher and student are the same,
 so it is possible that a student and teacher can reach a draw situation in which
-both agents are placated and neither is challenged to further best the other.
+both sides are placated and neither is challenged to further best the other.
 %
-Characteristics mentioned by the authors include the lack of ability for a game
-to end in a draw, which, in turn, means that either the teacher or student is
-always required to improve its performance,
-leading to continuous improvement.
+Backgammon, however,
+cannot end in a draw,
+so one of the players is always forced to improve.
 %%%
 

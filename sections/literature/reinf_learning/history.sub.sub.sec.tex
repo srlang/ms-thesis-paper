@@ -6,22 +6,6 @@
 \subsubsection*{History}
 
 %%%
-From Samuel's seminal work in checkers~\cite{samuel_checkers}
-to more recent accomplishments against Grandmasters of
-Go~\cite{deepmind_alphago},
-the domain of games has been an area of great interest in machine learning
-research.
-%
-Games provide an isolated environment with a set of distinct rules and clear
-objectives which make them well suited to being expressed as Markov decision
-processes~\cite{samuel_checkers}.
-%
-This, in turn, allows for modeling as a reinforcement learning problem and
-subsequent exploration.
-%%%
-
-
-%%%
 % Samuel's checkers
 % Holy cow, this guy was awesome
 %%%
@@ -38,7 +22,7 @@ learn how to play checkers.
 %%%
 
 %%%
-The first method Samuel devises is what he called ``rote learning.''
+The first method Samuel devised is what he called ``rote learning.''
 %
 This strategy applied an arbitrarily decided polynomial value function
 to evaluate board positions.
@@ -55,7 +39,7 @@ search tree.
 %
 For instance,
 if the ply depth of the search is three and a previously evaluated position was
-located as a leaf on the search tree of the currently held position,
+located as a leaf on the search tree of the current position,
 then the effective depth of the tree along this route is now six since the
 stored position has already been evaluated a further three plies.
 %
@@ -89,8 +73,8 @@ which was applied to improving the board position evaluation polynomial.
 %
 In the paper,
 two agents would play against each other:
-Alpha, in which the polynomial parameters could be tweaked,
-the other (Beta) using the same starting parameters, but never updating them.
+the first (Alpha), in which the polynomial parameters could be tweaked,
+the other (Beta), using the same starting parameters, but never updating them.
 %
 If Alpha won enough games in a tournament,
 Beta would inherit Alpha's parameters and the adjustments would begin again.
@@ -100,11 +84,11 @@ This had the effect of incrementally improving the learned parameters.
 If Alpha was incapable of consistently beating Beta,
 then a local optimum was recognized and Alpha's polynomial would be drastically
 mutated to another starting position
-by eliminating the leading term of the polynomial.
+by eliminating the leading term.
 %
 Although the reader is cautioned that the learning method is not guaranteed to
 find globally optimal parameters,
-Samuel's proposed hill-climbing technique creates an agent which is capable
+Samuel's proposed hill-climbing technique created an agent which is capable
 of playing a better-than-average game of checkers.
 %%%
 

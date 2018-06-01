@@ -10,6 +10,7 @@
 %of a discrete set of states and actions.
 %
 Although applicable to both discrete and continuous state representations,
+as long as it can be represented as a Markov decision process,
 it is useful for the sake of illustration to limit the scope of discussion to
 discrete representations.
 %
@@ -28,7 +29,8 @@ as the domain of cribbage falls into this category.
 %%%
 
 %%%
-A state can have a \textit{value} associated with it given a policy $\policy$.
+A state can have a \textit{value} associated with it,
+for a given policy $\policy$.
 %
 The value of a state $s \in \States$ under policy $\policy$ is denoted
 $v_\policy(s)$
@@ -50,7 +52,7 @@ The optimum value of a state $v_*(s)$ is defined as:
 
 %%%
 Similarly,
-an action can have its own ``worth'' or \textit{quality} assigned to it under a
+an action can have its own worth or \textit{quality} assigned to it under a
 specific policy.
 %
 The quality of an action $a\in\Actions$ at state $s\in\States$ under policy
@@ -76,9 +78,10 @@ As previously discussed,
 an optimal policy $\policy_*$ is any policy which maximizes the expected reward
 received.
 %
-Furthermore, policies can be compared.
+If there are optimal and suboptimal policies,
+then it follows that there are ways in which policies can be compared.
 %
-A policy $\policy$ is greater than another policy $\policy'$
+A policy $\policy$ is greater than or equal to another policy $\policy'$
 if and only if the value of all states under policy $\policy$
 are greater than or equal to the value of all states under $\policy'$
 \[
@@ -127,17 +130,17 @@ This process is as simple as greedily choosing the action at each state such
 that the expected resulting reward is maximized.
 %
 Intuitively,
-this is understandably a better policy
-since each action taken will optimize its expected returns,
-if ever the
-agent finds itself in the given state,
-assuming the starting policy was suboptimal.
+this is an optimal policy,
+given the current knowledge of the environment,
+since each action taken will always make the most rational decision
+in whichever state it finds itself in.
 %
-Using this simple greedy policy improvement mechanism,
-the idea of policy iteration is formed.
+The idea of policy iteration is formed
+from this simple greedy policy improvement mechanism,
 %
-Alternating steps of policy evaluation and policy improvement are repeated
-until a stable policy is reached that is within some precision bound of  optimal.
+Alternating steps of policy evaluation and policy improvement are repeated,
+converging
+until a stable policy is reached that is within some precision bound of optimal.
 %
 This process is given in Algorithm~\ref{alg:politer}
 and can be visualized as:
@@ -147,12 +150,12 @@ and can be visualized as:
 	\policy_2 \Earrow \ldots \Iarrow
 	\policy_* \Earrow v_{\policy_*}
 \]
-where $\Earrow$ shows policy evaluation and $\Iarrow$ show policy improvement.
+where $\Earrow$ shows policy evaluation and $\Iarrow$ shows policy improvement.
 %
-Although Algorithm~\ref{alg:politer}'s conditional check before
-returning the value function written as is
-can allow cycling between multiple optimal
-policies,
+Although Algorithm~\ref{alg:politer}'s conditional check
+in Line 9 of Step 3,
+written as is,
+can allow cycling between multiple optimal policies,
 the algorithm is illustrative
 and care can be taken in implementation to remove this possibility.
 %%%
@@ -172,7 +175,7 @@ the iterative nature of policy evaluation leads to a slow converging rate
 for the process of policy iteration.
 %
 However,
-the full convergence needs not occur for an optimal policy to be computed.
+full convergence does not need to occur for an optimal policy to be computed.
 %
 Instead,
 a very truncated form of policy evaluation can be done to improve the speed
@@ -185,9 +188,11 @@ and is shown in Algorithm~\ref{alg:valueiter}.
 This algorithm still converges to optimal policy,
 just with less accurate steps made in improvement.
 %
-An analogy can be made where value iteration is stochastic gradient descent
-to policy iteration's gradient descent.
-% TODO: ^^^ probably cite definitions for each or something
+Rather than make a slow, calculated step in the absolute best direction,
+value iteration takes a quick step in a generally good direction,
+always improving its situation and
+allowing later improvements in judgment compensate for the potentially poor
+steps previously taken.
 %%%
 
 \input{algs/valueiter.alg.tex}
@@ -223,20 +228,22 @@ can be learned.
 
 %%%
 The key problem in learning through experience is how to balance
-the exploitation of the current value function or policy
+exploitation of the current value function or policy
+to increase immediate returns
 with exploration of the environment to discover potentially better returns.
 %
-The exploration/exploitation debate is analogous to a breadth-first or
-depth-first search of a tree.
+An agent which explores too much
+may not have very accurate knowledge of each action's eventual outcome
+and often sacrifices better returns in the attempt.
 %
-An agent which explores too much (breadth-first)
-may not have very accurate knowledge of each subtree,
-while an agent which explores too little (depth-first)
-will only have accurate
-knowledge of a few very specific paths down the tree.
+Comparatively,
+an agent which explores too little
+may not discover that a better outcome is possible
+than those which it already knows.
 %
-There are two simple mechanisms to ensure the necessary exploration of the
-environment.
+There are two mechanisms to combat this issue
+and ensure the necessary exploration of the environment
+while also exploiting current knowledge to maximize rewards.
 %
 The first,
 using exploring starts,
@@ -245,10 +252,20 @@ starts each episode randomly in the environment's state-space.
 An algorithm for this sort of Monte Carlo method is given in
 Algorithm~\ref{alg:mces}.
 %
+This mechanism forces the agent to explore a different region
+of the state space than it may likely reach on its own.
+%
 The other,
 using an $\epsilon$-greedy policy,
 follows the policy less strictly,
 taking an action at uniform random with chance $\epsilon$.
+%
+Taking an action at random puts the it in situations
+just outside its normal operating area.
+%
+Whereas random starts can be thought of as global exploration,
+random actions would be a local exploration step,
+widening the knowledge area around previously known states.
 %
 Naturally,
 both of these methods can be combined to further ensure adequate exploration.

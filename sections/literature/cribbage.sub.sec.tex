@@ -23,7 +23,7 @@ to cribbage~\cite{roconnor_cs486}.
 
 %%%
 In his senior thesis,
-Philip Martin set out to find if the player which begins as the dealer
+Philip Martin set out to determine if the player which begins as the dealer
 had any statistical advantage in winning
 \cite{cribbage_optimal_ev}.
 %
@@ -34,16 +34,17 @@ From there,
 a matrix of potential average crib scores was created as a table indexed on each
 axis by one of ${52 \choose 2}$ combinations,
 introducing the minor accuracy of forgetting which cards have been seen by each
-player from their respective hands.
+player from their respective hands,
+but vastly decreasing the amount of computation needed.
 %
 Using the bounds found,
 certain basic strategies were proven to be suboptimal,
 e.g.\  avoiding throwing a pair or fifteen to the crib as the pone,
-since at least one of their expected outcomes
-was found to be below the lower bound for optimal strategies.
+since their expected outcomes
+were found to be below the lower bound for optimal strategies.
 %
 Despite the slight inaccuracy and assumption of a uniform distribution,
-the paper did conclude that being the first player to act as dealer gave the
+the paper concluded that being the first player to act as dealer gave the
 player an expected advantage of approximately 5 points on average
 as a result of starting with a guaranteed count of a crib.
 %
@@ -57,7 +58,7 @@ research into the game.
 %%%
 The next,
 and perhaps most useful,
-study performed on the game of cribbage is Robert O'Connor's undergraduate
+work performed on the game of cribbage is Robert O'Connor's undergraduate
 project
 \cite{roconnor_cs486}
 on adapting TD($\lambda$)~\cite{tdgammon} to the domain of cribbage.
@@ -66,8 +67,9 @@ O'Connor trained a feedforward multilayer perceptron with only a single hidden
 layer to play a single hand of cribbage.
 %
 He used TD($\lambda$) to adjust the weights as training proceeded with the
-network playing full games against itself:
-no score context data was included in the input vector for training.
+network playing full games against itself.
+%
+No score context data was included in the input vector for training.
 %
 After training for millions of games,
 the agent was able to choose hands reliably better than random,
@@ -105,10 +107,10 @@ reachable states for each possible legal move.
 
 %%%
 The final paper worth addressing which attempts to learn cribbage
-is Kendall's and Shaw's adaptive cribbage player
+is Kendall and Shaw's adaptive cribbage player
 \cite{adaptive_cribbage}.
 %
-The authors use an evolutionary strategy,
+The authors used an evolutionary strategy,
 similar to a genetic algorithm,
 to make an agent learn to play the discard phase of the game.
 %
@@ -138,7 +140,7 @@ behavior was reintroduced.
 
 %%%
 Additionally,
-the authors attempted also to use a co-evolutionary strategy in which
+the authors attempted to use a co-evolutionary strategy in which
 two agents would learn to adjust their weights for each hand when playing each
 other by using the opponent's score as comparison for weights adjustment.
 %
@@ -161,7 +163,8 @@ when playing as either the dealer or as the pone.
 %
 As a demonstration,
 a single set of dealt cards was set to the task
-and different sets of weights were learned for each position.
+and different sets of weights were learned for each position,
+showing that learning in different roles was possible.
 %%%
 
 %%%
@@ -172,8 +175,8 @@ program on various difficulty setting levels.
 To supplement the developed card-choosing agent,
 a simple heuristic was included to play the pegging portion of the game.
 %
-This conglomerate agent was able to outperform the opponent program
-easily on its `easy' difficulty.
+This conglomerate agent was able to easily outperform the opponent program
+on its `easy' difficulty.
 %
 The matches were more evenly matched between the agent and the program on
 its `medium' difficulty,
@@ -186,11 +189,11 @@ and the agent lost all five games.
 
 %%%
 Thus,
-the authors have demonstrated that an agent can be made to learn how to choose a
+the authors demonstrated that an agent can be made to learn how to choose a
 combination of cards well using evolutionary methods.
 %
 Furthermore,
-they have demonstrated that the agent could be trained to recognize differences
+they demonstrated that the agent could be trained to recognize differences
 in play present when playing as the dealer or as the pone.
 %%%
 

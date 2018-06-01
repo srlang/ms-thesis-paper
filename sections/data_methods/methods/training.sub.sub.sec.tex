@@ -16,7 +16,7 @@
 
 %%%
 After a complete game has been played, the winning and losing agents need to
-modify their weights in order to decide a correct strategy at that time
+modify their weights in order to determine a correct strategy at that time
 coordinate.
 %
 The agent attempted to learn which subset of strategies make the best
@@ -34,17 +34,17 @@ values in \Smat\ were the highest in its column.
 % TODO: ^^^ check column/row, put in indices
 %
 This subset of strategies,
-carefully chosen to only include the top percentage of contributors
+carefully chosen to include only the top contributors
 to avoid stagnant resulting weights,
-would then be adjusted proportionally to itself according to the formula:
+was then adjusted proportionally to itself according to the formula:
 \[
-	\wvecm_{i,new} = c \wvecm_{i,old}
+	\wvecm'_{i} = c \wvecm_{i}
 \]
 for all indices $i$ which are in the responsible group and
 where $c$ is a shared adjustment constant.
 %
 All other weights would be left unaltered
-before re-normalizing the weights vector.
+before the updated vector was re-normalizing to the L1 norm.
 %%%
 
 %%%
@@ -55,9 +55,10 @@ the chosen cards.
 Note that this is not necessarily the same set of weights which were the highest
 contributors to the final choice.
 %
-It may be the case that weights $x$ and $y$ are the highest at a given point,
+It may be the case that weights $x$ and $y$ are the highest
+at a given score location,
 but that strategies $u$ and $v$,
-with slightly lower weight values,
+with lower weight values,
 had higher advocacy for a given hand which summed up to a larger value.
 %
 Were this not the case,
@@ -106,11 +107,11 @@ The reinforcement training framework operated very simply.
 %
 A text file of weights was loaded to initialize an agent.
 %
-These agents were then placed into a game and played against each other.
+Two agents were then placed into a game and played against each other.
 %
 After the game had been completed,
-the weights for each agent were be adjusted
-accordingly along the path which the agent took.
+the weights for each agent were adjusted
+accordingly along the path taken by the agent.
 %
 After a set number of epochs, the agent saved its weights configuration to a
 checkpoint file.
@@ -181,7 +182,7 @@ the two agents were played against each other in a tournament match fashion.
 The winner was determined as the agent with the most points at the end
 of a series of games, %\textemdash
 wherein two points would be awarded to the winner of a game
-or three if that win was by a margin of at least 31 points
+or three if that win was by a margin of at least 31 points.
 %
 Ties were broken by total point spread,
 according to ACC rules~\cite{ACC_rules}.
@@ -195,13 +196,16 @@ repeated until one agent is declared the ultimate winner.
 %%%
 
 %%%
-After the tournament structure was found to not provide any further benefits
-to the learning process,
+Very quickly,
+the tournament structure was found to not provide any further benefits
+to the learning process.
+%
+As a result,
 a set of additional experiments were performed to determine the limits of
 learning possible.
 %
 While these will be covered in more detail in Section~\ref{sec:findings},
-these modifications include simple
+these modifications included simple
 parameter adjustments, such as to the learning or decay rate,
 as well as
 more complicated alterations 

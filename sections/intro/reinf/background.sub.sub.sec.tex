@@ -52,7 +52,7 @@ which club to use in which direction and with how much power.
 \paragraph*{Rewards and Goals}
 
 %%%
-Merely being able to move around in an environment does not satisfy the
+Merely being able to navigate an environment does not satisfy the
 requirement for learning unless a given task is being completed.
 %
 This desired task can be called the goal of the agent.
@@ -62,22 +62,26 @@ this is frequently simply the notion of winning.
 %%%
 
 %%%
-A reward is a positive feedback event that encourages or affirms progress
+A reward is a feedback event that encourages or affirms progress
 towards the goal
 and 
-can be thought of as a way of enticing the agent to accomplish the goal.
+can be thought of as a way of enticing the agent to accomplish the task.
 %
 As with a dog learning to jump through a hoop,
 the reward of a treat is given after the dog has successfully jumped
 through the hoop,
 or perhaps a partial treat for first walking through a stationary hoop
 or other similar subtask.
+%
+Rewards can also be negative
+and thought of as punishments for not completing the task,
+or doing so in an undesired manner.
 %%%
 
 %%%
-Expressed mathematically, a reward $R_t$ is the reward at a given time $t$.
+Expressed mathematically, $R_t$ is the reward at a given time $t$.
 %
-A goal $G_t$ is the expected return over time:
+A goal, $G_t$, is the expected return over time:
 \[
 	G_t = \sum_{k=t+1}^{T} R_k
 \]

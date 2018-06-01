@@ -32,10 +32,10 @@ per second,
 millions of times faster than Samuel's capabilities at the time.
 %
 However,
-the speed in evaluation was a result of hard-wiring an evaluation function at
-the chip level using chips custom-built for the purpose.
+the speed in evaluation was a result of hard-wiring an evaluation function
+by using chips custom-built for the purpose.
 %
-As with rote learning,
+As with Samuel's rote learning,
 very little in terms of actual learning how to play or adjustments to internal
 mechanisms occurred
 beyond an expanded search space made possible by more capable hardware.
@@ -54,14 +54,16 @@ Of notable attention recently is Google DeepMind's
 success in the game of Go with AlphaGo
 \cite{deepmind_alphago}.
 %
-More satisfying than DeepBlue's search approach,
+More of a learning solution than DeepBlue's engineering solution,
 AlphaGo used multiple neural networks to evaluate value and policy functions.
 %
-A first neural network was trained using a database of human-played games
+A first neural network was trained via supervised learning,
+using a database of human-played games
 to predict human play for a given board position.
 %
 Using this network as a starting point,
-a policy network was trained to win more games than its previous renditions.
+a policy network was trained via reinforcement learning
+to win more games than its previous renditions.
 %
 From that policy network,
 a value network was trained to determine the likelihood of winning when in a
@@ -69,23 +71,37 @@ given state.
 %
 Both of these previous networks were trained through self-play.
 %
-The AlphaGo program would use this value network in combination with a
-Monte Carlo Tree Search algorithm,
-similar in nature to a minimax tree
-but using Monte Carlo simulations to create approximate state values within the
-tree as well as a policy to determine which transitions to take within the
-simulation tree,
+The AlphaGo program would use both the value and policy networks
+in a lookahead search algorithm
 to determine the optimal move to make next.
 %
-The final value network resulting from this training pipeline was able to beat
+Potential game outcomes were searched in a similar fashion to minimax,
+but using the policy network to determine which move to make at any state,
+rather than evaluating all possible legal moves and pruning.
+%
+Starting from the current state,
+possible games were simulated by using the policy network,
+expanding each potential outcome in the tree by using the value network
+and deeper simulations,
+also incorporating exploration mechanisms.
+%
+After all searches reached a terminal state,
+the most commonly taken action from the starting position was selected
+as the agent's move,
+as it represents the choice which would optimize the expected outcome of
+simulations using all combined knowledge.
+% TODO: ^^^ AlphaGo explanation.
+%
+The final system resulting from this training pipeline was able to beat
 European Go Champion Fan Hui in match play
-five games to zero~\cite{deepmind_alphago},
-eventually going as far as winning against
+five games to zero~\cite{deepmind_alphago}.
+%
+A more trained version of AlphaGo would eventually beat
 Grandmaster Lee Sedol four games to one~\cite{deepmind_overview}.
 %%%
 
 %%%
-DeepMind then took a step further,
+DeepMind then took a step even further,
 removing all human-imposed knowledge and
 training a single neural network to play \textit{tabula rasa}, i.e.\  from scratch.
 %
@@ -95,10 +111,11 @@ the new program,
 using a simplified Monte Carlo tree search algorithm to evaluate positions
 during the game.
 %
-After a self-play game had been played,
-the network used batches of observed states during the game to update
-the network's weights to predict values
-more closely align to those of the simulated policy.
+To train the network to predict values
+more closely aligned with those of the simulated policy,
+after a self-play game had been played,
+states observed during the game were used to update
+the network's weights.
 %
 After only 72 hours of training and using only a single machine,
 AlphaGo Zero was able to defeat the previous version of AlphaGo

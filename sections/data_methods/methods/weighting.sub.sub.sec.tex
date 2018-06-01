@@ -15,7 +15,7 @@
 %%%
 
 %%%
-For the purposes of this project,
+For the purposes of this thesis,
 how well certain combinations of cards lend themselves to being played with 
 different strategies is not directly explored.
 %
@@ -40,18 +40,18 @@ At the beginning of each round, each of $m$ strategies is evaluated for all
 $n = {6 \choose 4}$ possible combinations of cards kept to produce an
 $m \times n$ matrix \Smat\
 where $\Smatm_{i,j}$ is the desirability of the $j^{\textit{th}}$ keep/toss
-combination according to the $i^{\textit{th}}$ strategy
+combination according to the $i^{\textit{th}}$ strategy,
 further constrained by
 $0 \le \Smatm_{i,j} \le 1\ \forall i,j$.
 %
-A value vector \pvec\ of length $n$ representing the total perceived value of a
-possible keep combination
+A value vector \pvec\ of length $n$,
+representing the total perceived value of every possible keep/toss combination,
 can then be computed by
 $\pvecm = \wvecm \Smatm$
 wherein $\argmax_{x}{\pvecm_x}$ can be thought of to be the most desired combination
-of cards and $\argmin_{x}{\pvecm_x}$ as the least.
+of cards overall and $\argmin_{x}{\pvecm_x}$ as the least.
 %
-These collective desirability metrics can be later used to determine which
+These collective desirability metrics are later used to determine which
 combination of cards to choose and which to toss.
 %
 A visualization of this weighting mechanism is shown in

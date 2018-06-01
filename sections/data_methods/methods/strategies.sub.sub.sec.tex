@@ -10,7 +10,7 @@
 %%%
 %During the simulation of games,
 A few basic behavioral strategies were coded for the agent to learn
-over the course of multiple simulated games.
+over the course of training.
 %
 These represented most of the basic factors which a player may consider when
 making their decision as to which cards to keep
@@ -20,7 +20,7 @@ These included:
 \begin{itemize}
 \item \handmaxmin:
 	%
-	The hand(s) which has the highest minimum possible score for the kept cards
+	The hand(s) with the highest minimum possible score for the kept cards
 	will be more highly desired.
 	%
 	This is equivalent to choosing the hand with the largest guaranteed points.
@@ -52,16 +52,16 @@ These included:
 \item \cribminavg:
 	%
 	The hand(s) whose tossed cards led to cribs with the lowest average amount
-	of points for the dealer is
+	of points for the dealer will be
 	the most highly desired.
 	%
-	This strategy would be a very defensive strategy typically used by the pone
-	to avoid giving points to the dealer.
+	This strategy would be a very defensive strategy,
+	typically used by the pone to avoid giving points to the dealer.
 	%
 \item \peggingmaxavggained:
 	%
-	The hand(s) with the maximum average points gained through pegging is the most
-	highly desired.
+	The hand(s) with the maximum average points gained through pegging
+	will be the most highly desired.
 	%
 	This strategy would be useful for end-game play in a tight game.
 	%
@@ -72,8 +72,8 @@ These included:
 	%
 \item \peggingmaxmedgained:
 	%
-	The hand(s) with the maximum median points scored during play will be the most
-	highly desired.
+	The hand(s) with the maximum median points scored during the play
+	will be the most highly desired.
 	%
 \item \peggingminavggiven:
 	%
@@ -93,21 +93,23 @@ would be willing to choose a particular combination of cards.
 This desirability score is then scaled to lie in the range $[0, 1]$ with
 $1$ representing the best possibilities.
 %
-This scaling allows for possibilities which are ``almost as good'' to not be
+This scaling allows for possibilities which are almost as good to not be
 ignored in later weighting stages.
 %%%
 
 
 %\subsubsubsection*{Database Population}
+\subsubsection*{Statistics}
+
 %%%
 Because of the massive amount of possible combinations%
 \textemdash all of which were unique due to the cards' position affecting the
 scoring outcome\textemdash%
-the evaluation of some of these possibilities in which the crib was involved
-in real-time took a handful of seconds to evaluate during development.
+the calculation of some of these statistics involving the crib
+took a handful of seconds to evaluate on-demand during development.
 %
 This was deemed much too slow as,
-over the course of tens or hundreds of thousands of simulated games,
+over the course of hundreds of thousands of simulated games,
 this delay would very quickly accumulate to performance-affecting delays.
 %
 As a result, an alternative strategy of pre-computing the required knowledge and
@@ -182,23 +184,23 @@ of a cribbage game for every set of cards that can possibly be dealt.
 Although the majority of this project was coded in Python for its ease of use
 and speed of development,
 due to the performance-crucial, basic mathematical operations involved,
-the overheads of using a higher-level language was deemed too critical and
+the overheads of using a higher-level language were deemed too critical and
 this particular tool was developed in C instead.
 %
 To put the performance gains into perspective,
 at its fastest, most parallelly processed state,
-the Python database populator was estimated to take approximately 4 months to
+the Python database populator was estimated to take approximately four months to
 simply list and evaluate all possible scores on a development machine,
 disregarding the file I/O operations required to write those results to the
 database.
 %
 The same functionality, with the addition of file I/O,
-in the C program would take a relatively mere 14 days
+in the C program would take a relatively mere fourteen days
 on that same machine.
 %
 Furthermore, access to a high-performance server allowed for further
-parallelization which cut the final run time down to approximately 5 and a half
-days.
+parallelization which cut the final run time down to approximately
+five and a half days.
 %%%
 
 %%%
@@ -255,7 +257,7 @@ This agent was then played against a copy of itself with randomly allocated
 cards and the results of that round were recorded for each agent to provide an
 initial knowledge base.
 %
-These results would then be queried by the agent during the choose phase of the
+These results could then be queried by the agent during the choosing phase of the
 game and contributed to at the end of the pegging phase as training progressed.
 %%%
 
