@@ -44,7 +44,7 @@ for all indices $i$ which are in the responsible group and
 where $c$ is a shared adjustment constant.
 %
 All other weights would be left unaltered
-before the updated vector was re-normalizing to the L1 norm.
+before the updated vector was re-normalized to the $L^1$-norm.
 %%%
 
 %%%
@@ -89,7 +89,7 @@ losses and vice versa for wins,
 the adjustment constant $C$ was defined as proportional to the difference
 between the players' scores according to the formula:
 \[
-	C = s \cdot \left({PlayerScore} - {OppScore}\right) 
+	C = s \cdot \left({PlayerScore} - {OpponentScore}\right) 
 \]
 where $s$ is a scaling factor,
 analogous to a learning rate parameter.

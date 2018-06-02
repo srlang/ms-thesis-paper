@@ -47,7 +47,7 @@ state $s$:
 \end{align*}
 %
 The optimum value of a state $v_*(s)$ is defined as:
-\[ v_*(s) = \max_\policy v_\policy(s)\ \forall s \in \States \]
+\[ v_*(s) = \max_\policy v_\policy(s) \]
 %%%
 
 %%%
@@ -68,8 +68,7 @@ $\policy$ is defined as:
 \end{align*}
 and its optimum $q_*(s,a)$ is consequently defined as:
 \[
-	q_*(s,a) = \max_{\policy}q_\policy(s,a)\ 
-		\forall a\in\Actions\ \forall s\in\States
+	q_*(s,a) = \max_{\policy}q_\policy(s,a)
 \]
 %%%
 
@@ -191,7 +190,7 @@ just with less accurate steps made in improvement.
 Rather than make a slow, calculated step in the absolute best direction,
 value iteration takes a quick step in a generally good direction,
 always improving its situation and
-allowing later improvements in judgment compensate for the potentially poor
+allowing later improvements in judgment to compensate for the potentially poor
 steps previously taken.
 %%%
 

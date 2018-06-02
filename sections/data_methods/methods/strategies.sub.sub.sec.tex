@@ -228,16 +228,24 @@ As the cards were represented internally as an integer between $0$ and $51$
 and there were only 6 cards for indexing,
 the concatenation of the cards' digits in (keep,toss) order
 would create a number with at most twelve digits,
-with an absolute maximum value of 484950514647,
+with an absolute maximum value of 484950514647
+for a combination of
+(K\spades K\clubs K\hearts K\diamonds, Q\hearts Q\diamonds),
 well within the range of numbers addressable by a 64-bit integer.\footnote{
 	Thanks to implementation,
 	the order of cards was guaranteed to be sorted within each tuple,
 	so each combination of cards was tracked and not permutation.
 }
 %
-This index could be created by a very simple process of 6 multiplications and
-5 additions
-while still being guaranteeably unique.
+%This index could be created by a very simple process of 6 multiplications and
+%5 additions
+%while still being guaranteed unique:
+This index could be created by the sum
+\[
+	\textit{index} = \sum_{i=0}^{5} { \textit{hand}[i] \times 10^{2(5-i)} }
+\]
+where \textit{hand} includes all cards in (keep,toss) order,
+and still be guaranteed unique.
 %%%
 
 %%%

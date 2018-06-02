@@ -10,7 +10,7 @@
 %%%
 The three most important, constantly interacting components in a reinforcement
 learning scenario are
-the environment, the agent, and the rewards.
+the agent, the environment, and the rewards.
 %
 The agent is the actor that makes decisions and learns the task at hand.
 %
@@ -45,7 +45,7 @@ In the example of chess,
 an action is discrete and would be to move a piece X to position Y,
 e.g.\  moving the bishop to g4 (\textit{Bg4}).
 %
-In golf, the action is, again, continuous and may be
+In golf, the action is continuous and may be
 which club to use in which direction and with how much power.
 %%%
 
@@ -76,25 +76,58 @@ or other similar subtask.
 Rewards can also be negative
 and thought of as punishments for not completing the task,
 or doing so in an undesired manner.
+%
+The goal of the agent is to maximize its cumulative received reward
+in the future.
 %%%
 
 %%%
 Expressed mathematically, $R_t$ is the reward at a given time $t$.
 %
-A goal, $G_t$, is the expected return over time:
+A return, $G_t$, is the total reward expected to be received by the agent
+in the future:
 \[
 	G_t = \sum_{k=t+1}^{T} R_k
 \]
 where $T$ is the final time step.
 %
-This goal formula can also incorporate a discounting factor $\gamma$ to
+This return formula can also incorporate a discounting factor $\gamma$ to
 encourage actions conducive to reaching the terminal state in a speedy fashion:
 \begin{align*}
 	G_t &= \sum_{k=t+1}^{T} \gamma^{k-t-1} R_k \\
-		&= R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} ... \\
+		&= R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \ldots \\
 		&= R_{t+1} + \gamma G_{t+1}
 \end{align*}
+%
+A rational agent will take an action to maximize its expected return.
 %%%
+
+%%%
+Consider the scenario of trying to escape a maze.
+%
+The reward for the agent may be +1 when it successfully exits the maze
+and 0 at all other times.
+%
+Without a discounting factor in the returns,
+there would be no incentive to exit the maze in a timely fashion
+as the return remains the same no matter how long the agent takes.
+%
+To handle this without a discount factor,
+the rewards would need to be negative for all non-exit spaces
+so that the return is worse the longer the agent remains in the maze.
+%%%
+
+%%%%
+%In the context of cribbage,
+%a reasonable reward formulation,
+%and the one used in this thesis,
+%would be the final point spread observed by the agent after playing the game.
+%%
+%Therefore,
+%the agent's goal at any given state is to win
+%by as many points as possible to increase the reward obtained,
+%as quickly as possible to reduce the decay observed.
+%%%%
 
 \paragraph*{Policies}
 
