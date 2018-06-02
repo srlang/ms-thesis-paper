@@ -1,5 +1,5 @@
 
-\subsubsection*{Rate of Decay}
+\subsubsection*{Decay Rate}
 \label{sec:findings-expts-decay}
 
 %%%
@@ -15,34 +15,17 @@ were tested to demonstrate the effect of temporal difference learning.
 \paragraph*{Results}
 
 %%%
-% TODO: verify results after rerun
-%%%
-
-%%%
-As can be seen in Figure~\ref{fig:expts-decay-comp},
-the decay rate had no effect on the behavioral trends learned.\footnote{
-	At the time of this draft,
-	this is pure speculation as the actual experiment ran with a bug and needs
-	to be re-run for now.
-	% TODO: remove footnote and ensure accuracy of stated conclusions
-}
+Adjustments in decay rate made no change in the behavioral trends learned.
 %
 However,
-as expected,
-the rate of learning of these behaviors in earlier states is most affected
+as can be seen in Figure~\ref{fig:expts-decay-comp},
+the rate of learning of these behaviors in earlier states is highly affected
 by this parameter.
 %
 With lower decay rates,
 more of the responsibility for the final result of the game is transferred
-to earlier game states.
-%
-It is worthwhile to note just how clearly
-the sinusoidal wave along the diagonal takes form
-and subsequently loses amplitude
-when there is no decay.
-%
-While this would seemingly indicate that earlier states needed to be
-% TODO: ^^^ finish this thought
+to earlier game states,
+meaning trends develop quickly.
 %
 Contrarily,
 with higher decay rates,
@@ -61,8 +44,8 @@ $(1-d)^{10} = (0.5)^{10} \approx 0.00098$.
 Even over the course of one million games,
 this small magnitude of modification,
 combined with the rate of visitation of a single state,
-is not enough for any meaningful learning to occur.
-% TODO: ^^^ make sure accurate when real results happen
+is not enough for any meaningful learning to occur
+in these earlier states.
 %%%
 
 % fig:expts-decay-comp

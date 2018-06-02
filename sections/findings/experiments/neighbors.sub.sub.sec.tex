@@ -25,15 +25,15 @@ In other words,
     \wvecm'_{p,o,d} = %\mathrm{l1norm}\left(
     \left|
     X\wvecm_{p,o,d} +
-    Y \sum_{i\in\{-1,0,1\}} \sum_{j\in\{-1,0,1\}} w_{m+i,o+j,d}
+    Y \sum_{i\in\{-1,0,1\}} \sum_{j\in\{-1,0,1\}} \wvecm_{p+i,o+j,d}
     \right|_1
     %\right)
 \]
 where $X$, $Y$ are ratios of each vector's effect, $X+Y = 1$,
-and $m+i$, $o+j \in [0,120]$.
+and $p+i$, $o+j \in [0,120]$.
 %
 The desired effect was to allow a score location to learn from its neighbors
-so that a neighborhood effect was present in the decision.
+so that an area effect was present in the decision.
 %%%
 
 
@@ -55,13 +55,13 @@ so that a neighborhood effect was present in the decision.
 \input{sections/findings/experiments/neighbors/strats.fig.tex}
 
 %%%
-The agent was not capable of weighting the different strategies in a
-gradient-like manner
-by using the neighboring score locations' weights vectors.
+The agent was not
+able to develop gradient-like strategy graphs
+using the neighborhood technique.
 %
 In fact,
 the \handmaxavg\ strategy,
-which one would expect most to form a gradient with and around the
+which one would most expect to form a gradient with and around the
 \handmaxmin\ strategy,
 was perhaps the most negatively affected.
 %
@@ -69,6 +69,10 @@ As seen in Figure~\ref{fig:neighbor-strats},
 the \handmaxavg\ strategy graph has become more sparse in the winning
 states (lower left)
 with very little gray area surrounding the black.
+%
+However,
+the presence of gray
+indicates that a melding of strategies did occur.
 %%%
 
 %%%

@@ -5,7 +5,7 @@
 %%%
 Due to the desire to get a training framework constructed
 and running as quickly as possible,
-runtime speed took a back seat to development speed.
+runtime speed was deemed less important than development speed.
 %
 As a result,
 Python became the language of choice.
@@ -56,20 +56,20 @@ taken too long to fix,
 no more than one process could successfully access the SQLite database with any
 consistency.
 %
-This would mean that only two agents could be trained on each database at any
-given time.
+This would mean that only two agents could be trained using a single database
+at any given time.
 %
 Furthermore,
 since this database file was around twenty gigabytes in size and
 there was only limited local storage space available
 on each of the compute nodes in the Computer Science Department's Ukko2 high
-performance compute cluster,
+performance cluster,
 jobs had to be constructed carefully and spread across nodes to avoid
 accidentally disrupting other users' processes.
 %
 This was mitigated slightly by using the Physics Department's Kale cluster
 which allowed for significantly more manageable locally mounted drive space,
-albeit in a slightly slower hard disk with a RAID0 setup.
+albeit in a slightly slower hard disk with a RAID0 configuration.
 %%%
 
 %%%
@@ -78,7 +78,7 @@ it would be recommended to use the Python code from this attempt as an outline
 for a rewrite in a lower-level language.
 %
 Using a language such as C++,
-which could be optimized more for run-time efficiency and memory management,
+which could be optimized more for run-time efficiency,
 would likely increase speed of computation enough to remove the necessity
 of a statistics database entirely.
 %
@@ -87,26 +87,26 @@ to be stored and retrieved between training rounds,
 the total size of this data would likely not exceed a few gigabytes and would fit
 easily in the program's RAM space.
 %
-This is especially true since the strategies utilizing the median were not
-learned to be a useful metric for choosing cards,
-meaning that a list of scores gained and given are not needed,
-only the cumulative amount and number of times seen.
-% TODO: ^^^ ensure accuracy
+This is especially true if only
+minimums, maximums, and averages
+are considered,
+as their calculation does not require all values previously seen to be stored,
+meaning that far less storage space is needed.
 %
 Also,
 like weight checkpoints are in the current system,
-these stored results could be exported
+these stored statistics could be exported
 for transfer between rounds.
 %%%
 
 %%%
 With these changes made,
 the training program would be CPU-bound,
-which thankfully can be compensated for by parallelization.
+which can be compensated for by parallelization.
 %
 In contrast,
 the I/O-bound training program used in this thesis used only half the total
 processing power of a single CPU core
-as the limitation was the database file on a hard drive.
+as the bottleneck was the database file on a hard drive.
 %%%
 

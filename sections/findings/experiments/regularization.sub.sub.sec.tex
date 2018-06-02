@@ -20,7 +20,7 @@ Expressed mathematically,
 \]
 where $K$ is some constant value throughout the training.
 %
-While the value of $w_{m,o,d}[i]$ could exceed $K$ after re-normalization
+While the value of $\wvecm_{p,o,d}[i]$ could exceed $K$ after re-normalization
 for a particularly strongly weighted strategy,
 the value could be seen converging to $K$ within just a handful of iterations.
 %
@@ -50,13 +50,13 @@ strategy.
 \input{sections/findings/experiments/regularization/strats-comp.fig.tex}
 
 %%%
-As was expected,
+As expected,
 the limitation of maximum attainable value did indeed force the agent to learn
 multiple applicable strategies for each score location.
 %
 As can be seen in Figure~\ref{fig:reg-strats-0.50},
 the \handmaxmin\ and \handmaxavg\ strategies are now 
-more or less equally represented across the winning triangle area.
+more-or-less equally represented across the winning states.
 %
 This is demonstrated by the monotone gray seen in these locations.
 %
@@ -90,10 +90,10 @@ Figure~\ref{fig:expts-reg-comp}.
 %%%
 Furthermore,
 as can be seen in Figure~\ref{fig:reg-tournies},
-only a regularization rate of $r = 0.80$ (Figure~\ref{fig:reg-tournies-0.80}
+only a regularization rate of $r = 0.80$ (Figure~\ref{fig:reg-tournies-0.80})
 can be said to be similar to a loss curve.
 %
-With rates of $r=0.50$ (Figure~\ref{fig:reg-tournies-0.50},
+With rates of $r=0.50$ (Figure~\ref{fig:reg-tournies-0.50}),
 $r = 0.60$ (Figure~\ref{fig:reg-tournies-0.60}),
 and $r = 0.70$ (Figure~\ref{fig:reg-tournies-0.70}),
 the tournament point spread curves show that a trained agent plays on par with

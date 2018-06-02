@@ -21,7 +21,7 @@
 One area of the project that can be improved was the pegging system.
 %
 Because the focus of the thesis was on whether or not a collection of
-strategies could be learned in combination at choosing time,
+strategies could be learned in combination when choosing which cards to keep,
 an ideally playing agent was not the outcome.
 %
 A key reason for this was the lack of time dedicated to and nonchalant nature
@@ -60,7 +60,7 @@ is laughable.
 %%%
 
 %%%
-In the future,
+In future applications,
 a partial agent could be trained in just the pegging phase alone
 using reinforcement learning.
 %
@@ -73,7 +73,7 @@ Alternatively,
 a more ground-up approach can be taken to train an unbiased agent by simply
 having each player learn from trial and error with certain card combinations.
 %
-This has the disadvantage of taking more time to train to effectiveness.
+%This has the disadvantage of taking more time to train to effectiveness.
 %
 In either case,
 a more optimized pegging system can be made that would play better.
@@ -83,8 +83,8 @@ a more optimized pegging system can be made that would play better.
 
 %%%
 Even though a better pegging system can be made,
-key to this thesis project was the idea that performance can be predicted
-or at least anticipated with some amount of certainty.
+key to this thesis was the idea that performance can at least be
+anticipated with some amount of certainty.
 %
 In this project,
 the performance of the pegging agent was tracked by card combination,
@@ -105,7 +105,7 @@ As a result of the small sample size,
 performance estimates were likely to be inaccurate.
 %
 Furthermore,
-the small sample size did not demonstrably cover all of the possible hand
+the small sample size did not cover all of the possible hand
 combinations.
 %
 Because of this,
@@ -113,20 +113,21 @@ data would be missing for multiple combinations of cards
 for the decision process
 throughout the first round.
 %
-This would mean that the card combinations' true desirability would be
+This means that the card combinations' true desirability would be
 misrepresented during the calculation,
-allowing for the possibility of a philosophically unfair
+allowing for the possibility of an unfair
 punishment or reward for what would amount to a guess by the
 pegging-based strategies.
 %
 It also means that the information received by the agent during the weighting
-operation would not be static as other strategies were and thus could not be as
+operation would not be static, with respect to the cards given,
+as other strategies were and thus could not be as
 reliably trusted for accuracy.
 %
 While
 this was counteracted by using records from a first round training session in 
 all subsequent training sessions,
-the questions remain whether this was enough
+the concern remains whether this was enough
 and how much the variability in the data provided by the pegging strategies
 affected learning.
 %%%

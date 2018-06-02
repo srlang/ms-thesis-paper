@@ -11,8 +11,9 @@ being learned,
 it is fair to say that policy learned during training has been superior to
 random in some manner.
 %
-There are then a few items to consider with regard to why such poor results are occurring
-during the review tournaments.
+There are then a couple items to consider with regard to why such poor results are occurring
+during the review tournaments,
+such as the scale of play and potential overfitting of the model.
 %%%
 
 
@@ -143,13 +144,13 @@ In the event of overfitting,
 the curve would dip below the zero before reapproaching zero.
 %
 Neither of these shapes were seen in the resulting graph
-(see Figure~\ref{fig:r2-time-series-10000}).
+(Figure~\ref{fig:r2-time-series-10000}).
 %
 Instead,
 the shape of the curve implies that,
 since the random agent performs consistently better than the trained agent,
 the learning process is not learning the game so much as how to outplay its
-opponent in some corner cases that do not reappear during testing.
+opponent in some experienced scenarios that do not reappear during testing.
 %
 This conclusion is supported by the observation that the agents with limited
 training are steadfastly outplayed.

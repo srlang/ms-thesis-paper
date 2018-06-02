@@ -5,8 +5,8 @@
 \label{sec:disc-value}
 
 %%%
-This thesis focused on an attempt to use policy iteration
-in order to develop a well-playing
+This thesis focused on an attempt to use Monte Carlo-based value iteration
+to develop a well-playing
 cribbage agent capable of weighing different strategies
 with the intention of using these learned weights to 
 potentially
@@ -34,7 +34,7 @@ to include the knowledge of which cards are known into the policy decision
 would have increased the dimensionality of the search space from the relatively
 small three-dimensional problem tackled to a problem of at least nine
 dimensions,
-depending on representation.
+depending on the cards' encoding method.
 %
 At this dimensionality,
 the search space would be far too massive and sparse to simulate an amount of
@@ -52,14 +52,14 @@ as done with TD-Gammon~\cite{tdgammon},
 AlphaGo~\cite{deepmind_alphago,deepmind_alphago_zero},
 and O'Connor's senior project~\cite{roconnor_cs486}.
 %
-By learning state-value function instead of a policy,
-an agent could determine which set of cards would likely place the agent in the
+By learning the state-value function instead of a policy,
+an agent could determine which set of cards would likely place itself in the
 most optimal resulting position,
 indirectly developing its own policy.
 %
-This value iteration should allow for a more adaptive agent and thus more
-optimal gameplay,
-leading to an agent that would win more consistently.
+This form of value iteration should allow for a more adaptive agent
+and thus more optimal gameplay,
+leading to an agent that might win more consistently.
 %%%
 
 %\input{sections/discussion/value/*}

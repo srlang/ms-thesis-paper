@@ -3,7 +3,7 @@
 % Discussion of how each strategy was used as a separate starting point
 %%%
 
-\subsubsection*{Starting Points}
+\subsubsection*{Policy Initialization}
 \label{sec:findings-expts-starts}
 
 %%%
@@ -13,19 +13,24 @@ certain score position,
 a comparison was made between the produced agent and pure strategies
 on a database of choices made by humans.
 %
-There exists a website in which users are prompted with a set of dealt cards and
-a given score and must decide which set of cards they would keep in that
-specific situation
+The website Daily Cribbage Hand
+prompts its users with
+a set of dealt cards,
+their score,
+their opponent's score,
+and an indication of whether or not the player is the dealer for the round
 \cite{dailycribbagehand}.
+%
+With this prompt,
+the user then decides which cards they would
+keep in the given scenario.
 %%%
 
 %%%
 With access to recorded answers from this website,
-the agent's choices could be compared to how humans ranked the choice.
-%
-The retrieved database recorded which responses were given to each query
-and could be used to compare the agent's choice
-to those made by humans in the same situation.
+the agent's choices could be compared
+to how humans ranked the choice.
+%to those made by humans in the same situation.
 %
 For each of the approximately 3600 usable records,
 the choice the agent made was compared against those made by the users of the
@@ -35,7 +40,7 @@ website.
 %%%
 The results of this comparison,
 seen in Table~\ref{tab:expts-starts-human}, % TODO: ref more tables if created
-show that the trained agent chooses the same
+show that the agent trained in Round 2's losers' bracket chooses the same
 set of cards as the human users only marginally more often than an agent with 
 randomly allocated weights.
 %
@@ -47,12 +52,12 @@ the answer given by the agent is within the top three most common human answers.
 Additionally,
 most pure strategies,
 created by setting their weight to 1 while all other strategies are set to 0,
-performed worse than the trained mixture.
+performed worse than the trained agent.
 %
 Notable exceptions to this trend are the \handmaxposs\ and \handmaxavg\ 
 strategies,
 suggesting that in more situations than the agent,
-the typical human player will play more according to what points can be expected
+the typical human player will play according to what points can be expected
 to be gained from the cut card.
 %
 Interestingly,
@@ -116,14 +121,15 @@ for both winning and losing positions.
 In the winning positions of the strategy graphs,
 the starting strategy is further strengthened to dominance.
 %
-The purely mathematical operation of overcoming such a heavily
+The purely mathematical operation of overcoming such an initially heavily
 weighted strategy requires many games to explore enough
 and perform better than the starting strategy
 to be rewarded;
 %
-the explored strategy itself
+the explored combination of cards, itself,
 may coincide with the starting strategy
-already occupying these positions.
+already occupying these positions,
+further increasing the difficulty.
 %
 Additionally,
 since the opponent is a static agent always using the same starting
@@ -138,9 +144,10 @@ An intriguing counter to this pattern of dominance in winning positions
 is the \handmaxavg\ strategy
 which yields some control of winning positions to \handmaxmed.
 %
-In normal training procedures,
+After normal training procedures,
 this space is occupied by \handmaxmin,
-not allowing a larger gap to develop.
+which, characteristically, would not allow a larger gap to develop.
+%not allowing a larger gap to develop.
 %%%
 
 %%%

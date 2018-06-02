@@ -4,7 +4,7 @@
 \label{sec:findings-r2}
 
 %%%
-Round consisted of ten agents paired off against each other
+Round 2 consisted of ten agents paired off against each other
 in both the winners' and losers' brackets.
 % TODO: check to make sure brackets use plural possessive globally
 %
@@ -38,11 +38,11 @@ while Figures~\ref{fig:r2-spreads-winner-b},
 and~\ref{fig:r2-spreads-random-b}
 would be their translation across the x-axis.
 %
-Figure~\ref{fig:r2-spreads-winner} alone
+On its own, Figure~\ref{fig:r2-spreads-winner}
 would indicate that an agent trained for one million games plays on par with
 one trained for two million games.
 %
-On its own,
+Alone,
 this would indicate that performance had reached a peak and saturated.
 %
 However,
@@ -77,7 +77,7 @@ of play.
 %
 The most notable is how quickly policies converge to a similar state.
 %
-While the strategy graphs for the less trained agents are less ``crisp''
+While the strategy graphs for the less trained agents are less crisp
 in their appearance thanks to their slower learning rates,
 the patterns of which policy to mainly follow at which times
 are still quick to form.
@@ -100,29 +100,29 @@ the implications of this wave are that earlier states are not crucial
 predictors for future success.
 %
 Not only that,
-but the agent has learned that changes in lead are likely and not necessarily
-detrimental to the ability to win the game.
+but the agent has learned that changes in lead are likely in later game states
+and not necessarily detrimental to the ability to win the game.
 %%%
 
-%%%
-Care needs to be taken with this previous observation on the wave's amplitude
-and it must be pointed out to be speculation on the part of the author.
-%
-It may be the case that with enough training the sine wave will be at full
-amplitude in earlier positions.
-%
-A reminder must be made that
-a notable reason for the lack of clarity at the moment is the weight adjustment
-mechanism for training.
-%
-The training system pre-supposes that the earlier positions are of less
-importance in a game and adjusts them with a lower priority than later positions
-in the game.
-%
-It may indeed be the case that two million games is still not enough to
-counteract the decay of temporal difference learning with the learning
-rate used.
-%%%
+%%%%
+%Care needs to be taken with this previous observation on the wave's amplitude
+%and it must be pointed out to be speculation on the part of the author.
+%%
+%It may be the case that with enough training the sine wave will be at full
+%amplitude in earlier positions.
+%%
+%A reminder must be made that
+%a notable reason for the lack of clarity at the moment is the weight adjustment
+%mechanism for training.
+%%
+%The training system pre-supposes that the earlier positions are of less
+%importance in a game and adjusts them with a lower priority than later positions
+%in the game.
+%%
+%It may indeed be the case that two million games is still not enough to
+%counteract the decay of temporal difference learning with the learning
+%rate used.
+%%%%
 
 
 %%%
@@ -150,7 +150,7 @@ with the losing positions becoming only slightly gradiented.
 %
 Meanwhile,
 in the losers' bracket,
-the gradient can be seen slightly more evenly to all strategies
+the gradient can be seen applied slightly more evenly to all strategies
 and
 across the winning-losing boundary.
 %

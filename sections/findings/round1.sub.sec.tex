@@ -32,7 +32,7 @@ according to Section~\ref{sec:dm-methods-training}.
 %%%
 
 %%%
-The results of the first round's training on a sample agent can be seen
+The progress of the first round's training on a sample agent can be seen
 in Figure~\ref{fig_r1-flip}.
 %
 Each individual square within the image represents the strength of a single
@@ -44,7 +44,7 @@ Each image was taken at an intermediate stage to capture and show transitions.
 %%%
 
 %%%
-There are two things to note from these results.
+There are two things to note from these images.
 %
 The first, the stark contrast in colors in the majority of the image.
 %
@@ -55,7 +55,7 @@ The other, the area in which these stark contrasts are present.
 In the starting phase,
 all weights are randomly assigned and relatively uniform with only slight
 variances,
-hence the blurry dull gray appearance.
+hence the blurry, dull, gray appearance.
 %
 As time progresses,
 the image becomes crisper and filled with more contrast.
@@ -70,7 +70,8 @@ the major strategy.
 %%%
 
 %%%
-Also of note is where the previously mentioned stark contrast is present and
+Also of note is where the previously mentioned stark contrast is present and,
+more precisely,
 where it is absent.
 %
 Since only those states which have been visited can have their weights
@@ -107,8 +108,8 @@ strategies at different times.
 As can be seen in Figure~\ref{fig_r1-strats},
 the strengths of each strategy's weight do vary across score-locations.
 %
-For instance, when in the lead by
-roughly two to twenty five points,
+For instance,
+when in the lead by a fair margin,
 the agent will prefer to choose the hand with the most guaranteed
 points in its own hand
 by following \handmaxmin.
@@ -131,13 +132,13 @@ or \handmaxavg.
 %%%
 
 %%%
-Of further interest is how little the agent knows about how to handle a losing
+Of further interest is how little the agent knows how to handle a losing
 position.
 %
 As can be seen by looking in the upper-right half of each strategy's
 individual graph,
-of the explored losing states,
-there is little consensus or pattern as to which strategy should dominate.
+there is little consensus or pattern as to which strategy should dominate
+in losing states.
 %
 It is possible that agents which end up in these positions lose more often than
 they win.
@@ -175,14 +176,15 @@ the only major suggestion being to play more riskily to regain the lead.
 However,
 upon closer inspection,
 with a side-by-side comparison,
-there are subtle differences that can be found.
+there are subtle differences that can be seen.
 %
 The most major of these differences is that all patterns are shifted lower and
 more to the left when the agent is the dealer,
 correlating with scores which are more advantageous to the player.
 %
 This means that the agent is more comfortable when it has a slightly larger
-lead as the dealer than it necessarily needs as the pone.
+lead as the dealer than it necessarily needs as the pone,
+most likely as a consequence of the counting order.
 %%%
 
 
@@ -204,8 +206,8 @@ Additionally,
 these waves are opposing in nature.
 %
 This presents the fascinating conclusion that the agent is learning
-that different states or checkpoints are preferred as the player when
-the dealer and when the pone.
+that different states or checkpoints are preferred when playing as
+the dealer than when the pone.
 %
 Not only is this fascinating since the agent is learning a state-value function
 indirectly,
@@ -213,8 +215,7 @@ but in the game of cribbage,
 there exist different checkpoints in which the player aims to get
 himself by the end of a round to be in favorable position for the next.
 %
-Here it is seen that the agent is learning these checkpoints through its
-play.
+Here the agent is seen learning these checkpoints through its play.
 %%%
 
 
@@ -229,7 +230,7 @@ basic game trends are clearly being learned by the agent.
 However, perhaps the only metric which matters from a learning perspective is
 the agent's performance.
 %
-In this area, the learned agents failed miserably.
+In this area, the trained agents failed miserably.
 %
 The winning agent between the two learners was pitted against
 an agent using randomly allocated starting weights
@@ -237,7 +238,7 @@ where both agents would only strictly follow the policy generated
 without exploration.
 %
 As can be seen in Table~\ref{tab_r1-randtourny},
-the learned agent lost easily to the randomly-weighted agent:
+the trained agent lost easily to the randomly-weighted agent:
 with the exceptions of spectacular point differentials in Games 3 and 9,
 all other games were relatively close.
 %
@@ -329,9 +330,7 @@ some learning parameters were altered for Round 2.
 %
 Since it was estimated to be the primary reason for the learning behavior,
 the first parameter adjustment made was to decrease the scaling factor 
-drastically.
-%
-The learning rate was decreased to one fifth of what was used in Round 1.
+drastically to one fifth of what was used in Round 1.
 %
 The other major parameter alteration was to make the exploration rate a constant
 and not dependent upon the variance of the weights.
@@ -366,7 +365,7 @@ there was also a ``losers' bracket'' created
 in which the losers would start over from ground zero.
 %
 These two ways of playing were intended as a two-pronged approach
-in order to see if multiple agents could be trained at the same time
+to see if multiple agents could be trained at the same time
 which could outperform random.
 %
 The winners' bracket would determine if a highly-biased set of agents could
@@ -382,8 +381,8 @@ act as a reset with a different set of learning parameters.
 %%%
 
 %%%
-Since the agents were assumed to be learning how to outplay each other,
-but not the game,
+Since the agents were assumed to be learning how to outmaneuver each other,
+but general game performance was not increasing,
 the next phase would attempt to determine the extent of this tailored learning.
 %
 In addition to the previously mentioned alterations to the tournament structure,

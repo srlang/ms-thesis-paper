@@ -3,14 +3,14 @@
 \label{sec:findings-expts-punishments}
 
 %%%
-Since the prevailing theory was that a player in a losing position
+Under the assumption that a player in a losing position
 early in the game tended to never recover and thus lost as a result of
 unfortunate positioning,
 it followed that punishing losing states for something beyond the agent's
-control was slightly unfair.
+control was potentially unfair.
 %
 Furthermore,
-it was postulated that since the punishment mechanism in effect cycled
+it was postulated that since the punishment mechanism, in effect, cycled
 strategies
 and that there was a possibility that an occasionally winning strategy was often
 outweighed by the tendency to lose,
@@ -23,10 +23,10 @@ so that the constant adjustment factor was significantly smaller for losing
 games than it was for winning games.
 %
 Instead of using the adjustment constant of
-$C = s \cdot (\text{PlayerScore} - \text{OppScore})$,
+$C = s \cdot (\text{PlayerScore} - \text{OpponentScore})$,
 for both winning and losing agents,
 the losing agent's adjustment factor was defined as
-$C = \frac{1}{4} s \cdot (\text{PlayerScore} - \text{OppScore})$.
+$C = \frac{1}{4} s \cdot (\text{PlayerScore} - \text{OpponentScore})$.
 %
 The reduction to $\frac{1}{4}$ was made arbitrarily for illustrative purposes.
 %%%
@@ -39,8 +39,7 @@ difference in learned policy.
 %
 In contrast to the goal of allowing an occasionally good strategy to form
 in losing positions,
-not unexpectedly,
-the losing positions are even less sure as to which strategy to take,
+those positions are even less sure as to which strategy to take,
 as seen in Figure~\ref{fig:findings-expts-punish-strats}.
 %
 Therefore,
@@ -50,7 +49,7 @@ likely not unfairly punishing potentially good recovery policies.
 It can be argued that $\frac{1}{4}$ was not a proper ratio
 to compensate for the likelihood of loss,
 but the similarity of patterns learned and decreased certainty
-indicate that the punishment mechanism is functioning adequately
+indicate that the punishment mechanism is functioning adequately.
 %
 Similarly,
 while reducing the amplitude of changes
