@@ -186,28 +186,57 @@ to out-play its opponent,
 an agent trained with a beginning pure strategy of \handmaxavg\ was played
 against its previous iterations in several 10,000-game tournaments.
 %
-% TODO: vvv sanity check results
 The results,
 depicted in Figure~\ref{fig:expts-sanitycheck-spreads}
-show that ... TODO ...
+show a steady decrease in performance as training proceeds.
+%
+Earlier iterations,
+closer to the semi-pure \handmaxavg\ strategy,
+perform better than the trained agents.
+%
+Without further context,
+it would appear that \handmaxavg\ is simply a good strategy which is difficult
+enough to overcome,
+so the training framework is forcing an adaptation
+unnecessarily and undesirably.
+%
+However,
+as the strategy graphs developed against a static semi-pure \handmaxavg\ 
+opponent match those developed against a random agent
+(Figure~\ref{fig:expts-sanitycheck-strats}),
+this conclusion is unfounded.
+%
+If the \handmaxavg\ strategy were clearly superior to others,
+then very little modification would be made by the agent.
+%
+Instead,
+the losing states still drifted away from the starting strategy.
+%
+The only conclusions that can be made from this data are that
+losing positions are fundamentally difficult to recover from
+and that
+cribbage involves much more than is encapsulated by the small set of
+strategies with which the agent has been programmed.
 %%%
 
 % fig:expts-sanitycheck-spreads[-{a,b}]
 \input{sections/findings/experiments/starting_points/tourny.fig.tex}
 
-%%%
-% TODO: vvv sanity check second training round results
-Furthermore,
-as the agents were previously each trained against different pure strategies,
-the ability to improve a basic policy to overcome a randomly-weighted agent,
-rather than to learn a policy from scratch,
-was tested by training an agent starting with a semi-pure
-\handmaxavg\ strategy against an unlearning agent with random weights.
-%
-The results of this further training,
-seen in Figure~\ref{fig:expts-sanitycheck-strats},
-show that ... TODO ...
-%%%
+%%%%%%
+%%%Furthermore,
+%%%as the agents were previously each trained against different pure strategies,
+%%%the ability to improve a basic policy to overcome a randomly-weighted agent,
+%%%rather than to learn a policy from scratch,
+%%%was tested by training an agent starting with a semi-pure
+%%%\handmaxavg\ strategy against an unlearning agent with random weights.
+%%%%
+%%%The results of this further training,
+%%%seen in Figure~\ref{fig:expts-sanitycheck-strats},
+%%%show that the same behavioral trends are learned by an
+%%%agent starting with a semi-pure \handmaxavg\ strategy 
+%%%when the opponent is random
+%%%as well as when the opponent follows the same semi-pure strategy.
+%%%%%%
 
 % fig:expts-sanitycheck-strats
 \input{sections/findings/experiments/starting_points/strats.fig.tex}
