@@ -22,20 +22,20 @@ and exploration rate was set to a constant $e = 0.30$.
 
 %%%
 Judging by the lack of pattern found in
-Figures~\ref{fig:r2-spreads-winner},
-\ref{fig:r2-spreads-loser},
-and~\ref{fig:r2-spreads-random},
+Figures~\ref{fig:r2-spreads-winner}
+and~\ref{fig:r2-spreads-loser},
+%and~\ref{fig:r2-spreads-random},
 there is no significant performance increase to be found from Round 2.
 %
 If learning had occurred,
-Figures~\ref{fig:r2-spreads-winner-a},
-\ref{fig:r2-spreads-loser-a},
-and~\ref{fig:r2-spreads-random-a}
+Figures~\ref{fig:r2-spreads-winner-a}
+and~\ref{fig:r2-spreads-loser-a}
+%and~\ref{fig:r2-spreads-random-a}
 would take on the form of a decreasing curve,
 gradually approaching zero,
-while Figures~\ref{fig:r2-spreads-winner-b},
-\ref{fig:r2-spreads-loser-b},
-and~\ref{fig:r2-spreads-random-b}
+while Figures~\ref{fig:r2-spreads-winner-b}
+and~\ref{fig:r2-spreads-loser-b}
+%and~\ref{fig:r2-spreads-random-b}
 would be their translation across the x-axis.
 %
 On its own, Figure~\ref{fig:r2-spreads-winner}
@@ -47,7 +47,7 @@ this would indicate that performance had reached a peak and saturated.
 %
 However,
 the similarity to Figure~\ref{fig:r2-spreads-loser}
-and even to Figure~\ref{fig:r2-spreads-random}
+%and even to Figure~\ref{fig:r2-spreads-random}
 shows that neither bracket learned to perform better than previous iterations.
 %%%
 
@@ -55,7 +55,7 @@ shows that neither bracket learned to perform better than previous iterations.
 
 \input{sections/findings/round2/spreads_loser.fig.tex}
 
-\input{sections/findings/round2/spreads_random.fig.tex}
+%\input{sections/findings/round2/spreads_random.fig.tex}
 
 
 
@@ -164,12 +164,6 @@ although present,
 there may be less of a bias towards those strategies which are initially winners.
 %%%
 
-% TODO: vvv is this used? let's find out
-%\input{sections/findings/round2/strategies_random.fig.tex}
-
-%%%
-% TODO: discuss random tourny's stuff
-%%%
 
 %%%
 In analyzing the evolution of the \handmaxavg\ strategy in both the winners'
@@ -189,8 +183,27 @@ but it can be seen that there is little further discovery being made.
 
 \input{sections/findings/round2/flipbook_winner.fig.tex}
 
-% TODO: vvv make sure unused
-%\input{sections/findings/round2/flipbook_random.fig.tex}
+
+
+%%%
+The pairing of a learning agent with a non-learning, randomly weighted agent
+provided no additional benefit.
+%
+The same behavioral trends seen in the losers' bracket are echoed
+in Figure~\ref{r2-strats-random}.
+%
+The lack of clarity found in the images is the result of
+fewer games being played because of batch job scheduling issues.
+%
+From these images,
+it becomes clear that the learning mechanism,
+as is,
+is not conducive to playing a better game of cribbage.
+%
+Thus there needs to be some form of adjustment made in the framework.
+%%%
+
+\input{sections/findings/round2/strategies_random.fig.tex}
 
 
 %%%
