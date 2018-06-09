@@ -46,13 +46,11 @@ Despite the speed improvements in a development environment,
 the entire training process had become I/O-bound rather
 than CPU bound.
 %
-In and of itself,
-this was not a problem until an attempt was made to train multiple
+This became a problem when  an attempt was made to train multiple
 agents simultaneously.
 %
-Because of concurrency issues which would have,
-if even possible,
-taken too long to fix,
+Because of concurrency issues which would have
+taken too long to fix or work around,
 no more than one process could successfully access the SQLite database with any
 consistency.
 %
