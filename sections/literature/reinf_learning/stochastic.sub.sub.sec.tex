@@ -65,9 +65,11 @@ Since predictions made later in the course of the game were expected to be more
 accurate than those made earlier,
 a system of diminished rewards was implemented,
 called TD($\lambda$),
-based on the idea of temporal difference.
+based on the idea of temporal difference learning,
+a mechanism for apportioning credit assignments to states when the reward
+signal is delayed.
 %
-TD($\lambda$) updates the weight differences according to the formula:
+Tesauro's implementation of TD($\lambda$) updated the weight differences according to the formula:
 \[
 	w_{t+1} - w_t =
 		\alpha (Y_{t+1}-Y_t)
