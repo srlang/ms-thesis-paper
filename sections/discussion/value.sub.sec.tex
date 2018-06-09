@@ -5,7 +5,8 @@
 \label{sec:disc-value}
 
 %%%
-This thesis focused on an attempt to use Monte Carlo-based value iteration
+This thesis focused on an attempt to use
+$\epsilon$-greedy Monte Carlo methods with exploring starts
 to develop a well-playing
 cribbage agent capable of weighing different strategies
 with the intention of using these learned weights to 
@@ -30,7 +31,7 @@ The extent to which the cards themselves affect the action choice in the policy
 was greatly underestimated.
 %
 However,
-to include the knowledge of which cards are known into the policy decision
+to include the knowledge of which cards the agent has been dealt into the policy decision
 would have increased the dimensionality of the search space from the relatively
 small three-dimensional problem tackled to a problem of at least nine
 dimensions,
@@ -59,7 +60,7 @@ indirectly developing its own policy.
 %
 This form of value iteration should allow for a more adaptive agent
 and thus more optimal gameplay,
-leading to an agent that might win more consistently.
+leading to an agent that should win more consistently.
 %%%
 
 %\input{sections/discussion/value/*}
