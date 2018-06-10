@@ -134,7 +134,7 @@ since each action taken will always make the most rational decision
 in whichever state it finds itself in.
 %
 The idea of policy iteration is formed
-from this simple greedy policy improvement mechanism,
+from this simple greedy policy improvement mechanism.
 %
 Alternating steps of policy evaluation and policy improvement are repeated,
 converging
@@ -151,7 +151,7 @@ and can be visualized as:
 where $\Earrow$ shows policy evaluation and $\Iarrow$ shows policy improvement.
 %
 Although Algorithm~\ref{alg:politer}'s conditional check
-in Line 9 of Step 3,
+in Line 5 of Step 3,
 written as is,
 can allow cycling between multiple optimal policies,
 the algorithm is illustrative
@@ -214,9 +214,7 @@ state-value functions, action-value functions, or policies can be estimated thro
 complete knowledge of the environment.
 %
 These experiences can come from episodes in the real environment
-or through simulated encounters
-where an episode is a separable set of events that occur together in
-time.
+or through simulated encounters.
 %
 By averaging observed returns from experienced episodes,
 the state-value function,

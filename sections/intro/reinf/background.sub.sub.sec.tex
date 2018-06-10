@@ -8,8 +8,10 @@
 %%%
 
 %%%
-The three most important, constantly interacting components in a reinforcement
-learning scenario are
+Reinforcement learning scenarios are modeled as Markov decision processes,
+with
+the three most important, constantly interacting components
+being
 the agent, the environment, and the rewards.
 %
 The agent is the actor that makes decisions and learns the task at hand.
@@ -49,6 +51,22 @@ In golf, the action is continuous and may be
 which club to use in which direction and with how much power.
 %%%
 
+%%%
+State transitions within the environment may also be stochastic
+and
+the result of taking an action may not always be entirely predictable.
+%
+For instance,
+in the example of golf,
+a sudden gust of wind may occur that pushes the ball off course.
+%
+This means that reaching a desired outcome state by
+taking a given action is not necessarily a certainty,
+but proceeds according to the probability
+$P(s'|a,s)$
+of reaching state $s'$ from state $s$ by taking the action step $a$.
+%%%
+
 \paragraph*{Rewards and Goals}
 
 %%%
@@ -84,12 +102,25 @@ in the future.
 %%%
 Expressed mathematically, $R_t$ is the reward at a given time $t$.
 %
-A return, $G_t$, is the total reward expected to be received by the agent
-in the future:
+An episode is a set of events
+that can be logically separated within the lifetime of the agent,
+e.g.\ an individual game of chess rather than a match,
+or a single hole of golf rather than a full round.
+%
+The rewards sequence,
+$R_{t+1}, R_{t+2}, \ldots, R_{T}$,
+where $T$ is the final time step of the episode,
+is a specific sequence of future rewards that may be collected by the agent.
+%
+Due to the stochastic nature of the environment,
+there are, naturally, multiple possible rewards sequences.
+%
+A return, $G_t$,
+is a function of a given rewards sequence,
+most simply its sum:
 \[
 	G_t = \sum_{k=t+1}^{T} R_k
 \]
-where $T$ is the final time step.
 %
 This return formula can also incorporate a discounting factor $\gamma$ to
 encourage actions conducive to reaching the terminal state in a speedy fashion:
