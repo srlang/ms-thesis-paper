@@ -100,13 +100,16 @@ are greater than or equal to the value of all states under $\policy'$
 Policy evaluation is the iterative process of approximating the state-value
 function $v_\policy$ for some policy $\policy$.
 %
-By repeatedly updating the value of a state
-to its cumulative expected reward, when taking each possible action,
-the state-value function of a policy can be computed to an
-arbitrary precision
-in situations in which the entire state space is observable.
+When the entire state space is observable,
+the value of a state can be repeatedly updated
+to its cumulative expected reward when taking each possible action,
+converging to the true state-value function.
 %
-This process is shown in Algorithm~\ref{alg:poleval}.
+However,
+as this convergence only occurs at the limit,
+the calculation process can be stopped when its magnitude of change
+indicates that it is sufficiently accurate,
+as shown in Algorithm~\ref{alg:poleval}.
 %
 Due to its iterative nature,
 however,
