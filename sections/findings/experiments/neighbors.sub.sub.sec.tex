@@ -24,12 +24,21 @@ In other words,
     \wvecm'_{p,o,d} = %\mathrm{l1norm}\left(
     \left|
     X\wvecm_{p,o,d} +
-    Y \sum_{i\in\{-1,0,1\}} \sum_{j\in\{-1,0,1\}} \wvecm_{p+i,o+j,d}
+    Y \textit{avg}\left(\left\{
+        \wvecm_{i,j,d}\,
+        \middle|
+        \begin{array}{ll}
+        i \in [p-1,p+1]\\
+        j \in [o-1, o+1]\\
+        o-1,o+1,p-1,p+1 \in [0,120]\\
+        (i \neq p) \lor (j \neq o)
+        \end{array}
+        \right\} %\setminus \{\wvecm_{p,o,d}\}
+    \right)
     \right|_1
     %\right)
 \]
-where $X$, $Y$ are ratios of each vector's effect, $X+Y = 1$,
-and $p+i$, $o+j \in [0,120]$.
+where $X$, $Y$ are ratios of each vector's effect, $X+Y = 1$.
 %
 The desired effect was to allow a score location to learn from its neighbors
 so that an area effect was present in the decision.
