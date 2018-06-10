@@ -29,14 +29,12 @@ and it streamlines notation.
 %%%
 
 %%%
-A state can have a \textit{value} associated with it,
+A state can have a worth or \textit{value} associated with it,
 for a given policy $\policy$.
 %
 The value of a state $s \in \States$ under policy $\policy$ is denoted
 $v_\policy(s)$
-which can signal the worth of the given state.
-%
-The value of a state
+and
 is defined as the expected total return by following policy $\policy$ from
 state $s$:
 \begin{align*}
@@ -44,7 +42,19 @@ state $s$:
 		&= \Expectation_\policy \left[
 				\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \middle| S_t = s
 			\right]
+		\\
+		&= \sum_{a} {
+				\policy(a|s)
+				\sum_{s',\,r} {
+					P(s',r|s,a) \left[
+						r + \gamma v_{\policy}(s')
+					\right]
+				}
+			}
 \end{align*}
+where $t$ is the arbitrary time within the episode
+when the agent is in state $s$,
+to maintain compatibility with previous definitions regarding rewards sequences.
 %
 The optimum value of a state $v_*(s)$ is defined as:
 \[ v_*(s) = \max_\policy v_\policy(s) \]
@@ -101,6 +111,7 @@ Policy evaluation is the iterative process of approximating the state-value
 function $v_\policy$ for some policy $\policy$.
 %
 When the entire state space is observable,
+since $v_\policy(s)$ can be expressed recursively,
 the value of a state can be repeatedly updated
 to its cumulative expected reward when taking each possible action,
 converging to the true state-value function.
