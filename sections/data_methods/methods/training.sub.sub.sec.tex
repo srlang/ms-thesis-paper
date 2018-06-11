@@ -122,7 +122,8 @@ adjusted over the course of time.
 
 %%%
 To facilitate an adequate rate of exploration of the state space,
-randomized initializations were used for each of the training games.
+exploring starts were implemented by using
+randomized score initializations during training games.
 %
 A random score was chosen for each of the agents,
 keeping the spread of scores to within 60 points
@@ -144,7 +145,9 @@ situations of exceptional bad luck can be treated as outlier situations.
 %\DeclareMathOperator{\variance}{
 \newcommand{\Var}{\mathrm{Var}}
 %%%
-A further measure was taken to ensure adequate exploration.
+As a further measure to ensure adequate exploration,
+a modified version of an $\epsilon$-greedy policy
+was implemented as well.
 %
 Under normal conditions,
 cards were selected by choosing the combination which had the highest value in
@@ -157,7 +160,7 @@ by random by using \pvec\ as a probability distribution.
 This chance $e$ of random choice was related to the variance of the 
 weights according to the formula:
 \[
-	e = k - \Var(\wvecm_{m,o,d})
+	e = k - \Var(\wvecm_{p,o,d})
 \]
 where $k$ is set at a constant $0.3$, empirically chosen during the
 development process.
