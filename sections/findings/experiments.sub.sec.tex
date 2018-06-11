@@ -44,10 +44,13 @@ as described in Section~\ref{sec:dm-methods-weighting},
 the choice was made at uniform random,
 in a manner true to $\epsilon$-greedy exploration~\cite{rl_book}.
 %
-This was done for the sake of simplicity.
+This was done to bring the implementation more into line with
+textbook definitions of the algorithm
+since the author's naïveté caused earlier implementations to deviate.
+% mea culpa, mea culpa, mea magna culpa
 %
 Furthermore,
-the difference in choosing mechanisms
+this difference in choosing mechanisms during exploratory steps
 made no demonstrable difference in the learning behavior,
 most likely as a result of \pvec\ being similar to uniformly random
 for untrained states
