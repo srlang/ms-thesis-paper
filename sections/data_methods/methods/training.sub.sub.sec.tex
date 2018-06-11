@@ -52,15 +52,16 @@ corresponding to only the strategies which were most in favor of choosing
 the chosen cards.
 %
 Note that this is not necessarily the same set of weights which were the highest
-contributors to the final choice.
+in the weights vector.
 %
-It may be the case that weights $x$ and $y$ are the highest
+It may be the case that the weights for strategies $x$ and $y$ are the highest
 at a given score location,
 but that strategies $u$ and $v$,
 with lower weight values,
-had higher advocacy for a given hand which summed up to a larger value.
+had higher advocacy for a given hand which summed up to a larger resulting
+desirability value.
 %
-Were this not the case,
+Were the aforementioned adjustment mechanism not used,
 and, instead,
 the highest weights were to be directly punished or rewarded,
 the resulting changes would merely reward or punish those strategies which
