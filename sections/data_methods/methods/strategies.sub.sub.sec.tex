@@ -131,7 +131,7 @@ over the course of hundreds of thousands of simulated games,
 this delay would very quickly accumulate to performance-affecting delays.
 %
 As a result, an alternative strategy of pre-computing the required knowledge and
-storing the values of interest into a database was implemented instead.
+storing the values of interest into a relational database was implemented instead.
 %%%
 
 %%%
@@ -281,10 +281,12 @@ broken by choosing the highest-valued card that reached that score
 in order to potentially outmaneuver the opponent from reaching a count of 31.
 %
 This agent was then played against a copy of itself with randomly allocated
-cards and the results of that round were recorded for each agent to provide an
-initial knowledge base.
+cards and the results of that round were recorded
+into a pegging records database,
+separate from the previous hands' statistics database,
+to provide an initial knowledge base.
 %
-These results could then be queried by the agent during the choosing phase of the
+This records database could then be queried by the agent during the choosing phase of the
 game and contributed to at the end of the pegging phase as training progressed.
 %%%
 
