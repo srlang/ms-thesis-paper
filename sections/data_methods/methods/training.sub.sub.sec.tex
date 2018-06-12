@@ -86,7 +86,7 @@ and $d$ is the rate of decay expressed as a ratio such that $0 \leq d \leq 1$.
 %
 In order to allow for closer losses to be less severely punished than worse
 losses and vice versa for wins,
-the adjustment constant $C$ was defined as proportional to the difference
+the adjustment constant $C$, i.e.\ the reward, was defined as proportional to the difference
 between the players' scores according to the formula:
 \[
 	C = s \cdot \left({PlayerScore} - {OpponentScore}\right) 
@@ -103,15 +103,17 @@ it would be during game $y$.
 %%%
 
 %%%
-The reinforcement training framework operated very simply.
+The reinforcement training framework operated according to
+previously explained Monte Carlo methods.
 %
 A file of starting weights was loaded to initialize an agent.
 %
 Two agents were then placed into a game and played against each other.
 %
-After the game had been completed,
+After the game, i.e.\ the episode, had been completed,
 the weights for each agent were adjusted
-accordingly along the path taken by the agent.
+accordingly along the path taken by the agent
+in order to improve its policy.
 %
 After a set number of epochs, the agent saved its weights configuration to a
 checkpoint file.
