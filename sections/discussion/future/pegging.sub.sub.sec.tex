@@ -61,7 +61,7 @@ is laughable.
 
 %%%
 In future applications,
-a partial agent could be trained in just the pegging phase alone
+a partial agent could be trained in just the pegging phase
 using reinforcement learning.
 %
 In a similar way to this thesis,
@@ -75,8 +75,35 @@ having each player learn from trial and error with certain card combinations.
 %
 %This has the disadvantage of taking more time to train to effectiveness.
 %
-In either case,
-a more suitable pegging system can be made that would play better.
+On the other hand,
+as cribbage is an imperfect-information game,
+a parallel can be drawn to the game of poker.
+%
+Since pegging is the phase of cribbage
+which most depends on predicting and countering the opponent's strategy,
+recent successes by Dr.\ Tuomas Sandholm and Noam Brown
+in heads-up no-limits Texas hold'em may be applicable to
+this phase.
+%
+Their AI, \textit{Libratus},
+defeated four top human players
+in a 120,000-hand tournament
+\cite{sandholm_poker}.
+%
+Furthermore, while \textit{Libratus} utilized massive computational resources,
+Sandholm and Brown have also developed \textit{Modicum},
+a less powerful, but less computationally expensive, poker-playing agent
+which utilizes only hardware that can be found in moderately powerful desktop computers
+\cite{sandholm_poker_improved}.
+%
+Although not as well-performing as \textit{Libratus},
+\textit{Modicum} was still capable of beating other previous top poker agents
+using fewer resources by orders of magnitude,
+allowing for its use in research by those without access to high-performance machines.
+%
+In any case,
+a more suitable pegging system can be made,
+improving play.
 %%%
 
 \paragraph*{Performance Evaluation}
