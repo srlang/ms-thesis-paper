@@ -93,7 +93,25 @@ would be willing to choose a particular combination of cards.
 This desirability score is then scaled to lie in the range $[0, 1]$ with
 $1$ representing the best possibilities and $0$ the worst.
 %
-This scaling allows for possibilities which are almost as good to not be
+The scaling is accomplished by creating a linear scale
+between the worst and best values
+for the retrieved statistic.
+%
+For example,
+in the \handmaxmin\ strategy,
+if the most any combination of cards was guaranteed to score was 12 points,
+while the least was 2 points,
+those guaranteed 2 points would be given a score of $0$,
+those guaranteed 7 points would be given a score of $0.5$,
+and those guaranteed 12 points would be given a score of $1$.
+%
+In the case of those strategies which advocate for minima
+(i.e.\ \peggingminavggiven\ and \cribminavg),
+these scores would be reversed
+since a smaller minimum is more desired by these strategies.
+%
+Scaling in this manner
+allows for combinations which are almost as good to not be
 ignored in later weighting stages.
 %%%
 
