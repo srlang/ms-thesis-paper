@@ -10,23 +10,25 @@
 %%%
 
 %%%
-As an attempt to prevent a single strategy's weight from being so strongly 
+Since all previous attempts at developing a policy led to
+states that adhered strongly to an individual strategy,
+the idea that performance would increase
+under a policy consisting of mixed strategies
+was tested by regularizing the weights vector.
+%
+In order to prevent a single strategy's weight from being so strongly
 preferred that a second strategy could not hope to possibly gain ground,
 a hard limit was placed on the pre-normalized update value.
 %
 Expressed mathematically,
 \[
-    \wvecm'_{p,o,d}[i] = \max\{K,c\wvecm_{p,o,d}[i]\}
+    \wvecm'_{p,o,d}[i] = \max\{r,c\wvecm_{p,o,d}[i]\}
 \]
-where $K$ is some constant value throughout the training.
+where $r$, the regulation rate, is some constant value throughout the training.
 %
-While the value of $\wvecm_{p,o,d}[i]$ could exceed $K$ after re-normalization
+While the value of $\wvecm_{p,o,d}[i]$ could exceed $r$ after re-normalization
 for a particularly strongly weighted strategy,
-the value could be seen converging to $K$ within just a handful of iterations.
-%
-The desired intention of this regularization was to allow other strategies
-the opportunity to overcome the bias of earlier strengthening of the strongest
-strategy.
+the value could be seen converging to $r$ within just a handful of iterations.
 %%%
 
 \paragraph*{Results}
