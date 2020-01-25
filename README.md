@@ -7,7 +7,7 @@ _should_ be used for coding projects will be mostly ignored.
 
 ## Editing/Format
 
-This project is obviously written mostly, if not entirely, by myself.
+This project was obviously written entirely by myself.
 As such, my own personal quirks and desires for file format are observed.
 They aren't entirely listable, but should be determined easily enough.
 If you are for whatever editing these files, please observe my formatting
@@ -24,7 +24,7 @@ A quick run-down of the major points or things that can't easily be determined:
 ## Compiling
 
 This was compiled using pdflatex from TexLive 2016 (v.3.14159265-2.6-1.40.17)
-on a MacBook Air (2016 model).
+on a Mac.
 
 You will need to retrieve the following files from the University of Helsinki
 CS department:
