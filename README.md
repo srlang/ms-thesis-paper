@@ -1,3 +1,8 @@
+# Thesis
+
+This paper has been completed and published by the University of Helsinki
+at [HELDA](http://urn.fi/URN:NBN:fi-fe201804208656).
+
 # Thesis Paper
 
 This repository includes all the progress that has been made on my master's
@@ -7,7 +12,7 @@ _should_ be used for coding projects will be mostly ignored.
 
 ## Editing/Format
 
-This project was obviously written entirely by myself.
+This project was written entirely by myself.
 As such, my own personal quirks and desires for file format are observed.
 They aren't entirely listable, but should be determined easily enough.
 If you are for whatever editing these files, please observe my formatting
