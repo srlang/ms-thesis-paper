@@ -3,6 +3,23 @@
 This paper has been completed and published by the University of Helsinki
 at [HELDA](http://urn.fi/URN:NBN:fi-fe201804208656).
 
+## Abstract
+
+Cribbage is a card game involving multiple methods of scoring
+which each receive varying emphasis
+over the course of a typical game.
+Reinforcement learning is a machine learning strategy in which an agent learns
+to accomplish a task via direct experience
+by collecting rewards based on performance.
+In this thesis,
+reinforcement learning is applied to the game of cribbage,
+improving an agent's policy of combining multiple basic strategies,
+according to the needs of the dynamic state of the game.
+From inspection,
+a reasonable policy is learned by the agent over the course of a million games,
+but an increase in performance was not demonstrated.
+
+
 # Thesis Paper
 
 This repository includes all the progress that has been made on my master's
